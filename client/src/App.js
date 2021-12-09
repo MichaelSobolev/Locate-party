@@ -1,11 +1,21 @@
 import './App.css';
-import logo from './img/d20.png'
+import { NavBarPage } from './components/NavBarPage/NavBarPage';
+import { SidebarPage } from './components/SideBarPage/SideBarPage';
+import { UserPage } from './pages/UserPage/UserPage';
+import { MainPage } from './pages/MainPage/MainPage';
+import { AnnouncementsPage } from './pages/AnnouncementsPage/AnnouncementsPage';
+import { Routes, Route } from 'react-router-dom';
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+      <NavBarPage />
+      <SidebarPage />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/user-page" element={<UserPage />} />
+        <Route path="/announcements" element={<AnnouncementsPage />} />
+      </Routes>
     </div>
   );
 }
