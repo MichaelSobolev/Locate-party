@@ -19,9 +19,14 @@ const app = express();
 
 // ------------------------- //
 // Express settings
+// HBS
+app.set('view engine', 'hbs');
+app.set('views', path.join(process.env.PWD, 'src', 'views'));
 // morgan (TODO выпилить на релизе)
 app.use(morgan('dev'));
-app.use(cors({origin:true,credentials:true}))
+app.use(cors())
+// for react:
+// app.use(cors({origin:true,credentials:true}))
 
 // Query encoders
 app.use(express.urlencoded({ extended: true }));
