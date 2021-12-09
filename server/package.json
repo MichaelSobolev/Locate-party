@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node app.js",
+    "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
- },
- "nodemonConfig": {
+  },
+  "nodemonConfig": {
     "ignore": [
       "sessions/*"
     ]
-  }, 
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
