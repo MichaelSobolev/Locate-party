@@ -28,7 +28,7 @@ export const loginUser = (data) => async (dispatch) => {
 }
 
 export const userLogout = () => async (dispatch) => { //TODO Добавить .env для API
-  const response = await fetch(`http://localhost:3001/registration/logout`)
+  const response = await fetch(`http://localhost:3001/logout`)
 
   if (response.ok) {
     dispatch({
@@ -38,7 +38,6 @@ export const userLogout = () => async (dispatch) => { //TODO Добавить .e
 }
 
 export const validateUser = (current, reference) => (dispatch) => {
-
   if (String(current) === reference) {
     dispatch({
       type: VALIDATE_SUCCESS
@@ -50,8 +49,5 @@ export const validateUser = (current, reference) => (dispatch) => {
         error: 'Ты не прав/а, попробуй еще раз :('
       }
     })
-
-
   }
-
 }
