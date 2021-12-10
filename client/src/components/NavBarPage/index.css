@@ -2,26 +2,14 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-.headerTag {
-  color: #e6e6e6;
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  display: block;
-}
-.sidenav {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
+.header {
+  flex-basis: 160px;
   background-color: #111;
-  overflow-x: hidden;
   padding-top: 20px;
+
 }
 
-.sidenav a {
+.header__link {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
@@ -29,23 +17,20 @@ body {
   display: block;
 }
 
-.sidenav a:hover {
+.header__link_active {
+  color: #e6e6e6;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  display: block;
+}
+
+.header__link:hover {
   color: #f1f1f1;
 }
 
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
-  .sidenav a {
-    font-size: 18px;
-  }
+.sidenav {
+  position: fixed;
 }
 
 .mainContent {

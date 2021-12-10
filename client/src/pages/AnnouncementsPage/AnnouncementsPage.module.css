@@ -1,8 +1,8 @@
-.TemporaryMargin{
+.TemporaryMargin {
   /* background-color: red; */
   margin-left: 230px;
 }
-.PseudoHeader{
+.PseudoHeader {
   display: flex;
   justify-content: space-around;
   /* background-color: lightskyblue; */
@@ -12,30 +12,26 @@
   font-size: larger;
   /* color: white; */
 }
- 
-.PostsBody{
-  /* border: 1px solid; */
 
+.PostsBody {
+  /* border: 1px solid; */
 }
 
-.Card{
+.Card {
   padding: 10px;
   border: 1px solid;
   border-radius: 1%;
   /* background-color: red ; */
 }
 
-.Card > div{
+.Card > div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.Card > div > *{
+.Card > div > * {
   padding: 5px;
 }
-
-
-
 
 .Tags {
   list-style: none;
@@ -66,7 +62,7 @@
   background: #fff;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
-  content: "";
+  content: '';
   height: 6px;
   left: 10px;
   position: absolute;
@@ -75,16 +71,15 @@
 }
 
 .Tag::after {
-  background:   #fff;
+  background: #fff;
   border-bottom: 13px solid transparent;
   border-left: 10px solid #eee;
   border-top: 13px solid transparent;
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: 0;
 }
-  
 
 .Tag:hover {
   background-color: crimson;
