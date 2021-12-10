@@ -1,7 +1,11 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
+  "name": "findATable",
+  "version": "0",
+  "description": "App to find a party",
+  "main": "index.js",
+  "repository": "https://github.com/MichaelSobolev/find_a_table",
+  "author": "Michael + Maxim + Nikita",
+  "license": "MIT",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.11.4",

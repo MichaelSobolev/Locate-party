@@ -13,9 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Player,
         foreignKey: "post_id",
       });
-      Post.belongsToMany(models.User, {
+      Post.belongsToMany(models.User, { //FIXME
         through: models.PendingPlayer,
         foreignKey: "post_id",
+
       });
       Post.belongsTo(models.System, {
         foreignKey: "system_id",
@@ -29,6 +30,13 @@ module.exports = (sequelize, DataTypes) => {
       system_id: DataTypes.INTEGER,
       title: DataTypes.TEXT,
       platform: DataTypes.TEXT,
+      //
+      schedule: DataTypes.TEXT,
+      requirements: DataTypes.TEXT,
+      max_players: DataTypes.INTEGER,
+      isPaid: DataTypes.BOOLEAN,
+      pricing: DataTypes.INTEGER,
+      // 
       description: DataTypes.TEXT,
       isActive: DataTypes.BOOLEAN,
     },

@@ -1,0 +1,20 @@
+.sidebar {
+  flex-basis: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #111;
+  color: white;
+  gap: 20px;
+  padding: 20px;
+  /* position: sticky;
+  top: 0;
+  right: 0; */
+  /* height: 100%; */
+}
+
+.sidebar__item {
+  padding: 15px;
+  background-color: rgb(34, 32, 32);
+  border-radius: 10px;
+}

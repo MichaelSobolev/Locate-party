@@ -8,7 +8,7 @@ export const postReducer = (state = [], action) => {
       return [...state, newPost]
     }
     case SET_POSTS: {
-      const { posts } = payload
+      const posts = payload
       return posts
     }
     default: {
