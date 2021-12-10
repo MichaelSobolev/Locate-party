@@ -53,9 +53,13 @@ export const NewPostPage = () => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    const request = inputs.map((el) => {
+    const request = {};
+    inputs.forEach((el) => {
       let { key, value } = el.getKeyValue();
-      return { [key]: value };
+      if (key === "system_id" || key === "isPaid" || key === "max_players") {
+        value = Number(value);
+      }
+      request[key] = value;
     });
     // console.log(request);
     dispatch(createPost(request));

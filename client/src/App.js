@@ -17,7 +17,6 @@ function App() {
         <Route path="/user-page" element={<UserPage />} />
         <Route path="/announcements" element={<AnnouncementsPage />} />
         <Route path="/announcements/new" element={<NewPostPage />} />
-
       </Routes>
     </div>
   );

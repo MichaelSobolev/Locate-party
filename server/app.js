@@ -11,7 +11,7 @@ const FileStore = require('session-file-store')(session);
 require('dotenv').config()
 // ------------------------- //
 // Connecting routers
-const indexRouter = require('./src/routes/index.router');
+const postsRouter = require('./src/routes/posts.router');
 
 // ------------------------- //
 // Create an app
@@ -24,9 +24,11 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(process.env.PWD, 'src', 'views'));
 // morgan (TODO выпилить на релизе)
 app.use(morgan('dev'));
-app.use(cors())
-// for react:
-// app.use(cors({origin:true,credentials:true}))
+app.use(cors({
+  origin: true,
+  methods: "GET, POST, PUT, DELETE",
+  credentials: true,
+}))
 
 // Query encoders
 app.use(express.urlencoded({ extended: true }));
@@ -35,13 +37,13 @@ app.use(express.json());
 // ------------------------- //
 // Session settings
 const sessionConfig = {
- store: new FileStore(),
- key: 'sid', // Cookie name
- secret: 'gchjtghasdjkl;bjkll',//key
- resave: false,
- saveUninitialized: false,
- httpOnly: true,
- cookie: { expires: 180 * 24 * 60 * 60e3 },
+  store: new FileStore(),
+  key: 'sid', // Cookie name
+  secret: 'gchjtghasdjkl;bjkll',//key
+  resave: false,
+  saveUninitialized: false,
+  httpOnly: true,
+  cookie: { expires: 180 * 24 * 60 * 60e3 },
 }
 
 const sessionParser = session(sessionConfig)
@@ -49,7 +51,7 @@ app.use(sessionParser)
 
 // ------------------------- //
 // Routing
-app.use('/', indexRouter);
+app.use('/posts', postsRouter);
 
 // ------------------------- //
 
