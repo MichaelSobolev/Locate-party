@@ -13,7 +13,8 @@ export const AnnouncementsPage = () => {
     dispatch(getPosts());
   }, []);
   return (
-    <main className={styles.TemporaryMargin}>
+    // <main >//className={styles.TemporaryMargin}>
+    <main>
       <h2> AnnouncementsPage</h2>
       <div className={styles.PseudoHeader}>
         <p>Hello {userName ? userName : "UserName"}</p>
