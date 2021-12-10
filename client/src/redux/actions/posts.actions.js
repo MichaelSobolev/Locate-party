@@ -1,16 +1,16 @@
 import { CREATE_POST, SET_POSTS, SET_STATUS, DELETE_TODO, DEL_ALL_TODOS } from "../types"
 
 export const getPosts = () => async (dispatch) => {
-  const response = await fetch(`http://localhost:3001/posts`, { //TODO Добавить .env для API
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    'credentials': 'include'
-  })
-  const posts = await response.json()
+  // const response = await fetch(`http://localhost:3001/posts`, { //TODO Добавить .env для API
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   'credentials': 'include'
+  // })
+  // const posts = await response.json()
   // console.log(posts);
-  dispatch({ type: SET_POSTS, payload: posts })
+  // dispatch({ type: SET_POSTS, payload: posts })
 }
 
 export const createPost = (newPost) => async (dispatch) => {

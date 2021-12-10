@@ -11,6 +11,9 @@ export const NavBarPage = () => {
         <NavLink className="header__link" activeClassName="header__link_active" to="/user-page">Профиль</ NavLink>
         <NavLink className="header__link" activeClassName="header__link_active" to="/logout">Выйти</ NavLink>
         <NavLink className="header__link" activeClassName="header__link_active" to="/eror">Error</NavLink>
+        <NavLink className="header__link" activeClassName="header__link_active" to="/login">Войти</NavLink>
+        <NavLink className="header__link" activeClassName="header__link_active" to="/logout">выйти</NavLink>
+
       </div>
     </header>
   )
