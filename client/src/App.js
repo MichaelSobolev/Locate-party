@@ -8,14 +8,14 @@ import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <div className="wrapper">
       <NavBarPage />
-      <SidebarPage />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/user-page" element={<UserPage />} />
         <Route path="/announcements" element={<AnnouncementsPage />} />
       </Routes>
+      {/* <SidebarPage /> */}
     </div>
   );
 }

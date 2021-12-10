@@ -1,0 +1,15 @@
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: sticky;
+  top: 0px;
+  float: right;
+  background-color: #111;
+  color: #818181;
+}
+
+.sidebar div {
+  padding: 8px;
+  font-size: 24px;
+  display: block;
+}
