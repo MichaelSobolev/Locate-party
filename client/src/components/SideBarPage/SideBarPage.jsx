@@ -1,14 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './index.css';
 
 
 export const SidebarPage = () => {
   return (
-    <div class="sidebar">
-      <Link to="/">Мои игра1</Link>
-      <Link to='/'>Мои игра2</Link>
-      <Link to='/' >Мои игра3</Link >
+    <div className="sidebar">
+      <div className="sidebar__item sidebar__item_game">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quae dolorum quo, animi delectus consequuntur qui. Placeat sunt inventore sed similique minus ex rem quae ad nisi. Nostrum, ab enim.
+      </div>
+      <div className="sidebar__item sidebar__item_notifaction">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem quod magni autem, excepturi quos corporis, voluptas unde officiis nisi illum animi, earum veritatis? Culpa, rerum ipsam voluptatibus sequi corporis minus.
+      </div>
     </div >
   )
 }

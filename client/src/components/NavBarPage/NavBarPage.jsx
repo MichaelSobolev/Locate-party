@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './index.css';
 
 export const NavBarPage = () => {
   return (
-    <header>
-      <div class="sidenav">
-        <Link to="/" class="headerTag">findATable</Link>
-        <Link to="/announcements">Найти игру</ Link>
-        <Link to="/user-page">Профиль</ Link>
-        <Link to="/logout">Выйти</ Link>
+    <header className="header">
+      <div className="sidenav">
+        <NavLink className="header__link" activeClassName="header__link_active" to="/">findATable</NavLink>
+        <NavLink className="header__link" activeClassName="header__link_active" to="/announcements">Найти игру</ NavLink>
+        <NavLink className="header__link" activeClassName="header__link_active" to="/user-page">Профиль</ NavLink>
+        <NavLink className="header__link" activeClassName="header__link_active" to="/logout">Выйти</ NavLink>
+        <NavLink className="header__link" activeClassName="header__link_active" to="/eror">Error</NavLink>
       </div>
     </header>
   )

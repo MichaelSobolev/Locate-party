@@ -9,26 +9,25 @@ const path = require('path');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 require('dotenv').config()
-// For cool error page
-const createError = require('http-errors');
-
 // ------------------------- //
 // Connecting routers
 const indexRouter = require('./src/routes/index.router');
 
 // ------------------------- //
-// Starting a server
+// Create an app
 const app = express();
-const PORT = process.env.PORT || 3001
 
 // ------------------------- //
 // Express settings
+// HBS
+app.set('view engine', 'hbs');
+app.set('views', path.join(process.env.PWD, 'src', 'views'));
 // morgan (TODO выпилить на релизе)
 app.use(morgan('dev'));
-app.use(cors({origin:true,credentials:true}))
+app.use(cors())
+// for react:
+// app.use(cors({origin:true,credentials:true}))
 
-// Specify static folder
-app.use(express.static(path.join(process.env.PWD, 'public')));
 // Query encoders
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,25 +43,17 @@ const sessionConfig = {
  httpOnly: true,
  cookie: { expires: 180 * 24 * 60 * 60e3 },
 }
-app.use(session(sessionConfig))
 
-// ------------------------- //
-// Session middlware for authorization
-// app.use(async (req, res, next) => {
-//  // Here locals could be fiiled
-//  //res.locals.variable
-//  if (req.session.userId) {
-//    res.locals.userId = req.session.userId
-//  }
-//  next()
-// })
+const sessionParser = session(sessionConfig)
+app.use(sessionParser)
 
 // ------------------------- //
 // Routing
 app.use('/', indexRouter);
 
-
 // ------------------------- //
 
-app.listen(PORT, () => console.log('Server is running on port', PORT));
+// app.listen(PORT, () => console.log('Server is running on port', PORT));
+
+module.exports = { app, sessionParser }
 
