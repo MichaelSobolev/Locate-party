@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Input } from "../../components/Input/Input";
 import useInput from "../../customHooks/inputHook";
+import { createPost } from "../../redux/actions/posts.actions";
 
 export const NewPostPage = () => {
   const dispatch = useDispatch();
@@ -35,12 +36,13 @@ export const NewPostPage = () => {
       id: "max_players",
       label: messages.max_players,
     }),
-    useInput({
-      type: "checkbox",
-      name: "isPaid",
-      id: "isPaid",
-      label: messages.isPaid,
-    }),
+    // useInput({
+    //   type: "checkbox",
+    //   name: "isPaid",
+    //   id: "isPaid",
+    //   label: messages.isPaid,
+    //   defaultValue: false
+    // }),
     useInput({
       type: "number",
       name: "pricing",
@@ -53,12 +55,10 @@ export const NewPostPage = () => {
     event.preventDefault();
     const request = inputs.map((el) => {
       let { key, value } = el.getKeyValue();
-      if (key === "isPaid") {
-        value = el.checked;
-      }
       return { [key]: value };
     });
-    // dispatch(sendNewPost(request));
+    // console.log(request);
+    dispatch(createPost(request));
   };
 
   return (
