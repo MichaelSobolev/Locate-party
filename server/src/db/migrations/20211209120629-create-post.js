@@ -26,6 +26,22 @@ module.exports = {
       platform: {
         type: Sequelize.TEXT
       },
+
+      schedule: {
+        type: Sequelize.TEXT
+      },
+      requirements: {
+        type: Sequelize.TEXT
+      },
+      max_players: {
+        type: Sequelize.INTEGER
+      },
+      isPaid: {
+        type: Sequelize.BOOLEAN
+      },
+      pricing: {
+        type: Sequelize.INTEGER
+      },
       description: {
         type: Sequelize.TEXT
       },

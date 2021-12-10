@@ -5,6 +5,7 @@ import { UserPage } from './pages/UserPage/UserPage';
 import { MainPage } from './pages/MainPage/MainPage';
 import { AnnouncementsPage } from './pages/AnnouncementsPage/AnnouncementsPage';
 import { Routes, Route } from 'react-router-dom';
+import { NewPostPage } from './pages/newPostPage/newPostPage';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/user-page" element={<UserPage />} />
         <Route path="/announcements" element={<AnnouncementsPage />} />
+        <Route path="/announcements/new" element={<NewPostPage />} />
+
       </Routes>
     </div>
   );

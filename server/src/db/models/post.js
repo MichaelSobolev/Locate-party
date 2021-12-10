@@ -29,6 +29,13 @@ module.exports = (sequelize, DataTypes) => {
       system_id: DataTypes.INTEGER,
       title: DataTypes.TEXT,
       platform: DataTypes.TEXT,
+      //
+      schedule: DataTypes.TEXT,
+      requirements: DataTypes.TEXT,
+      max_players: DataTypes.INTEGER,
+      isPaid: DataTypes.BOOLEAN,
+      pricing: DataTypes.INTEGER,
+      // 
       description: DataTypes.TEXT,
       isActive: DataTypes.BOOLEAN,
     },
