@@ -36,6 +36,7 @@ export const NewPostPage = () => {
       id: "max_players",
       label: messages.max_players,
     }),
+    // FIXME нужно сделать чекбокс/кнопку, по нажатию на которую выпадает дополнительное поле с суммой оплаты. 
     // useInput({
     //   type: "checkbox",
     //   name: "isPaid",
@@ -56,12 +57,12 @@ export const NewPostPage = () => {
     const request = {};
     inputs.forEach((el) => {
       let { key, value } = el.getKeyValue();
+      // TODO переписать этот костыль
       if (key === "system_id" || key === "isPaid" || key === "max_players") {
         value = Number(value);
       }
       request[key] = value;
     });
-    // console.log(request);
     dispatch(createPost(request));
   };
 
