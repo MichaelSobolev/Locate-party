@@ -6,6 +6,7 @@ import { MainPage } from './pages/MainPage/MainPage';
 import { AnnouncementsPage } from './pages/AnnouncementsPage/AnnouncementsPage';
 import { Routes, Route } from 'react-router-dom';
 import { ErorPage } from './pages/ErorPage/ErorPage';
+import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary';
 
 function App() {
   return (
@@ -13,12 +14,14 @@ function App() {
       <NavBarPage />
       <div className="scroll-main-and-sidebar">
         <main className="main">
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/user-page" element={<UserPage />} />
-            <Route path="/announcements" element={<AnnouncementsPage />} />
-            <Route path="/eror" element={<ErorPage />} />
-          </Routes>
+          <ErrorBoundary>
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/user-page" element={<UserPage />} />
+              <Route path="/announcements" element={<AnnouncementsPage />} />
+              <Route path="/eror" element={<ErorPage />} />
+            </Routes>
+          </ErrorBoundary>
         </main>
         <SidebarPage />
       </div>

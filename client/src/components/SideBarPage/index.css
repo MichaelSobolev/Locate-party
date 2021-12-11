@@ -3,7 +3,7 @@
   --paddingSidebar: 20px;
   min-width: var(--sidebarWidth);
   max-width: var(--sidebarWidth);
-  background-color: #111;
+  background-color: --scrollMainAndSidebarBgColor;
   color: white;
   padding: var(--paddingSidebar);
 }
