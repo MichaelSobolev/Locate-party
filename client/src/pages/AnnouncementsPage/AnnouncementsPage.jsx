@@ -4,7 +4,7 @@ import styles from './AnnouncementsPage.module.css'
 export const AnnouncementsPage = () => {
   const userName = null
   return (
-   <main className={styles.TemporaryMargin}>
+   <div className={styles.TemporaryMargin}>
     <h2> AnnouncementsPage</h2>
     <div className={styles.PseudoHeader}>
       <p>Hello {userName ? userName : "UserName"}</p>
@@ -47,7 +47,7 @@ export const AnnouncementsPage = () => {
         <button>Кнопка на страницу с описанием </button>
       </div>
     </section>
-    </main>
+    </div>
   )
 }
 

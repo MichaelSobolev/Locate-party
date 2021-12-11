@@ -1,20 +1,24 @@
 .sidebar {
-  flex-basis: 220px;
+  --sidebarWidth: 240px;
+  --paddingSidebar: 20px;
+  min-width: var(--sidebarWidth);
+  max-width: var(--sidebarWidth);
+  background-color: #111;
+  color: white;
+  padding: var(--paddingSidebar);
+}
+
+.sidebar__wrapper {
+  position: fixed;
+  max-width: calc(var(--sidebarWidth) - var(--paddingSidebar) * 2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #111;
-  color: white;
   gap: 20px;
-  padding: 20px;
-  /* position: sticky;
-  top: 0;
-  right: 0; */
-  /* height: 100%; */
 }
 
 .sidebar__item {
   padding: 15px;
-  background-color: rgb(34, 32, 32);
+  background-color: var(--sidebarItemBgColor);
   border-radius: 10px;
 }

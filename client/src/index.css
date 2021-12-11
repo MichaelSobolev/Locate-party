@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+:root {
+  --gray1: rgb(32, 32, 40);
+  --gray2: rgb(116, 117, 124);
+  --black: rgb(24, 24, 32);
+  --white: rgb(255, 255, 255);
+  --headerBgColor: var(--gray1);
+  --scrollMainAndSidebarBgColor: var(--black);
+  --scrollMainAndSidebarColor: var(--white);
+  --sidebarItemBgColor: var(--gray1);
+}
+
 body, html, .root {
   height: 100%;
 }

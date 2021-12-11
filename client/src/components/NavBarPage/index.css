@@ -3,10 +3,9 @@ body {
 }
 
 .header {
-  flex-basis: 160px;
-  background-color: #111;
+  min-width: 200px;
+  background-color: var(--headerBgColor);
   padding-top: 20px;
-
 }
 
 .header__link {
@@ -31,10 +30,7 @@ body {
 
 .sidenav {
   position: fixed;
+  display: flex;
+  flex-direction: column;
 }
 
-.mainContent {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}

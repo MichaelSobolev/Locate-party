@@ -12,12 +12,14 @@ function App() {
     <div className="wrapper">
       <NavBarPage />
       <div className="scroll-main-and-sidebar">
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/user-page" element={<UserPage />} />
-          <Route path="/announcements" element={<AnnouncementsPage />} />
-          <Route path="/eror" element={<ErorPage />} />
-        </Routes>
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/user-page" element={<UserPage />} />
+            <Route path="/announcements" element={<AnnouncementsPage />} />
+            <Route path="/eror" element={<ErorPage />} />
+          </Routes>
+        </main>
         <SidebarPage />
       </div>
     </div>
