@@ -13,10 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Player,
         foreignKey: "post_id",
       });
-      Post.belongsToMany(models.User, { //FIXME
+      Post.belongsToMany(models.User, {
         through: models.PendingPlayer,
         foreignKey: "post_id",
 
+      });
+      Post.belongsTo(models.User, {
+        foreignKey: "master_id",
+        onDelete: "CASCADE",
       });
       Post.belongsTo(models.System, {
         foreignKey: "system_id",

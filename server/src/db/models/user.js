@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.hasOne(models.InfoUser, { foreignKey: "user_id" });
+      User.hasMany(models.Post, { foreignKey: "master_id" });
       User.belongsToMany(models.Post, {
         through: models.Player,
         foreignKey: "user_id",
