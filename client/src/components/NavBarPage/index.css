@@ -4,7 +4,7 @@ body {
 
 .header {
   min-width: 200px;
-  background-color: var(--headerBgColor);
+  background-color: var(--color-shark);
   padding-top: 20px;
 }
 
@@ -12,7 +12,7 @@ body {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: var(--color-gray);
   display: block;
 }
 

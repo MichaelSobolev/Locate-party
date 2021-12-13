@@ -1,0 +1,41 @@
+.last-game-card {
+    position: relative;
+
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 160px;
+
+    border-radius: 20px;
+}
+
+.last-game-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(to bottom, var(--color-black-50), transparent);
+}
+
+.last-game-card__date {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    color: var(--color-gray);
+}
+
+.last-game-card__name {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    color: var(--color-white);
+}
+
+.last-game-card__image {
+    display: block;
+}

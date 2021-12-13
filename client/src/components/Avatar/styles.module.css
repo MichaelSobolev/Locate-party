@@ -1,0 +1,42 @@
+.avatar {
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    vertical-align: baseline;
+
+    border-radius: 50%;
+}
+
+.avatar_size_xs {
+    width: 30px;
+    height: 30px;
+}
+
+.avatar_size_s {
+    width: 40px;
+    height: 40px;
+}
+
+.avatar_size_m {
+    width: 50px;
+    height: 50px;
+}
+
+.avatar_size_l {
+    width: 60px;
+    height: 60px;
+}
+
+.avatar_size_xl {
+    width: 70px;
+    height: 70px;
+}
+
+.avatar__image {
+    display: inherit;
+
+    width: 100%;
+    height: auto;
+}
