@@ -1,0 +1,12 @@
+img {
+  border-radius: 20%;
+}
+
+.gamebox {
+  display: flex;
+  justify-content: space-around;
+}
+
+.boxtext {
+  text-align: center;
+}

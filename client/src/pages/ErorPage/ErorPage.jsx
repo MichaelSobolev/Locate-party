@@ -7,10 +7,10 @@ export const ErorPage = () => {
   return (
     <>
       <div className="[countainer-error-page]">
-        <figure>
+        <figure className={styles['figure-eror']}>
           {/* {styles['last-game-card__image']} */}
           <div className={styles['sad-mac']}></div>
-          <figcaption>
+          <figcaption className={styles['figcaption']}>
             <span className={styles['sr-text']}>Error 404: Not Found</span>
             <span className={styles['e']}></span>
             <span className={styles['r']}></span>
