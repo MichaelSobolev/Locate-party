@@ -50,6 +50,11 @@ app.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 );
+// const sessionParser = cookieSession({
+//   name: "session",
+//   keys: ["lama"],
+//   maxAge: 24 * 60 * 60 * 100,
+// })
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(
@@ -70,4 +75,4 @@ app.use('/posts', postsRouter);
 
 app.listen(process.env.PORT, () => console.log("Server is running on port", process.env.PORT));
 
-// module.exports = { app };
+// module.exports = { app, sessionParser };

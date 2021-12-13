@@ -18,10 +18,14 @@ router.route('/')
       include: [
         {
           model: User,
-          // FIXME
-        }]
-    })
+          as: 'author',
+        },
+        {
+          model: System
+        }
 
+      ]
+    })
     console.log(posts);
     res.status(200).json(posts)
   })
