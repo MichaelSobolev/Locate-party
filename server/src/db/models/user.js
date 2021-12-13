@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.InfoUser, { foreignKey: "user_id" });
       User.hasMany(models.Post, { foreignKey: "master_id" });
       User.belongsToMany(models.Post, {
-        through: models.Player,
+        through: models.PendingPlayer,
         foreignKey: "user_id",
       });
       User.belongsToMany(models.Post, {
-        through: models.PendingPlayer,
+        through: models.Player,
         foreignKey: "user_id",
       });
     }

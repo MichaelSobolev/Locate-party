@@ -15,6 +15,7 @@ import { NewPostPage } from "../../pages/newPostPage/newPostPage";
 import { PostPage } from "../../pages/PostPage/PostPage";
 import { Logout } from "../Logout/Logout";
 import { Login } from "../Login/Login";
+import { PostCard} from "../PostCard/PostCard"
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
 
             <Route path="/admin" element={<AdminPage />} />
             <Route path="*" element={<ErorPage />} />
+            <Route path='/postcard' element={<PostCard />} />
           </Routes>
         </ErrorBoundary>
       </main>
