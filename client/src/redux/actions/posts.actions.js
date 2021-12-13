@@ -104,35 +104,3 @@ export const addMockUser = () => async (dispatch) => {
     body: JSON.stringify({ system: 'D&D' }),
   });
 };
-// export const getAllTodos = (todos) => ({
-//   type: GET_ALL_TODOS,
-//   payload: { todos }
-// })
-
-// export const setStatus = (changeTodo) => ({
-//   type: SET_STATUS,
-//   payload: { changeTodo }
-// })
-
-// export const removeTodo = (deleteTodo) => ({
-//   type: DELETE_TODO,
-//   payload: { deleteTodo }
-// })
-
-// export const removeAllTodos = (/*todos*/) => ({
-//   type: DEL_ALL_TODOS,
-//   payload: {} //{ todos }
-// })
-/*
-
-isActive: true
-isPaid: false
-master_id: 1
-max_players: 5
-platform: "Skype "
-pricing: 120
-requirements: "Приходите вовремя"
-schedule: "Четверг 21.10"
-system_id: 1
-title: "Рудники фанделвера"
-*/
