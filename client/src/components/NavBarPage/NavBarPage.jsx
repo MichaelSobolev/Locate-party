@@ -2,9 +2,18 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './index.css';
 
-export const NavBarPage = () => {
+export const NavBarPage = (props) => {
+
+console.log(props.user);
+
+//const data = props.user.map(el => <div>{el.displayName}</div>)
+
+
+
   return (
     <header className="header">
+
+  
       <div className="sidenav">
         <NavLink className="header__link" activeClassName="header__link_active" to="/">findATable</NavLink>
         <NavLink className="header__link" activeClassName="header__link_active" to="/announcements">Найти игру</ NavLink>

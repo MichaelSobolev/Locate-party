@@ -10,19 +10,7 @@ export const Login = () => {
 
   return (
     <div>
-      <div>
-        <h3>Register</h3>
-        <input
-          onChange={(e) => setRegisterUsername(e.target.value)}
-          value={registerUsername}
-          placeholder="username"
-        />
-        <input
-          onChange={(e) => setRegisterPassword(e.target.value)}
-          value={registerPassword}
-          placeholder="password"
-        />
-      </div>
+     
 
       <div>
         <h3>use Google to login</h3>
