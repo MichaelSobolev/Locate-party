@@ -8,13 +8,23 @@ export const AnnouncementsPage = () => {
   const dispatch = useDispatch();
   const userName = null;
   const posts = useSelector((state) => state.posts);
-  console.log(posts);
+  console.log(">>>>", posts);
+  const parsedPosts = posts.map((el) => {
+    const newPost = {
+      ...el,
+      name: el.author.name,
+      icon: el.author.image,
+      tags: el.System.title,
+    };
+    return newPost;
+  });
+  console.log(">>>>", parsedPosts);
+
   useEffect(() => {
     dispatch(getPosts());
   }, []);
 
   return (
-    // <main >//className={styles.TemporaryMargin}>
     <main>
       <h2> AnnouncementsPage</h2>
       <div className={styles.PseudoHeader}>
@@ -23,31 +33,8 @@ export const AnnouncementsPage = () => {
         <button>Add new post</button>
       </div>
       <section className={styles.PostsBody}>
-        {posts.map((el) => {
-          return (
-            <div className={styles.Card} key={el.id}>
-              <h2>Заголовок</h2>
-              <div>
-                {" "}
-                <img src="/" alt="Иконка создателя" />{" "}
-                <p>Имя создателя ({el["Users.name"]})</p>
-              </div>
-              <div>
-                <ul className={styles.Tags}>
-                  <li className={styles.Tag}>D&D5e ({el.system_id})</li>
-                </ul>
-              </div>
-              <div>
-                <strong>Платформа:</strong>
-                <p>{el.platform}</p>
-              </div>
-              <div>
-                <strong>Описание:</strong>
-              </div>
-              <p>{el.description}</p>
-              <button>Кнопка на страницу с описанием </button>
-            </div>
-          );
+        {parsedPosts.map((el) => {
+          return <div key={Date.now()}>{el.title}</div>;
         })}
       </section>
     </main>

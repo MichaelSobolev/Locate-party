@@ -15,7 +15,7 @@ export const getPosts = () => async (dispatch) => {
   const posts = await response.json()
   // console.log('fetch posts')
   console.log(posts);
-  dispatch({ type: SET_CURRENT_POST, payload: posts })
+  dispatch({ type: SET_POSTS, payload: posts })
 }
 
 

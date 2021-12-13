@@ -57,7 +57,6 @@ function App() {
         <Route path="/announcements/:id" element={<PostPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/login" element={<Login />} />
-
         <Route path="/admin" element={<AdminPage />} />
 
         <Route path="*" element={<ErorPage />} />
