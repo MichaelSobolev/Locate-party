@@ -34,24 +34,36 @@ router
     res.sendStatus(200);
   });
 
-router.route('/:id').get(async (req, res) => {
-  const { id } = req.params;
-  const post = await Post.findAll({
-    include: [
-      {
-        model: User,
-        as: 'author',
-      },
-      {
-        model: System,
-      },
-    ],
-    where: { id },
-    raw: true,
-  });
-  console.log(post);
-  res.status(200).json(post[0]);
-});
+router.route('/:id')
+  .get(async (req, res) => {
+    const { id } = req.params;
+    const post = await Post.findAll({
+      include: [
+        {
+          model: User,
+          as: 'author',
+        },
+        {
+          model: System,
+        },
+      ],
+      where: { id },
+      raw: true,
+    });
+    console.log(post);
+    res.status(200).json(post[0]);
+  })
+  .patch(async (req, res) => {
+    const { id } = req.params;
+    const newData = req.body
+    console.log()
+    const post = await Post.update(newData, { where: id }
+
+    )
+    console.log(post);
+    res.status(200).json(post[0]);
+
+  })
 
 module.exports = router;
 

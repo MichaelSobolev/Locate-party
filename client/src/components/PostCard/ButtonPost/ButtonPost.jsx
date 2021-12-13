@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 import styles from "./styles.module.css";
 
-export const ButtonPost = ({ id }) => {
+export const ButtonPost = ({ id, content = "Отправить" }) => {
   const navigate = useNavigate();
 
   return (
@@ -11,7 +11,7 @@ export const ButtonPost = ({ id }) => {
       className={styles.button}
       onClick={() => navigate(`/announcements/${id}`)}
     >
-      Отправить
+      {content}
     </button>
   );
 };

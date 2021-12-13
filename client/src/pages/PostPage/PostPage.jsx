@@ -28,8 +28,6 @@ export const PostPage = () => {
     }
     return null;
   }
- 
-
   useEffect(() => {
     dispatch(getPost(id));
   }, []);
