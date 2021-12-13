@@ -12,6 +12,7 @@ export const AnnouncementsPage = () => {
   useEffect(() => {
     dispatch(getPosts());
   }, []);
+
   return (
     // <main >//className={styles.TemporaryMargin}>
     <main>
@@ -29,7 +30,7 @@ export const AnnouncementsPage = () => {
               <div>
                 {" "}
                 <img src="/" alt="Иконка создателя" />{" "}
-                <p>Имя создателя ({el.master_id})</p>
+                <p>Имя создателя ({el["Users.name"]})</p>
               </div>
               <div>
                 <ul className={styles.Tags}>

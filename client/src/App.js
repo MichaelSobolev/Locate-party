@@ -6,10 +6,12 @@ import { MainPage } from './pages/MainPage/MainPage';
 import { AnnouncementsPage } from './pages/AnnouncementsPage/AnnouncementsPage';
 import { NewPostPage } from './pages/newPostPage/newPostPage';
 import { ErorPage } from './pages/ErorPage/ErorPage';
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigateset } from "react-router-dom";
 import { Login } from "./components/Login/Login";
 import { Logout } from "./components/Logout/Logout";
 import { useEffect, useState } from "react";
+import { AdminPage } from './pages/AdminPage/AdminPage';
+import { PostPage } from './pages/PostPage/PostPage';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -52,8 +54,12 @@ function App() {
         <Route path="/user-page" element={<UserPage />} />
         <Route path="/announcements" element={<AnnouncementsPage />} />
         <Route path="/announcements/new" element={<NewPostPage />} />
+        <Route path="/announcements/:id" element={<PostPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/login" element={<Login />} />
+
+        <Route path="/admin" element={<AdminPage />} />
+
         <Route path="*" element={<ErorPage />} />
       </Routes>
       <SidebarPage />
