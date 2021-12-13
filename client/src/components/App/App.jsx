@@ -15,9 +15,43 @@ import { NewPostPage } from "../../pages/newPostPage/newPostPage";
 import { PostPage } from "../../pages/PostPage/PostPage";
 import { Logout } from "../Logout/Logout";
 import { Login } from "../Login/Login";
-import { PostCard} from "../PostCard/PostCard"
+import { PostCard } from "../PostCard/PostCard";
+import { createUser } from "../../redux/actions/user.actions";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+
+
 
 function App() {
+  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getUser = () => {
+      fetch("http://localhost:5000/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error("authentication has been failed!");
+        })
+        .then((resObject) => {
+          dispatch(createUser(resObject.user));
+          // setUser(resObject.user);
+          console.log(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
   return (
     <div className={styles.app}>
       <NavBarPage />
@@ -34,7 +68,7 @@ function App() {
 
             <Route path="/admin" element={<AdminPage />} />
             <Route path="*" element={<ErorPage />} />
-            <Route path='/postcard' element={<PostCard />} />
+            <Route path="/postcard" element={<PostCard />} />
           </Routes>
         </ErrorBoundary>
       </main>
