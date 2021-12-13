@@ -1,0 +1,22 @@
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-info__name-email-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info__name {
+    color: var(--color-white);
+}
+
+.user-info__avatar {
+    margin-right: 15px;
+}
+
+.user-info__email {
+    color: var(--color-gray);
+}

@@ -1,7 +1,4 @@
-.TemporaryMargin {
-  /* background-color: red; */
-  margin-left: 230px;
-}
+
 .PseudoHeader {
   display: flex;
   justify-content: space-around;

@@ -1,0 +1,12 @@
+.user-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-page__user-info {
+  margin-bottom: 30px;
+}
+
+.user-page__last-games-title {
+  margin: 0 0 20px;
+}
