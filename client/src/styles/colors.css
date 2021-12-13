@@ -1,0 +1,15 @@
+:root {
+    --color-white: #ffffff;
+    --color-shark: #202028;
+    --color-tuna: #31313b;
+    --color-gray: #818181;
+    --color-black: #000000;
+    --color-black-50: #00000080;
+    --gray2: rgb(116, 117, 124);
+    --black: rgb(24, 24, 32);
+    --white: rgb(255, 255, 255);
+    --scrollMainAndSidebarBgColor: var(--black);
+    --scrollMainAndSidebarColor: var(--white);
+  }
+
+  

@@ -3,17 +3,16 @@ body {
 }
 
 .header {
-  flex-basis: 160px;
-  background-color: #111;
+  min-width: 200px;
+  background-color: var(--color-shark);
   padding-top: 20px;
-
 }
 
 .header__link {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: var(--color-gray);
   display: block;
 }
 
@@ -31,10 +30,6 @@ body {
 
 .sidenav {
   position: fixed;
-}
-
-.mainContent {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
 }

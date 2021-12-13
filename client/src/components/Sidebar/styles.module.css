@@ -1,0 +1,25 @@
+.sidebar {
+  --width-sidebar: 240px;
+  --padding-sidebar: 20px;
+
+  flex-shrink: 0;
+
+  padding: var(--padding-sidebar);
+
+  width: var(--width-sidebar);
+
+  color: var(--color-white);
+  background-color: var(--color-shark);
+}
+
+.sidebar__wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.sidebar__item {
+  padding: 15px;
+  background-color: var(--color-shark);
+  border-radius: 10px;
+}

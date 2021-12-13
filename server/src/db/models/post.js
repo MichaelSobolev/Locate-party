@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Post.belongsTo(models.User, {
         foreignKey: "master_id",
+        as: "author",
         onDelete: "CASCADE",
       });
       Post.belongsTo(models.System, {

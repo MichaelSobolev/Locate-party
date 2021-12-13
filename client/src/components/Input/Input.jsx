@@ -1,25 +1,36 @@
+import {useMemo} from 'react';
+
+import styles from './styles.module.css';
+
 export const Input = ({
-  id,
+  id: idProp,
   name,
   value,
   type,
   handleChange,
   min = "",
   max = "",
-  className = "form-control",
+  className = '',
+  label,
+  placeholder = ' ',
+  size = 'm',
 }) => {
+  const id = useMemo(() => idProp ?? Math.random().toString(36));
+
   return (
-    <div key={id} className="mb-3">
+    <span key={id} className={`${styles.input} ${styles[`input_size_${size}`]} ${className}`}>
       <input
+        className={styles['input__control']}
+        id={id}
         type={type}
         value={value}
         onChange={handleChange}
-        className={className}
-        id={id}
         name={name}
         min={min}
         max={max}
+        placeholder={placeholder}
       />
-    </div>
+      {label && <label className={styles['input__label']} htmlFor={id}>{label}</label>}
+    </span>
   );
 };

@@ -1,8 +1,12 @@
+@import "./colors.css";
+@import "./time.css";
+@import "./utils.css";
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-body, html, .root {
+body, html, #root {
   height: 100%;
 }
 
@@ -19,3 +23,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

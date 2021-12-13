@@ -2,6 +2,9 @@ import { useDispatch } from "react-redux";
 import { Input } from "../../components/Input/Input";
 import useInput from "../../customHooks/inputHook";
 import { createPost } from "../../redux/actions/posts.actions";
+import {Title} from '../../components/Title/Title';
+import {Button} from '../../components/Button/Button';
+import styles from './styles.module.css';
 
 export const NewPostPage = () => {
   const dispatch = useDispatch();
@@ -14,6 +17,7 @@ export const NewPostPage = () => {
     max_players: `максимальное количество игроков`,
     isPaid: `(TODO тут надо сделать свитч)`,
     pricing: `Это поле появляется только если свитч isPaid =true`,
+    description: `Описание:`,
   };
   const inputs = [
     useInput({ name: "title", id: "title", label: messages.title }),
@@ -36,7 +40,13 @@ export const NewPostPage = () => {
       id: "max_players",
       label: messages.max_players,
     }),
-    // FIXME нужно сделать чекбокс/кнопку, по нажатию на которую выпадает дополнительное поле с суммой оплаты. 
+    useInput({
+      name: "description",
+      id: "description",
+      label: messages.description,
+    }),
+
+    // FIXME нужно сделать чекбокс/кнопку, по нажатию на которую выпадает дополнительное поле с суммой оплаты.
     // useInput({
     //   type: "checkbox",
     //   name: "isPaid",
@@ -67,26 +77,23 @@ export const NewPostPage = () => {
   };
 
   return (
-    <main>
-      <h2>Create new post</h2>
-      <form onSubmit={submitForm}>
-        <div>
-          {inputs.map((el) => (
-            <div key={el.attrs.id}>
-              <label htmlFor={el.attrs.name}>{el.attrs.label}</label>
-              <Input
-                // key={el.attrs.id}
-                id={el.attrs.id}
-                name={el.attrs.name}
-                type={el.attrs.type}
-                value={el.attrs.value}
-                handleChange={el.handleChange}
-              />
-            </div>
-          ))}
-        </div>
-        <button>Принять</button>
+    <div className={styles['new-post-page']}>
+      <Title as="h2">Новая публикация</Title>
+      <form className={styles['new-post-page__new-post-form']} onSubmit={submitForm}>
+        {inputs.map((el) => (
+          <Input
+            key={el.attrs.id}
+            className={styles['new-post-page__new-post-form-input']}
+            id={el.attrs.id}
+            name={el.attrs.name}
+            type={el.attrs.type}
+            value={el.attrs.value}
+            handleChange={el.handleChange}
+            label={el.attrs.label}
+          />
+        ))}
+        <Button className={styles['new-post-page__new-post-form-submit-button']} type="submit">Принять</Button>
       </form>
-    </main>
+    </div>
   );
 };
