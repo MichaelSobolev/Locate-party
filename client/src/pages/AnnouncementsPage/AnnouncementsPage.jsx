@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { PostCard } from "../../components/PostCard/PostCard";
 import { getPosts } from "../../redux/actions/posts.actions";
 import styles from "./AnnouncementsPage.module.css";
 
@@ -15,6 +16,7 @@ export const AnnouncementsPage = () => {
       name: el.author.name,
       icon: el.author.image,
       tags: el.System.title,
+      button: true,
     };
     return newPost;
   });
@@ -33,8 +35,12 @@ export const AnnouncementsPage = () => {
         <button>Add new post</button>
       </div>
       <section className={styles.PostsBody}>
-        {parsedPosts.map((el) => {
-          return <div key={Date.now()}>{el.title}</div>;
+        {parsedPosts.map((post) => {
+          return (
+            <div key={post.id}>
+              <PostCard props={post} />
+            </div>
+          );
         })}
       </section>
     </main>

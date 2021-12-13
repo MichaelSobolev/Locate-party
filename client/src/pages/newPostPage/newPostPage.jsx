@@ -14,6 +14,7 @@ export const NewPostPage = () => {
     max_players: `максимальное количество игроков`,
     isPaid: `(TODO тут надо сделать свитч)`,
     pricing: `Это поле появляется только если свитч isPaid =true`,
+    description: `Описание:`,
   };
   const inputs = [
     useInput({ name: "title", id: "title", label: messages.title }),
@@ -36,7 +37,13 @@ export const NewPostPage = () => {
       id: "max_players",
       label: messages.max_players,
     }),
-    // FIXME нужно сделать чекбокс/кнопку, по нажатию на которую выпадает дополнительное поле с суммой оплаты. 
+    useInput({
+      name: "description",
+      id: "description",
+      label: messages.description,
+    }),
+
+    // FIXME нужно сделать чекбокс/кнопку, по нажатию на которую выпадает дополнительное поле с суммой оплаты.
     // useInput({
     //   type: "checkbox",
     //   name: "isPaid",
