@@ -19,8 +19,7 @@ import { PostCard } from "../PostCard/PostCard";
 import { createUser } from "../../redux/actions/user.actions";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-
-
+import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -62,13 +61,13 @@ function App() {
             <Route path="/user-page" element={<UserPage />} />
             <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/announcements/new" element={<NewPostPage />} />
+            <Route path="/announcements/edit/:id" element={<PostEditPage />} />
             <Route path="/announcements/:id" element={<PostPage />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/login" element={<Login />} />
-
             <Route path="/admin" element={<AdminPage />} />
-            <Route path="*" element={<ErorPage />} />
             <Route path="/postcard" element={<PostCard />} />
+            <Route path="*" element={<ErorPage />} />
           </Routes>
         </ErrorBoundary>
       </main>

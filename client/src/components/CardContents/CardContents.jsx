@@ -35,7 +35,7 @@ export const CardContents = ({ props }) => {
         <strong>Описание игры:</strong>
         <p>{props.description}</p>
       </div>
-      <div>{props.button ? <ButtonPost id={props.id} /> : ""}</div>
+      <div>{props.button ? <ButtonPost id={props.id}>Узнать больше</ButtonPost> : ""}</div>
     </>
   );
 };

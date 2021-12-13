@@ -30,7 +30,6 @@ export const getPost = (id) => async (dispatch) => {
       credentials: 'include',
     });
     const post = await response.json();
-    console.log(post);
     dispatch({ type: SET_CURRENT_POST, payload: post });
   } catch (err) {
     console.log('Fetching err');
@@ -65,7 +64,6 @@ export const updatePost = (id, payload) => async (dispatch) => {
     body: JSON.stringify(payload),
   });
   const post = await response.json();
-  console.log(post);
   // dispatch({ type: UPDATE_POSTS, payload: post })
 };
 

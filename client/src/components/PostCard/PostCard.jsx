@@ -1,6 +1,5 @@
 import React from "react";
 import { CardContents } from "../CardContents/CardContents";
-import { ButtonPost } from "./ButtonPost/ButtonPost";
 
 import styles from "./styles.module.css";
 export const PostCard = ({ props }) => (
