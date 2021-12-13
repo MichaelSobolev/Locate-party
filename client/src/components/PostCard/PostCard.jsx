@@ -1,10 +1,11 @@
 import { Navigate } from "react-router";
+import styles from "./styles.module.css";
 
 export const PostCard = ({
-  id, // id поста в дб!
-  key,
+  id = 1, // id поста в дб!
+  key = 1,
   isPaid, // ? (background-color: red) : b(background-color: normal)
-  name, // имя создателя
+  name = 1, // имя создателя
   title, //  Заголовок карточки
   image, // Ссылка на картинку из профиля пользователя
   tags, // Тэги, пока предусмотрен один, но к релизу ситуация может измениться
@@ -50,3 +51,10 @@ export const PostCard = ({
     </div>
   );
 };
+
+<div className={styles['post-card']}>
+
+
+
+
+

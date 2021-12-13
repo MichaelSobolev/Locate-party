@@ -1,6 +1,6 @@
-import { CREATE_POST, SET_POSTS, SET_CURRENT_POST } from "../types"
+import { CREATE_POST, SET_POSTS, SET_CURRENT_POST } from '../types';
 
-const URL = `http://localhost:5000`
+const URL = `http://localhost:5002`;
 
 export const getPosts = () => async (dispatch) => {
   // Получает все посты из бд и перезаписывает состояние ими!
@@ -10,14 +10,13 @@ export const getPosts = () => async (dispatch) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    'credentials': 'include'
-  })
-  const posts = await response.json()
+    credentials: 'include',
+  });
+  const posts = await response.json();
   // console.log('fetch posts')
   console.log(posts);
-  dispatch({ type: SET_CURRENT_POST, payload: posts })
-}
-
+  dispatch({ type: SET_CURRENT_POST, payload: posts });
+};
 
 export const getPost = (id) => async (dispatch) => {
   // Получение содержимого 1го поста
@@ -27,33 +26,32 @@ export const getPost = (id) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      'credentials': 'include'
-    })
-    const post = await response.json()
+      credentials: 'include',
+    });
+    const post = await response.json();
     console.log(post);
-    dispatch({ type: SET_CURRENT_POST, payload: post })
+    dispatch({ type: SET_CURRENT_POST, payload: post });
   } catch (err) {
-    console.log('Fetching err')
+    console.log('Fetching err');
   }
-}
+};
 
 export const createPost = (newPost) => async (dispatch) => {
   // Создание 1го поста и запись в бд и состояние
-  await fetch(`http://localhost:5000/posts`, {
+  await fetch(`${URL}/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    'credentials': 'include',
-    body: JSON.stringify(newPost)
-  })
+    credentials: 'include',
+    body: JSON.stringify(newPost),
+  });
 
-  dispatch(
-    {
-      type: CREATE_POST,
-      payload: { newPost }
-    })
-}
+  dispatch({
+    type: CREATE_POST,
+    payload: { newPost },
+  });
+};
 
 export const updatePost = (id, payload) => async (dispatch) => {
   // Обновление содержимого 1го поста
@@ -62,15 +60,13 @@ export const updatePost = (id, payload) => async (dispatch) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    'credentials': 'include',
-    body: JSON.stringify(payload)
-
-  })
-  const post = await response.json()
+    credentials: 'include',
+    body: JSON.stringify(payload),
+  });
+  const post = await response.json();
   console.log(post);
   // dispatch({ type: UPDATE_POSTS, payload: post })
-}
-
+};
 
 export const deletePost = (id) => async (dispatch) => {
   // Обновление содержимого 1го поста
@@ -79,35 +75,34 @@ export const deletePost = (id) => async (dispatch) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    'credentials': 'include'
-
-  })
-  const post = await response.json()
+    credentials: 'include',
+  });
+  const post = await response.json();
   console.log(post);
   // dispatch({ type: DELETE_POSTS, payload: post })
-}
+};
 
 export const addSystem = () => async (dispatch) => {
-  await fetch(`http://localhost:5000/posts/system`, {
+  await fetch(`http://localhost:5002/posts/system`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    'credentials': 'include',
-    body: JSON.stringify({ system: 'D&D' })
-  })
-}
+    credentials: 'include',
+    body: JSON.stringify({ system: 'D&D' }),
+  });
+};
 
 export const addMockUser = () => async (dispatch) => {
-  await fetch(`http://localhost:5000/auth/mock`, {
+  await fetch(`http://localhost:5002/auth/mock`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    'credentials': 'include',
-    body: JSON.stringify({ system: 'D&D' })
-  })
-}
+    credentials: 'include',
+    body: JSON.stringify({ system: 'D&D' }),
+  });
+};
 // export const getAllTodos = (todos) => ({
 //   type: GET_ALL_TODOS,
 //   payload: { todos }
