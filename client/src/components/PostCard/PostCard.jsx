@@ -1,52 +1,25 @@
-import { Navigate } from "react-router";
+import React from "react";
 
-export const PostCard = ({
-  id, // id поста в дб!
-  key,
-  isPaid, // ? (background-color: red) : b(background-color: normal)
-  name, // имя создателя
-  title, //  Заголовок карточки
-  image, // Ссылка на картинку из профиля пользователя
-  tags, // Тэги, пока предусмотрен один, но к релизу ситуация может измениться
-  platform, // Необходимый для игры софт
-  schedule, // параграф о графике ведущего
-  reuquirements, // Требования ведущего к игрокам
-  max_players,
-  data, // Дата создания
-  description, // Описание поста
-}) => {
-  return (
-    <div className={"card"} key={key}>
-      <h2>{title}</h2>
-      {/* Блок о ведущем */}
-      <div>
-        <img src={image} alt="Иконка создателя" />
-        <p>{name}</p>
-      </div>
-      {/* О игре:*/}
-      {/* Тэги для фильтра */}
-      {tags.map((tag) => {
-        return (
-          <div key={tag.id}>
-            <ul className={"styles.Tags"}>
-              <li className={"styles.Tag"}> {tag.name} </li>
-            </ul>
+import styles from "./styles.module.css"
+
+export const PostCard = () => (
+  <div className={styles['post-card-size']}>
+  <div className={styles['wrapper']} id="app">
+  <div className={styles['card-form']}>
+    <div className={styles['card-list']}>
+      <div className={styles['card-item -front']}>
+        <div className={styles['card-item__side']}>
+          <div className={styles['card-item__cover']}>
+            <img src="https://images.pexels.com/photos/6541817/pexels-photo-6541817.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"className={styles['card-item__bg']} />
           </div>
-        );
-      })}
-      {/* Необходимые программы для игры: */}
-      <span>
-        <strong>Платформа:</strong>
-        <p>{platform}</p>
-      </span>
-      {/* Блок описания */}
-      <div>
-        <strong>Описание:</strong>
+        </div>
       </div>
-      <p>{description}</p>
-      <button onClick={Navigate(`/announcements/${id}`)}>
-        Кнопка на страницу с описанием{" "}
-      </button>
     </div>
-  );
-};
+    <div className={styles['card-form__inner']}>
+      <p className={styles['p-color']}>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <button className={styles['card-form__button']}>View more</button>
+    </div>
+  </div>
+</div>
+</div>
+)

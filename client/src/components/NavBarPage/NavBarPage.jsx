@@ -13,7 +13,9 @@ export const NavBarPage = () => {
         <NavLink className="header__link" activeClassName="header__link_active" to="/eror">Error</NavLink>
         <NavLink className="header__link" activeClassName="header__link_active" to="/login">Войти</NavLink>
         <NavLink className="header__link" activeClassName="header__link_active" to="/logout">выйти</NavLink>
-
+        <NavLink className="header__link" activeClassName="header__link_active" to="/postcard">CARD</NavLink>
+        <NavLink className="header__link" activeClassName="header__link_active" to="/announcements/new">Новый Пост</NavLink>
+        <NavLink className="header__link" activeClassName="header__link_active" to="/admin">Админ</NavLink>        
       </div>
     </header>
   )

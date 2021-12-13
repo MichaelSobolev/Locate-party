@@ -12,6 +12,7 @@ import { Logout } from "./components/Logout/Logout";
 import { useEffect, useState } from "react";
 import { AdminPage } from './pages/AdminPage/AdminPage';
 import { PostPage } from './pages/PostPage/PostPage';
+import { PostCard } from './components/PostCard/PostCard';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -60,6 +61,7 @@ function App() {
         <Route path="/admin" element={<AdminPage />} />
 
         <Route path="*" element={<ErorPage />} />
+        <Route path='/postcard' element={<PostCard />} />
       </Routes>
       <SidebarPage />
     </div>

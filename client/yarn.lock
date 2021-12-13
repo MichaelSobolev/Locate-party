@@ -9785,11 +9785,7 @@ redux-thunk@^2.3.0:
   resolved "https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.4.1.tgz"
   integrity sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==
 
-<<<<<<< HEAD
-redux@^4.0.0, redux@^4.0.4, redux@^4.1.0, redux@^4.1.2:
-=======
 redux@^4.0.0, redux@^4.0.4, redux@^4.1.0, redux@^4.1.1, redux@^4.1.2:
->>>>>>> 375cdeb3f5853a2af2c6ae870ebce83dda694c91
   version "4.1.2"
   resolved "https://registry.npmjs.org/redux/-/redux-4.1.2.tgz"
   integrity sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==
