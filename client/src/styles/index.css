@@ -1,4 +1,5 @@
 @import "./colors.css";
+@import "./time.css";
 @import "./utils.css";
 
 *, *::before, *::after {
