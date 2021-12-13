@@ -4,11 +4,6 @@ import './index.css';
 
 export const NavBarPage = (props) => {
 
-console.log(props.user);
-
-//const data = props.user.map(el => <div>{el.displayName}</div>)
-
-
 
   return (
     <header className="header">

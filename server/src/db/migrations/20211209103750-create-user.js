@@ -10,12 +10,15 @@ module.exports = {
       },
       name: {
         type: Sequelize.TEXT,
+        allowNull: true,
       },
       email: {
         type: Sequelize.TEXT,
+        allowNull: true,
       },
       password: {
         type: Sequelize.TEXT,
+        allowNull: true,
       },
       googleId: {
         type: Sequelize.TEXT,
@@ -23,9 +26,11 @@ module.exports = {
       },
       image: {
         type: Sequelize.TEXT,
+        allowNull: true,
       },
       isAdmin: {
         type: Sequelize.BOOLEAN,
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,

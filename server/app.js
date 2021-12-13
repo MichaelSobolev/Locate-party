@@ -10,11 +10,13 @@ const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const passportSetup = require("./passport");
 const authRoute = require("./src/routes/auth");
+const indexRouter = require("./src/routes/index.router");
 
 require("dotenv").config();
 // ------------------------- //
 // Connecting routers
-const postsRouter = require('./src/routes/posts.router');
+const postsRouter = require("./src/routes/posts.router");
+const userRouter = require("./src/routes/userRouter");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 
@@ -25,15 +27,17 @@ const app = express();
 // ------------------------- //
 // Express settings
 // HBS
-app.set('view engine', 'hbs');
-app.set('views', path.join(process.env.PWD, 'src', 'views'));
+app.set("view engine", "hbs");
+app.set("views", path.join(process.env.PWD, "src", "views"));
 // morgan (TODO выпилить на релизе)
-app.use(morgan('dev'));
-app.use(cors({
-  origin: true,
-  methods: "GET, POST, PUT, DELETE",
-  credentials: true,
-}))
+app.use(morgan("dev"));
+app.use(
+  cors({
+    origin: true,
+    methods: "GET, POST, PUT, DELETE",
+    credentials: true,
+  })
+);
 
 // Query encoders
 app.use(express.urlencoded({ extended: true }));
@@ -42,9 +46,9 @@ app.use(express.json());
 // ------------------------- //
 // Session settings
 
-
 app.use(
-  cookieSession({ // FIXME
+  cookieSession({
+    // FIXME
     name: "session",
     keys: ["lama"],
     maxAge: 24 * 60 * 60 * 100,
@@ -63,11 +67,14 @@ app.use(
 // ------------------------- //
 // Routing
 app.use("/auth", authRoute);
-app.use('/posts', postsRouter);
-// app.use("/", indexRouter);
+app.use("/posts", postsRouter);
+app.use("/users", userRouter);
+app.use("/", indexRouter);
 
 // ------------------------- //
 
-app.listen(process.env.PORT, () => console.log("Server is running on port", process.env.PORT));
+app.listen(process.env.PORT, () =>
+  console.log("Server is running on port", process.env.PORT)
+);
 
 // module.exports = { app };

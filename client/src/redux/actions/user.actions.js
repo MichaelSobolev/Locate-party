@@ -1,53 +1,77 @@
-import { SET_USER, SET_USER_ERROR, USER_LOGOUT, VALIDATE_SUCCESS, VALIDATE_ERROR } from '../types'
+import {
+  SET_USER,
+  SET_USER_ERROR,
+  USER_LOGOUT,
+  VALIDATE_SUCCESS,
+  VALIDATE_ERROR,
+  ADD_USER,
+} from "../types";
 
 export const loginUser = (data) => async (dispatch) => {
-
   try {
-    const response = await fetch(`http://localhost:3001/login`, { //TODO Добавить .env для API
-      method: 'POST',
+    const response = await fetch(`http://localhost:3001/login`, {
+      //TODO Добавить .env для API
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      'credentials': 'include',
-      body: JSON.stringify(data)
-    })
+      credentials: "include",
+      body: JSON.stringify(data),
+    });
 
-    const result = await response.json()
+    const result = await response.json();
 
     dispatch({
       type: SET_USER,
-      payload: { user: result }
-    })
-
+      payload: { user: result },
+    });
   } catch (err) {
     dispatch({
       type: SET_USER_ERROR,
-      payload: { error: 'Неверный логин или пароль' }
-    })
+      payload: { error: "Неверный логин или пароль" },
+    });
   }
-}
+};
 
-export const userLogout = () => async (dispatch) => { //TODO Добавить .env для API
-  const response = await fetch(`http://localhost:3001/logout`)
+export const userLogout = () => async (dispatch) => {
+  //TODO Добавить .env для API
+  const response = await fetch(`http://localhost:3001/logout`);
 
   if (response.ok) {
     dispatch({
-      type: USER_LOGOUT
-    })
+      type: USER_LOGOUT,
+    });
   }
-}
+};
 
 export const validateUser = (current, reference) => (dispatch) => {
   if (String(current) === reference) {
     dispatch({
-      type: VALIDATE_SUCCESS
-    })
+      type: VALIDATE_SUCCESS,
+    });
   } else {
     dispatch({
       type: VALIDATE_ERROR,
       payload: {
-        error: 'Ты не прав/а, попробуй еще раз :('
-      }
-    })
+        error: "Ты не прав/а, попробуй еще раз :(",
+      },
+    });
   }
-}
+};
+
+export const createUser = (data) => async (dispatch) => {
+  const response = await fetch(`http://localhost:5000/users`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(data),
+  });
+  const result = await response.json();
+  console.log('--------------->', result)
+  dispatch({
+    type: ADD_USER,
+    payload: { user: result },
+  });
+};

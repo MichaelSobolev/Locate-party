@@ -26,10 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.TEXT,
       email: DataTypes.TEXT,
       password: DataTypes.TEXT,
-      googleId: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
+      googleId: DataTypes.TEXT,
       image: DataTypes.TEXT,
       isAdmin: DataTypes.BOOLEAN,
     },

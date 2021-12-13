@@ -5,6 +5,7 @@ export const VALIDATE_SUCCESS = 'VALIDATE_SUCCESS'
 export const VALIDATE_ERROR = 'VALIDATE_ERROR'
 export const CREATE_POST = 'CREATE_POST'
 export const SET_POSTS = 'SET_POSTS'
+export const ADD_USER = 'ADD_USER'
 
 
 

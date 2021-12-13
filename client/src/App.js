@@ -10,9 +10,12 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { Login } from "./components/Login/Login";
 import { Logout } from "./components/Logout/Logout";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { createUser } from "./redux/actions/user.actions";
 
 function App() {
   const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getUser = () => {
@@ -30,7 +33,9 @@ function App() {
           throw new Error("authentication has been failed!");
         })
         .then((resObject) => {
-          setUser(resObject.user);
+          dispatch(createUser(resObject.user));
+          // setUser(resObject.user);
+          console.log(resObject.user);
         })
         .catch((err) => {
           console.log(err);
@@ -38,8 +43,6 @@ function App() {
     };
     getUser();
   }, []);
-
-  console.log(user);
 
   return (
     <div className="scroll-main-and-sidebar">
