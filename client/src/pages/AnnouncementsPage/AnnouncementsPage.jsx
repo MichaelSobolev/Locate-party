@@ -25,7 +25,7 @@ export const AnnouncementsPage = () => {
   }, []);
 
   return (
-    <main>
+    <div>
       <h2> AnnouncementsPage</h2>
       <div className={styles.PseudoHeader}>
         <p>Hello {userName ? userName : "UserName"}</p>
@@ -41,6 +41,6 @@ export const AnnouncementsPage = () => {
           );
         })}
       </section>
-    </main>
+    </div>
   );
 };

@@ -6,7 +6,7 @@ import {
   VALIDATE_ERROR,
   ADD_USER,
 } from "../types";
-const url = 'http://localhost:5000'
+const url = process.env.REACT_APP_API_ADRESS
 export const loginUser = (data) => async (dispatch) => {
   try {
     const response = await fetch(`${url}/login`, {

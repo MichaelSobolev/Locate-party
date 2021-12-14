@@ -1,6 +1,6 @@
 import { CREATE_POST, SET_POSTS, SET_CURRENT_POST, UPDATE_POST } from '../types';
 
-const URL = `http://localhost:5000`;
+const URL = process.env.REACT_APP_API_ADRESS;
 
 export const getPosts = () => async (dispatch) => {
   // Получает все посты из бд и перезаписывает состояние ими!

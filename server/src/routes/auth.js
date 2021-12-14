@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
-const CLIENT_URL = "http://localhost:3000/";
+const client_url = process.env.CLIENT_URL;
 const { User, } = require('../db/models')
 
 router.get("/login/success", (req, res) => {
@@ -23,16 +23,16 @@ router.get("/login/failed", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect(CLIENT_URL);
+  res.redirect(client_url);
 });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile"] })); 
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
 
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: CLIENT_URL,
+    successRedirect: client_url,
     failureRedirect: "/login/failed",
   })
 );
