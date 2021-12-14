@@ -10,8 +10,8 @@ export const NewsPage = () => {
   const parsedPosts = news.map((el) => {
     const newPost = {
       ...el,
-      name: el.creator.name,
-      icon: el.creator.image,
+      name: el?.creator?.name,
+      icon: el?.creator?.image,
       button: true,
     };
     console.log(newPost);
