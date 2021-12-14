@@ -6,19 +6,23 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const path = require("path");
-const session = require("express-session");
-const FileStore = require("session-file-store")(session);
-const passportSetup = require("./passport");
-const authRoute = require("./src/routes/auth");
-const indexRouter = require("./src/routes/index.router");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+// const session = require("express-session");
+// const FileStore = require("session-file-store")(session);
+// const passportSetup = require("./passport");
+
+
 
 require('dotenv').config();
 // ------------------------- //
 // Connecting routers
+const indexRouter = require("./src/routes/index.router");
+const authRoute = require("./src/routes/auth");
 const postsRouter = require("./src/routes/posts.router");
 const userRouter = require("./src/routes/userRouter");
-const cookieSession = require("cookie-session");
-const passport = require("passport");
+const newsRouter = require("./src/routes/news.router");
+
 
 // ------------------------- //
 // Create an app
@@ -54,11 +58,6 @@ app.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 );
-// const sessionParser = cookieSession({
-//   name: "session",
-//   keys: ["lama"],
-//   maxAge: 24 * 60 * 60 * 100,
-// })
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(
@@ -74,6 +73,7 @@ app.use(
 app.use("/auth", authRoute);
 app.use("/posts", postsRouter);
 app.use("/users", userRouter);
+app.use("/news", newsRouter);
 app.use("/", indexRouter);
 
 // ------------------------- //

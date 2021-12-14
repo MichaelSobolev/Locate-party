@@ -2,7 +2,7 @@ import { CREATE_ARTICLE, SET_ARTICLES, UPDATE_ARTICLE, } from '../types'
 
 const URL = process.env.REACT_APP_API_ADRESS;
 
-export const createPost = (newArticle) => async (dispatch) => {
+export const createNews = (newArticle) => async (dispatch) => {
   // Создание одной новости и запись в бд и состояние
   await fetch(`${URL}/news`, {
     method: 'POST',
@@ -19,7 +19,7 @@ export const createPost = (newArticle) => async (dispatch) => {
   });
 };
 
-export const getPosts = () => async (dispatch) => {
+export const getNews = () => async (dispatch) => {
   // Получает все посты из бд и перезаписывает состояние ими!
   const response = await fetch(`${URL}/news`, {
     method: 'GET',
@@ -35,7 +35,7 @@ export const getPosts = () => async (dispatch) => {
 }
 
 
-// export const getPost = (id) => async (dispatch) => {
+// export const getArticle = (id) => async (dispatch) => {
 //   // Получение содержимого 1го поста
 //   try {
 //     const response = await fetch(`${URL}/news/${id}`, {
@@ -54,7 +54,7 @@ export const getPosts = () => async (dispatch) => {
 
 
 
-// export const updatePost = (id, payload) => async (dispatch) => {
+// export const updateNews = (id, payload) => async (dispatch) => {
 //   // Обновление содержимого 1го поста
 //   const response = await fetch(`${URL}/news/${id}`, {
 //     method: 'PUT',
@@ -68,7 +68,7 @@ export const getPosts = () => async (dispatch) => {
 //   dispatch({ type: UPDATE_POST, payload: news })
 // };
 
-// export const deletePost = (id) => async (dispatch) => {
+// export const deleteNews = (id) => async (dispatch) => {
 //   // Обновление содержимого 1го поста
 //   const response = await fetch(`${URL}/news/${id}`, {
 //     method: 'DELETE',
