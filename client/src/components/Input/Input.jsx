@@ -7,7 +7,7 @@ export const Input = ({
   name,
   value: valueProp,
   type,
-  onChange,
+  handleChange: onChange,
   min = "",
   max = "",
   className = '',
@@ -25,7 +25,7 @@ export const Input = ({
     setValue(event.target.value);
 
     if (onChange) {
-      onChange(event.target.value);
+      onChange(event);
     }
   }
 
@@ -35,6 +35,7 @@ export const Input = ({
 
   const createOptionClickHandler = (value) => () => {
     setValue(value);
+
     setIsOptionsVisible(false);
   }
 
@@ -71,7 +72,7 @@ export const Input = ({
   return (
     <span key={id} ref={inputEl} className={`${styles.input} ${styles[`input_size_${size}`]} ${className}`}>
       <input
-        className={`${styles['input__control']} ${label ? styles['input__control_with-label'] : ''} ${isOptionsVisible ? styles['input__control_options-visible'] : ''}`}
+        className={`${styles['input__control']} ${label ? styles['input__control_with-label'] : ''} ${options.length > 0 && isOptionsVisible ? styles['input__control_options-visible'] : ''}`}
         id={id}
         type={type}
         value={value}
