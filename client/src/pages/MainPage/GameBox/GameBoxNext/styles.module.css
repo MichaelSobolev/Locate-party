@@ -1,0 +1,12 @@
+img {
+  border-radius: 20%;
+}
+
+.nextdiv {
+  display: flex;
+  justify-content: space-around;
+}
+
+.textdiv {
+  text-align: center;
+}

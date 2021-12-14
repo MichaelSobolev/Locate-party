@@ -41,7 +41,7 @@ router
 
 router.route('/:id')
   .get(async (req, res) => {
-   
+
     const { id } = req.params;
     const post = await Post.findAll({
       include: [
@@ -60,6 +60,7 @@ router.route('/:id')
     res.status(200).json(post[0]);
   }).put(async (req, res) => {
     console.log('==============')
+    console.log(req.body)
     const { id } = req.params;
     const newData = req.body
     console.log(id, newData)

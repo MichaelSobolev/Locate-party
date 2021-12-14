@@ -12,11 +12,9 @@ router
         include: [
           {
             model: User,
-            as: 'author',
+            as: 'creator',
           },
-          {
-            model: System,
-          },
+
         ],
       });
       console.log(posts);
@@ -26,10 +24,19 @@ router
     }
 
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
 
     // Article.create({ ...req.body, isActive: true, isPaid: false, master_id: 1 });
+    await Article.create({
+      author_id: 1,
+      title: "NEWPOST",
+      body: 'blablablablablabla',
+      article_image: '',
+      data_store: {}
+    });
+
     res.sendStatus(200);
   });
+
 
 module.exports = router;

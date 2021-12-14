@@ -19,7 +19,8 @@ a[href].button {
 
     color: var(--color-white);
     border: none;
-    background-color: var(--color-shark);
+    border-radius: 4px;
+    background-color: var(--color-primary);
 }
 
 .button_view_contained:active {
@@ -28,7 +29,7 @@ a[href].button {
 
 .button_view_contained:hover,
 .button:focus-visible {
-    background-color: var(--color-tuna);
+    filter: brightness(110%);
 }
 
 .button_size_m {

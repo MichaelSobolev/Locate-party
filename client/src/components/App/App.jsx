@@ -24,7 +24,7 @@ import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch("http://localhost:5000/auth/login/success", {
+    fetch(`${process.env.REACT_APP_API_ADRESS}/auth/login/success`, {
       method: "GET",
       credentials: "include",
       headers: {
