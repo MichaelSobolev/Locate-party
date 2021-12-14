@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+
+    border-radius: 15px;
+    background-color: var(--color-shark);
+}
+
+.header__search-form {
+    display: flex;
+    flex-grow: 1;
+}
+
+.header__search-form-input {
+    flex-grow: 1;
+}
+
+.header__search-form-submit-button {
+    margin-left: 20px;
+}

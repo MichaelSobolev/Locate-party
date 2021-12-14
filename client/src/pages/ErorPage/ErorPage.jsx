@@ -30,7 +30,6 @@ export const ErorPage = () => {
             <span className={styles['d']}></span>
           </figcaption>
         </figure>
-        <div className={styles.eror}><Link to="/">Главная страница</Link></div>
       </div>
 
     </>

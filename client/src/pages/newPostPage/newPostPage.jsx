@@ -22,10 +22,11 @@ export const NewPostPage = () => {
   const inputs = [
     useInput({ name: "title", id: "title", label: messages.title }),
     useInput({
-      type: "number",
+      type: "text",
       name: "system_id",
       id: "system_id",
       label: messages.system_id,
+      options: [{text: 'Pathfinder', value: 'Pathfinder'}, {text: 'Манчкин', value: 'Манчкин'}],
     }),
     useInput({ name: "schedule", id: "schedule", label: messages.schedule }),
     useInput({ name: "platform", id: "platform", label: messages.platform }),
@@ -90,9 +91,10 @@ export const NewPostPage = () => {
             value={el.attrs.value}
             handleChange={el.handleChange}
             label={el.attrs.label}
+            options={el.attrs.options}
           />
         ))}
-        <Button className={styles['new-post-page__new-post-form-submit-button']} type="submit">Принять</Button>
+        <Button className={styles['new-post-page__new-post-form-submit-button']} type="submit">Опубликовать</Button>
       </form>
     </div>
   );

@@ -5,6 +5,9 @@
     --color-gray: #818181;
     --color-black: #000000;
     --color-black-50: #00000080;
+    --color-storm-gray: #74757c;
+    --color-primary: var(--color-storm-gray);
+    --primarycolor: rgb(116, 117,124);
     --gray2: rgb(116, 117, 124);
     --black: rgb(24, 24, 32);
     --white: rgb(255, 255, 255);

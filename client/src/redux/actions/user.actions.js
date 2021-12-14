@@ -6,7 +6,7 @@ import {
   VALIDATE_ERROR,
   ADD_USER,
 } from "../types";
-const url = 'http://localhost:5001'
+const url = 'http://localhost:5000'
 export const loginUser = (data) => async (dispatch) => {
   try {
     const response = await fetch(`${url}/login`, {

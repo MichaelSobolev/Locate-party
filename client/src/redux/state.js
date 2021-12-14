@@ -1,8 +1,6 @@
 export const initialState = {
   user: {
-    value: {
-      name: "oleg",
-    },
+    value: null,
     error: null,
   },
   // validation: {

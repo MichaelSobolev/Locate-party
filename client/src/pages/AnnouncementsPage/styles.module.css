@@ -1,4 +1,8 @@
 
+.announcements-page {
+  flex-grow: 1;
+}
+
 .PseudoHeader {
   display: flex;
   justify-content: space-around;
