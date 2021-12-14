@@ -22,14 +22,11 @@ export const NewPostPage = () => {
   const inputs = [
     useInput({ name: "title", id: "title", label: messages.title }),
     useInput({
-      type: "text",
+      type: "number",
       name: "system_id",
       id: "system_id",
       label: messages.system_id,
-      options: [
-        { text: "Pathfinder", value: "Pathfinder" },
-        { text: "Манчкин", value: "Манчкин" },
-      ],
+      options: [{text: 'Pathfinder', value: 1}, {text: 'Манчкин', value: 2}],
     }),
     useInput({ name: "schedule", id: "schedule", label: messages.schedule }),
     useInput({ name: "platform", id: "platform", label: messages.platform }),

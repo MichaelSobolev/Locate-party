@@ -13,9 +13,9 @@ export const AnnouncementsPage = () => {
   const parsedPosts = posts.map((el) => {
     const newPost = {
       ...el,
-      name: el.author.name,
-      icon: el.author.image,
-      tags: el.System.title,
+      name: el?.author?.name,
+      icon: el?.author?.image,
+      tags: el?.System?.title,
       button: true,
     };
     return newPost;

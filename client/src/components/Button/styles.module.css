@@ -15,7 +15,7 @@ a[href].button {
 .button_view_contained {
     padding: 0 15px;
 
-    transition: background-color var(--time-microinteraction);
+    transition: background-color var(--time-microinteraction), transform var(---time-microinteraction);
 
     color: var(--color-white);
     border: none;
@@ -24,7 +24,7 @@ a[href].button {
 }
 
 .button_view_contained:active {
-    background-clip: content-box;
+    transform: scale(0.99);
 }
 
 .button_view_contained:hover,
