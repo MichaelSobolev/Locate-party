@@ -24,31 +24,29 @@ import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    const getUser = () => {
-      fetch("http://localhost:5000/auth/login/success", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
+    fetch(`${process.env.REACT_APP_API_ADRESS}/auth/login/success`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        throw new Error("authentication has been failed!");
       })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          throw new Error("authentication has been failed!");
-        })
-        .then((resObject) => {
-          dispatch(createUser(resObject.user));
-          // setUser(resObject.user);
-          console.log(resObject.user);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getUser();
+      .then((resObject) => {
+        dispatch(createUser(resObject.user));
+        // setUser(resObject.user);
+        console.log(resObject.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
+
   return (
     <div className={styles.app}>
       <NavBarPage />
