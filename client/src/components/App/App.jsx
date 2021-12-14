@@ -17,14 +17,12 @@ import { Logout } from "../Logout/Logout";
 import { Login } from "../Login/Login";
 import { PostCard } from "../PostCard/PostCard";
 import { createUser } from "../../redux/actions/user.actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
 
 function App() {
-  const [user, setUser] = useState(null);
   const dispatch = useDispatch();
-
   useEffect(() => {
     const getUser = () => {
       fetch("http://localhost:5000/auth/login/success", {
