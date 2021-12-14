@@ -29,8 +29,7 @@ export const getNews = () => async (dispatch) => {
     credentials: 'include',
   });
   const articles = await response.json();
-  // console.log('fetch articles')
-  console.log(articles);
+  // console.log('REDUX:getNews', articles )
   dispatch({ type: SET_ARTICLES, payload: articles })
 }
 
