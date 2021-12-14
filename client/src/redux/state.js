@@ -12,8 +12,8 @@ export const initialState = {
   //   то я ей выпилил. Будет понятно где начинать дебаггинг*/
   // },
   currentPostStore: null,
-  posts:
-    []
+  posts: [],
+  news: []
 }
 
 
