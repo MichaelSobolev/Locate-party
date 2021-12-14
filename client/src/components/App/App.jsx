@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
 import { NewsPage } from "../../pages/NewsPage/NewsPage";
+import { GameRoomPage } from "../../pages/GameRoomPage/GameRoomPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,6 +66,9 @@ function App() {
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/postcard" element={<PostCard />} />
+            {/* АХТУНГ НИЖЕ ВРЕМЕННЫЙ РОУТ */}
+            <Route path="/gameroom" element={<GameRoomPage />} />
+
             <Route path="*" element={<ErorPage />} />
           </Routes>
         </ErrorBoundary>
