@@ -4,6 +4,7 @@ const URL = process.env.REACT_APP_API_ADRESS;
 
 export const getPosts = () => async (dispatch) => {
   // Получает все посты из бд и перезаписывает состояние ими!
+  console.log(`${URL}/posts`)
   const response = await fetch(`${URL}/posts`, {
     method: 'GET',
     headers: {

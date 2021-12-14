@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const passport = require("passport");
-const client_url = process.env.CLIENT_URL;
+const CLIENT_URL = process.env.CLIENT_URL;
 const { User, } = require('../db/models')
 
 router.get("/login/success", (req, res) => {
+  console.log(req.user);
   if (req.user) {
     res.status(200).json({
       success: true,
@@ -11,6 +12,8 @@ router.get("/login/success", (req, res) => {
       user: req.user,
       // cookies: req.cookies,
     });
+  } else {
+    res.sendStatus(304)
   }
 });
 
@@ -23,7 +26,7 @@ router.get("/login/failed", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect(client_url);
+  res.redirect(CLIENT_URL);
 });
 
 router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
@@ -32,7 +35,7 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: client_url,
+    successRedirect: CLIENT_URL,
     failureRedirect: "/login/failed",
   })
 );

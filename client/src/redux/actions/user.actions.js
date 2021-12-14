@@ -9,6 +9,7 @@ import {
 const url = process.env.REACT_APP_API_ADRESS
 export const loginUser = (data) => async (dispatch) => {
   try {
+    console.log(`${url}/login`)
     const response = await fetch(`${url}/login`, {
       //TODO Добавить .env для API
       method: "POST",
