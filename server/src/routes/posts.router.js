@@ -57,16 +57,16 @@ router.route('/:id')
     });
     console.log(post);
     res.status(200).json(post[0]);
-  })
-  .patch(async (req, res) => {
+  }).put(async (req, res) => {
+    console.log('==============')
     const { id } = req.params;
     const newData = req.body
-    console.log()
-    const post = await Post.update(newData, { where: id }
-
-    )
-    console.log(post);
-    res.status(200).json(post[0]);
+    console.log(id, newData)
+    // const post = await Post.update(newData, { where: id }
+    // )
+    await Post.update({ ...newData }, { where: { id } })
+    // console.log(post);
+    // res.status(200).jsson(post[0]);
 
   })
 

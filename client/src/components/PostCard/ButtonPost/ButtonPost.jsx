@@ -8,7 +8,7 @@ export const ButtonPost = ({ id, path = "/announcements/", children }) => {
   console.log(path + id);
   return (
     <button className={styles.button} onClick={() => navigate(`${path}${id}`)}>
-      {children ? children : "Отправить"}
+      {children ? children : "Принять"}
     </button>
   );
 };

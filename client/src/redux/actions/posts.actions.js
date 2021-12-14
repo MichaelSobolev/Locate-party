@@ -1,10 +1,9 @@
-import { CREATE_POST, SET_POSTS, SET_CURRENT_POST } from '../types';
+import { CREATE_POST, SET_POSTS, SET_CURRENT_POST, UPDATE_POST } from '../types';
 
 const URL = `http://localhost:5000`;
 
 export const getPosts = () => async (dispatch) => {
   // Получает все посты из бд и перезаписывает состояние ими!
-  // console.log(312412412, `${URL}/posts/`)
   const response = await fetch(`${URL}/posts`, {
     method: 'GET',
     headers: {
@@ -56,7 +55,7 @@ export const createPost = (newPost) => async (dispatch) => {
 export const updatePost = (id, payload) => async (dispatch) => {
   // Обновление содержимого 1го поста
   const response = await fetch(`${URL}/posts/${id}`, {
-    method: 'PATCH',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -64,7 +63,7 @@ export const updatePost = (id, payload) => async (dispatch) => {
     body: JSON.stringify(payload),
   });
   const post = await response.json();
-  // dispatch({ type: UPDATE_POSTS, payload: post })
+  dispatch({ type: UPDATE_POST, payload: post })
 };
 
 export const deletePost = (id) => async (dispatch) => {

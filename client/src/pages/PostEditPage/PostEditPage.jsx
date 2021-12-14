@@ -1,13 +1,14 @@
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Button } from "../../components/Button/Button";
 import { Input } from "../../components/Input/Input";
 import { Title } from "../../components/Title/Title";
 import useInput from "../../customHooks/inputHook";
-import { createPost } from "../../redux/actions/posts.actions";
+import { createPost, updatePost } from "../../redux/actions/posts.actions";
 import styles from "../newPostPage/styles.module.css";
 
 export const PostEditPage = () => {
+  const navigate = useNavigate()
   const { id } = useParams();
   const dispatch = useDispatch();
   const fields = {
@@ -59,13 +60,17 @@ export const PostEditPage = () => {
     const request = {};
     inputs.forEach((el) => {
       let { key, value } = el.getKeyValue();
-      // TODO переписать этот костыль
-      if (key === "system_id" || key === "isPaid" || key === "max_players") {
-        value = Number(value);
+      if (value !== "") {
+        if (key === "system_id" || key === "isPaid" || key === "max_players") {
+          // TODO переписать этот костыль
+          value = Number(value);
+        }
+        request[key] = value;
       }
-      request[key] = value;
     });
-    dispatch(createPost(request));
+    console.log(id, request);
+    dispatch(updatePost(id, request));
+    navigate('/announcements')
   };
 
   return (
@@ -91,6 +96,7 @@ export const PostEditPage = () => {
           <Button
             className={styles["new-post-page__new-post-form-submit-button"]}
             type="submit"
+            clickFunction={submitForm}
           >
             Принять
           </Button>

@@ -5,9 +5,11 @@ export const Button = ({
   className = "",
   view = "contained",
   size = "m",
+  clickFunction,
   children,
 }) => (
   <button
+    onClick={clickFunction ? clickFunction : ""}
     className={`${styles.button} ${styles[`button_size_${size}`]} ${
       styles[`button_view_${view}`]
     } ${className}`}
