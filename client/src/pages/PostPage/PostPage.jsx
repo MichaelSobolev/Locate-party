@@ -28,7 +28,7 @@ export const PostPage = () => {
   }
 
   function editButtonVerification() {
-    const author = 'oleg'// parsedPost["name"];
+    const author = parsedPost["name"];
     if (author === userName) {
       setIsPostExist(true);
     }

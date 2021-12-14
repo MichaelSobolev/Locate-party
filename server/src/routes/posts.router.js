@@ -24,7 +24,8 @@ router
             model: System,
           },
         ],
-      });
+      });  User.hasMany(models.Post, { foreignKey: "master_id" });
+      User.hasMany(models.Article, { foreignKey: "author_id" });
       console.log(posts);
       res.status(200).json(posts);
     } catch (err) {

@@ -14,7 +14,6 @@ router
             model: User,
             as: 'creator',
           },
-
         ],
       });
       console.log(posts);

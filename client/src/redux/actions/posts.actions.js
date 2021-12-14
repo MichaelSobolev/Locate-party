@@ -39,20 +39,19 @@ export const getPost = (id) => async (dispatch) => {
 export const createPost = (newPost) => async (dispatch) => {
   // Создание 1го поста и запись в бд и состояние
   console.log(newPost)
-  //TODO Раскомментить
-  // await fetch(`${URL}/posts`, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   credentials: 'include',
-  //   body: JSON.stringify(newPost),
-  // });
+    await fetch(`${URL}/posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify(newPost),
+  });
 
-  // dispatch({
-  //   type: CREATE_POST,
-  //   payload: { newPost },
-  // });
+  dispatch({
+    type: CREATE_POST,
+    payload: { newPost },
+  });
 };
 
 export const updatePost = (id, payload) => async (dispatch) => {

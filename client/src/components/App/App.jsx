@@ -20,6 +20,7 @@ import { createUser } from "../../redux/actions/user.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
+import { NewsPage } from "../../pages/NewsPage/NewsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/news" element={<NewsPage />} />
             <Route path="/postcard" element={<PostCard />} />
             <Route path="*" element={<ErorPage />} />
           </Routes>

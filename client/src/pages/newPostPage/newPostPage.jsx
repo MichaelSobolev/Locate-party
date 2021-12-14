@@ -26,14 +26,7 @@ export const NewPostPage = () => {
       name: "system_id",
       id: "system_id",
       label: messages.system_id,
-<<<<<<< HEAD
       options: [{text: 'Pathfinder', value: 1}, {text: 'Манчкин', value: 2}],
-=======
-      options: [
-        { text: "Pathfinder", value: "Pathfinder" },
-        { text: "Манчкин", value: "Манчкин" },
-      ],
->>>>>>> 2d959562035250a40528603b1fc303754bbdba31
     }),
     useInput({ name: "schedule", id: "schedule", label: messages.schedule }),
     useInput({ name: "platform", id: "platform", label: messages.platform }),
