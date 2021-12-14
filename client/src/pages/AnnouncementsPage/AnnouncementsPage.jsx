@@ -9,7 +9,6 @@ export const AnnouncementsPage = () => {
   const dispatch = useDispatch();
   const userName = null;
   const posts = useSelector((state) => state.posts);
-  console.log(">>>>", posts);
   const parsedPosts = posts.map((el) => {
     const newPost = {
       ...el,
@@ -20,7 +19,6 @@ export const AnnouncementsPage = () => {
     };
     return newPost;
   });
-  console.log(">>>>", parsedPosts);
 
   useEffect(() => {
     dispatch(getPosts());
