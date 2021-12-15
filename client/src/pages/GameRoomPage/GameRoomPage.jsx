@@ -4,8 +4,11 @@ import { useNavigate, useParams } from "react-router";
 import { Button } from "../../components/Button/Button";
 import { getPlayersByPost } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
+import { Chat } from './Chat/Chat'
+
 import styles from "./styles.module.css";
 export const GameRoomPage = () => {
+  let oleg ={uri: 'https://sozh.info/wp-content/uploads/2019/09/Oleg-Mongol.jpg'}
   let [post, setPost] = useState({
     title: "",
     system_title: "",
@@ -87,15 +90,27 @@ export const GameRoomPage = () => {
         <div className={styles.flex_container_row}>
           <div className={styles.players}>
             <div className={styles.flex_container_column}>
-              <ul>
+              <ul className={styles.ul}>
                 {players.map((el) => {
-                  return <li onClick={() => navigate(el.link)}> {el.name} </li>;
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' />  {el.name} </li>;
+                })}
+                 {players.map((el) => {
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                })}
+                 {players.map((el) => {
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                })}
+                 {players.map((el) => {
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                })}
+                 {players.map((el) => {
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
                 })}
               </ul>
             </div>
           </div>
           <div className={styles.chat}>
-            <h2>Чат</h2>
+            <Chat />
           </div>
         </div>
         <div className={styles.buttons}>
