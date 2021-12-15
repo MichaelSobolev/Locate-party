@@ -1,4 +1,5 @@
 "use strict";
+const { TEXT } = require("sequelize");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -29,6 +30,12 @@ module.exports = (sequelize, DataTypes) => {
       password: DataTypes.TEXT,
       googleId: DataTypes.TEXT,
       image: DataTypes.TEXT,
+      age: DataTypes.TEXT,
+      gender: DataTypes.TEXT,
+      experience: DataTypes.TEXT,
+      timezone: DataTypes.TEXT,
+      prefered_schedule: DataTypes.TEXT,
+      textarea: DataTypes.TEXT,
       isAdmin: DataTypes.BOOLEAN,
     },
     {

@@ -16,7 +16,7 @@ import { PostPage } from "../../pages/PostPage/PostPage";
 import { Logout } from "../Logout/Logout";
 import { Login } from "../Login/Login";
 import { PostCard } from "../PostCard/PostCard";
-import { createUser } from "../../redux/actions/user.actions";
+import { createSession } from "../../redux/actions/user.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
@@ -27,27 +27,31 @@ import { InterviewPage } from "../../pages/InterviewPage/InterviewPage";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_ADRESS}/auth/login/success`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true,
-      },
-    })
-      .then((response) => {
-        if (response.status === 200) return response.json();
-        throw new Error("authentication has been failed!");
+    const getUser = () => {
+      fetch("http://localhost:5000/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
       })
-      .then((resObject) => {
-        dispatch(createUser(resObject.user));
-        // setUser(resObject.user);
-        console.log(resObject.user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error("authentication has been failed!");
+        })
+        .then((resObject) => {
+          console.log("@@@@@@@@@@@@@@@@@@@@@@@@", resObject.user);
+          dispatch(createSession(resObject.user));
+          // setUser(resObject.user);
+          console.log("THIS", resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
   }, []);
 
   return (

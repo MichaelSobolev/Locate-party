@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router";
+
 export const Logout = () => {
-  const logout = () => {
-    window.open("http://localhost:5000/auth/logout", "_self");
+  const navigate = useNavigate();
+
+  const logout = async () => {
+    //window.open("http://localhost:5000/auth/logout", "_self");
+    let response = await fetch("http://localhost:5000/auth/logout");
+    if (response.status === 200) {
+      navigate("/");
+    }
   };
 
   return (

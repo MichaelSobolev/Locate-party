@@ -47,7 +47,7 @@ router
 
 router.route('/:id')
   .get(async (req, res) => {
-
+   
     const { id } = req.params;
     const post = await Post.findOne({
       include: [
