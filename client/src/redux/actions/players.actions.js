@@ -1,16 +1,16 @@
 import { SET_ROOM_DATA } from "../types";
 
 const URL = process.env.REACT_APP_API_ADRESS;
-export const addPendingPlayer = ({ post_id, user_id }) => async (dispatch) => {
+export const addPendingPlayer = ({ post_id, user_google_id }) => async (dispatch) => {
   // Добавление игрока в ожидание
-  console.log(typeof post_id, typeof user_id)
+  console.log(typeof post_id, typeof user_google_id)
   await fetch(`${URL}/players/pending/${post_id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify({ user_id }),
+    body: JSON.stringify({ user_google_id }),
   });
 };
 

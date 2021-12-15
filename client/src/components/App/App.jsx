@@ -23,6 +23,7 @@ import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
 import { NewsPage } from "../../pages/NewsPage/NewsPage";
 import { GameRoomPage } from "../../pages/GameRoomPage/GameRoomPage";
 import { InterviewPage } from "../../pages/InterviewPage/InterviewPage";
+import { AddInfo } from "../AddInfo/AddInfo";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,10 @@ function App() {
             <Route path="/user-page" element={<UserPage />} />
             <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/announcements/new" element={<NewPostPage />} />
+            <Route
+              path="/announcements/interview/:post_id/:user_id"
+              element={<InterviewPage />}
+            />
             <Route path="/announcements/edit/:id" element={<PostEditPage />} />
             <Route path="/announcements/:id" element={<PostPage />} />
             <Route path="/logout" element={<Logout />} />
@@ -74,10 +79,7 @@ function App() {
             {/* АХТУНГ НИЖЕ ВРЕМЕННЫЙ РОУТ */}
             <Route path="/gameroom/:id" element={<GameRoomPage />} />
             <Route path="/admin" element={<AdminPage />} />
-            <Route
-              path="/admin/test/:post_id/:user_id"
-              element={<InterviewPage />}
-            />
+            <Route path="/admin/addinfo" element={<AddInfo />} />
 
             <Route path="*" element={<ErorPage />} />
           </Routes>

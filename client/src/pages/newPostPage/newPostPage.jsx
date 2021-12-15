@@ -26,7 +26,10 @@ export const NewPostPage = () => {
       name: "system_id",
       id: "system_id",
       label: messages.system_id,
-      options: [{text: 'Pathfinder', value: 1}, {text: 'Манчкин', value: 2}],
+      options: [
+        { text: "Pathfinder", value: 1 },
+        { text: "Манчкин", value: 2 },
+      ],
     }),
     useInput({ name: "schedule", id: "schedule", label: messages.schedule }),
     useInput({ name: "platform", id: "platform", label: messages.platform }),
@@ -67,8 +70,7 @@ export const NewPostPage = () => {
     event.preventDefault();
     const request = {};
     inputs.forEach((el) => {
-      let key, value;
-      // let { key, value } = el.getKeyValue();
+      let { key, value } = el.getKeyValue();
       // TODO переписать этот костыль
       console.log(el.getValue());
       if (key === "system_id" || key === "isPaid" || key === "max_players") {

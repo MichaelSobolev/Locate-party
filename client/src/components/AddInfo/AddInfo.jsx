@@ -34,6 +34,7 @@ export const AddInfo = () => {
       textarea: textarea,
     };
     dispatch(addInfo(obj));
+    console.log('12r4migwenmp',obj)
 
     fetch(`http://localhost:5000/users/db`, {
       method: "POST",

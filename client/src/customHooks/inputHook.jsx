@@ -20,13 +20,14 @@ function useInput({
   }
 
   function getValue() {
+    // console.log(value);
     return value;
   }
 
   function getKeyValue() {
     return { key: name, value };
   }
-  
+
   return {
     handleChange,
     handleClear,

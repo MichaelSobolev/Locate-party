@@ -48,10 +48,10 @@ export const createPost = (newPost) => async (dispatch) => {
     body: JSON.stringify(newPost),
   });
 
-  dispatch({
-    type: CREATE_POST,
-    payload: { newPost },
-  });
+  // dispatch({
+  //   type: CREATE_POST,
+  //   payload: { newPost },
+  // });
 };
 
 export const updatePost = (id, payload) => async (dispatch) => {
