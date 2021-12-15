@@ -22,6 +22,7 @@ const authRoute = require("./src/routes/auth");
 const postsRouter = require("./src/routes/posts.router");
 const userRouter = require("./src/routes/userRouter");
 const newsRouter = require("./src/routes/news.router");
+const playersRouter = require("./src/routes/players.router")
 
 
 // ------------------------- //
@@ -76,6 +77,7 @@ app.use("/auth", authRoute);
 app.use("/posts", postsRouter);
 app.use("/users", userRouter);
 app.use("/news", newsRouter);
+app.use("/players", playersRouter);
 app.use("/", indexRouter);
 
 // ------------------------- //

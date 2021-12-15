@@ -24,8 +24,7 @@ router
             model: System,
           },
         ],
-      });  User.hasMany(models.Post, { foreignKey: "master_id" });
-      User.hasMany(models.Article, { foreignKey: "author_id" });
+      });
       console.log(posts);
       res.status(200).json(posts);
     } catch (err) {
@@ -40,11 +39,17 @@ router
     res.sendStatus(200);
   });
 
+// router.route('/gameroom/:id')
+//   .get(async (req, res) => {
+//     const { id } = req.params;
+//   })
+
+
 router.route('/:id')
   .get(async (req, res) => {
 
     const { id } = req.params;
-    const post = await Post.findAll({
+    const post = await Post.findOne({
       include: [
         {
           model: User,
@@ -57,8 +62,9 @@ router.route('/:id')
       where: { id },
       raw: true,
     });
-    console.log(post);
-    res.status(200).json(post[0]);
+    res.status(200).json({
+      ...post, system_title: post['System.title']
+    });
   }).put(async (req, res) => {
     console.log('==============')
     console.log(req.body)

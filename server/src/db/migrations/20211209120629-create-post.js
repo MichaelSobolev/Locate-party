@@ -29,8 +29,14 @@ module.exports = {
       title: {
         type: Sequelize.TEXT,
       },
+      adress: {
+        type: Sequelize.TEXT,
+      },
       platform: {
         type: Sequelize.TEXT,
+      },
+      gameDates: {
+        type: Sequelize.DATE,
       },
 
       schedule: {

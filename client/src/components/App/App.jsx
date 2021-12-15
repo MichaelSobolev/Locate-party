@@ -22,6 +22,7 @@ import { useEffect, useState } from "react";
 import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
 import { NewsPage } from "../../pages/NewsPage/NewsPage";
 import { GameRoomPage } from "../../pages/GameRoomPage/GameRoomPage";
+import { InterviewPage } from "../../pages/InterviewPage/InterviewPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -67,7 +68,12 @@ function App() {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/postcard" element={<PostCard />} />
             {/* АХТУНГ НИЖЕ ВРЕМЕННЫЙ РОУТ */}
-            <Route path="/gameroom" element={<GameRoomPage />} />
+            <Route path="/gameroom/:id" element={<GameRoomPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route
+              path="/admin/test/:post_id/:user_id"
+              element={<InterviewPage />}
+            />
 
             <Route path="*" element={<ErorPage />} />
           </Routes>

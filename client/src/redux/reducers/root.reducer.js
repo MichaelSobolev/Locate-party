@@ -3,11 +3,14 @@ import { postReducer } from "./post.reducer"
 import { userReducer } from "./user.reducer"
 import { currentPostReducer } from "./currentPost.reducer"
 import { newsReducer } from "./news.reducer"
+import { currentRoomReducer } from "./currentRoom.reducer"
 
 
 export const rootReducer = combineReducers({
-  user: userReducer,
   posts: postReducer,
   currentPostStore: currentPostReducer,
-  news: newsReducer
+  currentGameRoom: currentRoomReducer,
+  news: newsReducer,
+  user: userReducer,
+
 })
