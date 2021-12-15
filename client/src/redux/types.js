@@ -21,5 +21,7 @@ export const VALIDATE_SUCCESS = 'VALIDATE_SUCCESS'
 export const ADD_USER = 'ADD_USER'
 export const ADD_INFO = "ADD_INFO";
 export const ADD_SESSION = 'ADD_SESSION'
+export const CLEAR_SESSION = 'CLEAR_SESSION'
+
 
 

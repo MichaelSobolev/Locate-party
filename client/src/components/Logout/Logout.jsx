@@ -1,10 +1,14 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { CLEAR_SESSION } from "../../redux/types";
 
 export const Logout = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const logout = async () => {
     //window.open("http://localhost:5000/auth/logout", "_self");
+    dispatch({type:CLEAR_SESSION})
     let response = await fetch("http://localhost:5000/auth/logout");
     if (response.status === 200) {
       navigate("/");
