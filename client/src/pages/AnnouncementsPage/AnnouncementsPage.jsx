@@ -9,6 +9,8 @@ import styles from "./styles.module.css";
 export const AnnouncementsPage = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
+  const userName = useSelector((state) => state.session);
+
   const parsedPosts = posts.map((el) => {
     const newPost = {
       ...el,
@@ -27,7 +29,7 @@ export const AnnouncementsPage = () => {
   return (
     <div className={styles["announcements-page"]}>
       <h2 className="visually-hidden"> AnnouncementsPage</h2>
-      <Header />
+      <Header userName={userName[0]?.displayName} />
       <section className={styles["announcements-page__posts"]}>
         <PostList posts={parsedPosts} />
       </section>
