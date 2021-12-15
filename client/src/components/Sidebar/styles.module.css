@@ -23,3 +23,7 @@
   background-color: var(--color-shark);
   border-radius: 10px;
 }
+
+.sidebar__item:hover {
+  box-shadow: inset 2px 2px 5px rgba(255, 9, 9, 0.5), 1px 1px 5px rgb(251, 14, 14);
+}

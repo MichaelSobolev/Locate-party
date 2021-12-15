@@ -1,0 +1,71 @@
+.flex_container_column {
+  display: flex;
+  flex-direction: column;
+}
+.main_container_column {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  height: 100%;
+}
+.chat_and_players {
+  margin: 5vh;
+}
+
+.flex_container_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.game_description_container {
+  background-color: var(--color-shark);
+  display: flex;
+  flex-direction: row;
+  margin: 5vh;
+  padding: 10px;
+}
+.gameTime {
+  background-color: var(--color-shark);
+  margin: 0 5vh 0 5vh;
+
+  font-weight: bolder;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.game_master_icon {
+  border-radius: 50%;
+  height: 20vh;
+  margin-right: 2vw;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 70vw;
+}
+
+.chat {
+  margin-left: 2vw;
+  flex-grow: 1;
+  background-color: var(--color-shark);
+  height: 50vh;
+}
+.players {
+  background-color: var(--color-shark);
+}
+.about_box {
+  background-color: var(--color-shark);
+  padding: 10px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.new-post-page__new-post-form-submit-button {
+  margin: 3vh;
+  width: 25vw;
+}

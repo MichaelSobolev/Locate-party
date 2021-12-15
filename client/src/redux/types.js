@@ -3,6 +3,10 @@ export const CREATE_POST = 'CREATE_POST'
 export const SET_POSTS = 'SET_POSTS'
 export const SET_CURRENT_POST = 'SET_CURRENT_POST'
 export const UPDATE_POST = 'UPDATE_POST'
+// GameRoom types:
+export const SET_ROOM_DATA = 'SET_ROOM_DATA'
+export const CLEAR_ROOM_DATA = 'SET_ROOM_DATA'
+
 // News types:
 export const CREATE_ARTICLE = 'CREATE_ARTICLE'
 export const SET_ARTICLES = 'SET_ARTICLES'

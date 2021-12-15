@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { PostCard } from "../../components/PostCard/PostCard";
 import { PostList } from "./PostList/PostList";
 import { Header } from "./Header/Header";
 import { getPosts } from "../../redux/actions/posts.actions";

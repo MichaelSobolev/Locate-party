@@ -3,11 +3,20 @@ import { useNavigate } from "react-router";
 
 import styles from "./styles.module.css";
 
-export const ButtonPost = ({ id, path = "/announcements/", children }) => {
+export const ButtonPost = ({
+  id = 1,
+  path = "/announcements/",
+  children,
+  isNavigation = true,
+  action,
+}) => {
+  const callback = () => navigate(`${path}${id}`);
   const navigate = useNavigate();
-  console.log(path + id);
   return (
-    <button className={styles.button} onClick={() => navigate(`${path}${id}`)}>
+    <button
+      className={styles.button}
+      onClick={isNavigation ? callback : action}
+    >
       {children ? children : "Принять"}
     </button>
   );
