@@ -7,6 +7,7 @@ function useInput({
   id = "input",
   placeholder = "",
   label = "",
+  options = [],
 }) {
   const [value, setValue] = useState(defaultValue);
 
@@ -38,6 +39,7 @@ function useInput({
       id,
       placeholder,
       label,
+      options,
     },
   };
 }

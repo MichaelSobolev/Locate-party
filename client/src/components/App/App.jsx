@@ -16,10 +16,13 @@ import { PostPage } from "../../pages/PostPage/PostPage";
 import { Logout } from "../Logout/Logout";
 import { Login } from "../Login/Login";
 import { PostCard } from "../PostCard/PostCard";
-import { createUser } from "../../redux/actions/user.actions";
+import { createSession } from "../../redux/actions/user.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
+import { NewsPage } from "../../pages/NewsPage/NewsPage";
+import { GameRoomPage } from "../../pages/GameRoomPage/GameRoomPage";
+import { InterviewPage } from "../../pages/InterviewPage/InterviewPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,9 +42,10 @@ function App() {
           throw new Error("authentication has been failed!");
         })
         .then((resObject) => {
-          dispatch(createUser(resObject.user));
+          console.log("@@@@@@@@@@@@@@@@@@@@@@@@", resObject.user);
+          dispatch(createSession(resObject.user));
           // setUser(resObject.user);
-          console.log(resObject.user);
+          console.log("THIS", resObject.user);
         })
         .catch((err) => {
           console.log(err);
@@ -49,6 +53,7 @@ function App() {
     };
     getUser();
   }, []);
+
   return (
     <div className={styles.app}>
       <NavBarPage />
@@ -64,7 +69,16 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/news" element={<NewsPage />} />
             <Route path="/postcard" element={<PostCard />} />
+            {/* АХТУНГ НИЖЕ ВРЕМЕННЫЙ РОУТ */}
+            <Route path="/gameroom/:id" element={<GameRoomPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route
+              path="/admin/test/:post_id/:user_id"
+              element={<InterviewPage />}
+            />
+
             <Route path="*" element={<ErorPage />} />
           </Routes>
         </ErrorBoundary>

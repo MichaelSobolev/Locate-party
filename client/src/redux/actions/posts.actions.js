@@ -1,9 +1,10 @@
 import { CREATE_POST, SET_POSTS, SET_CURRENT_POST, UPDATE_POST } from '../types';
 
-const URL = `http://localhost:5000`;
+const URL = process.env.REACT_APP_API_ADRESS;
 
 export const getPosts = () => async (dispatch) => {
   // Получает все посты из бд и перезаписывает состояние ими!
+  console.log(`${URL}/posts`)
   const response = await fetch(`${URL}/posts`, {
     method: 'GET',
     headers: {
@@ -37,7 +38,8 @@ export const getPost = (id) => async (dispatch) => {
 
 export const createPost = (newPost) => async (dispatch) => {
   // Создание 1го поста и запись в бд и состояние
-  await fetch(`${URL}/posts`, {
+  console.log(newPost)
+    await fetch(`${URL}/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

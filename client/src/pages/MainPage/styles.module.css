@@ -5,3 +5,8 @@
 h3 {
   text-align: center;
 }
+
+.registations-main{
+  display: flex;
+  justify-content: center;
+}

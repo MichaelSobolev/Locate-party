@@ -5,8 +5,11 @@ import {
   VALIDATE_SUCCESS,
   VALIDATE_ERROR,
   ADD_USER,
+  ADD_INFO,
+  ADD_SESSION,
 } from "../types";
-const url = 'http://localhost:5000'
+
+const url = process.env.REACT_APP_API_ADRESS;
 export const loginUser = (data) => async (dispatch) => {
   try {
     const response = await fetch(`${url}/login`, {
@@ -59,19 +62,38 @@ export const validateUser = (current, reference) => (dispatch) => {
   }
 };
 
-export const createUser = (data) => async (dispatch) => {
-  const response = await fetch(`${url}/users`, {
+export const createSession = (data) => async (dispatch) => {
+  console.log(
+    "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+    data.id,
+    data.displayName,
+    data.photos[0].value
+  );
+  const response = await fetch(`http://localhost:5000/users`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      id: data.id,
+      name: data.displayName,
+      image: data.photos[0].value,
+    }),
   });
+  console.log("RESULT ####################################");
   const result = await response.json();
-  console.log('--------------->', result)
+  console.log(result);
+
   dispatch({
-    type: ADD_USER,
-    payload: { user: result },
+    type: ADD_SESSION,
+    payload: result,
   });
+};
+
+export const addInfo = (value) => {
+  return {
+    type: ADD_INFO,
+    payload: value,
+  };
 };

@@ -7,6 +7,7 @@ import styles from './styles.module.css';
 import { Video } from './Video/Video';
 import { TopPanel } from './TopPanel';
 import { GameBox } from './GameBox/GameBox'
+import { GameBoxNext } from './GameBox/GameBoxNext/GameBoxNext';
 
 export const MainPage = () => (
   <div>
@@ -17,5 +18,13 @@ export const MainPage = () => (
     <Title as="h2">О нас: Сайт для любителей настольных игр и все что с этим  связанно.</Title>
     <Text>Здесь ты сможешь найти людей, котрые любят настольные игры, так же как и ты!<br />
       У нас самое большое русскоговорящее комьюнити</Text>
+  <div className={styles.gamepositions}>Огромное количество различных игр </div> 
+  <div></div>
+
+
+
+
+
+      <div className={styles["registations-main"]}> Регитсрация / Авторизация</div>
   </div>
 );

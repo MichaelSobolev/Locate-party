@@ -2,9 +2,9 @@ import { useDispatch } from "react-redux";
 import { Input } from "../../components/Input/Input";
 import useInput from "../../customHooks/inputHook";
 import { createPost } from "../../redux/actions/posts.actions";
-import {Title} from '../../components/Title/Title';
-import {Button} from '../../components/Button/Button';
-import styles from './styles.module.css';
+import { Title } from "../../components/Title/Title";
+import { Button } from "../../components/Button/Button";
+import styles from "./styles.module.css";
 
 export const NewPostPage = () => {
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ export const NewPostPage = () => {
       name: "system_id",
       id: "system_id",
       label: messages.system_id,
+      options: [{text: 'Pathfinder', value: 1}, {text: 'Манчкин', value: 2}],
     }),
     useInput({ name: "schedule", id: "schedule", label: messages.schedule }),
     useInput({ name: "platform", id: "platform", label: messages.platform }),
@@ -68,6 +69,7 @@ export const NewPostPage = () => {
     inputs.forEach((el) => {
       let { key, value } = el.getKeyValue();
       // TODO переписать этот костыль
+      console.log(el.getValue());
       if (key === "system_id" || key === "isPaid" || key === "max_players") {
         value = Number(value);
       }
@@ -77,22 +79,31 @@ export const NewPostPage = () => {
   };
 
   return (
-    <div className={styles['new-post-page']}>
-      <Title as="h2">Новая публикация</Title>
-      <form className={styles['new-post-page__new-post-form']} onSubmit={submitForm}>
+    <div className={styles["new-post-page"]}>
+      <Title as="h2">Редактировать обьявление</Title>
+      <form
+        className={styles["new-post-page__new-post-form"]}
+        onSubmit={submitForm}
+      >
         {inputs.map((el) => (
           <Input
             key={el.attrs.id}
-            className={styles['new-post-page__new-post-form-input']}
+            className={styles["new-post-page__new-post-form-input"]}
             id={el.attrs.id}
             name={el.attrs.name}
             type={el.attrs.type}
             value={el.attrs.value}
             handleChange={el.handleChange}
             label={el.attrs.label}
+            options={el.attrs.options}
           />
         ))}
-        <Button className={styles['new-post-page__new-post-form-submit-button']} type="submit">Принять</Button>
+        <Button
+          className={styles["new-post-page__new-post-form-submit-button"]}
+          type="submit"
+        >
+          Опубликовать
+        </Button>
       </form>
     </div>
   );
