@@ -7,20 +7,19 @@
   font-size: 22px;
   font-weight: 500;
   font-family: "Source Sans Pro", sans-serif;
-	box-shadow: 3px 10px 20px 0px rgba(147, 42, 189, 0.315);
+	box-shadow: 3px 10px 10px 1px rgba(248, 0, 0, 0.404);
 	color: #fff;
-  color: white;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .button:hover {
-  box-shadow: 0px 7px 30px rgb(147, 42, 189);
+  box-shadow: 0px 10px 30px 5px rgb(255, 0, 0);
   transform: translateY(-5px);
   border: 1px solid var(--blue);
 }
 
 .button:active {
   transform: scale(0.9);
-  box-shadow: 0 2px 25px #ff00ffa2;
+  box-shadow: 0 2px 25px #ff0000a2;
 }
