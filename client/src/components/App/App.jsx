@@ -16,10 +16,11 @@ import { PostPage } from "../../pages/PostPage/PostPage";
 import { Logout } from "../Logout/Logout";
 import { Login } from "../Login/Login";
 import { PostCard } from "../PostCard/PostCard";
-import { createUser } from "../../redux/actions/user.actions";
+import { createSession } from "../../redux/actions/user.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
+import { AddInfo } from "../AddInfo/AddInfo";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,9 +40,10 @@ function App() {
           throw new Error("authentication has been failed!");
         })
         .then((resObject) => {
-          dispatch(createUser(resObject.user));
+          console.log("@@@@@@@@@@@@@@@@@@@@@@@@", resObject.user);
+          dispatch(createSession(resObject.user));
           // setUser(resObject.user);
-          console.log(resObject.user);
+          console.log("THIS", resObject.user);
         })
         .catch((err) => {
           console.log(err);
@@ -52,6 +54,7 @@ function App() {
   return (
     <div className={styles.app}>
       <NavBarPage />
+      <AddInfo />
       <main className={styles.main}>
         <ErrorBoundary>
           <Routes>

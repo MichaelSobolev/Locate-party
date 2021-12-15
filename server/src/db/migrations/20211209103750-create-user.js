@@ -15,6 +15,7 @@ module.exports = {
       email: {
         type: Sequelize.TEXT,
         allowNull: true,
+        unique: true,
       },
       password: {
         type: Sequelize.TEXT,
@@ -25,6 +26,30 @@ module.exports = {
         allowNull: true,
       },
       image: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      age: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      gender: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      experience: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      timezone: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      prefered_schedule: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      textarea: {
         type: Sequelize.TEXT,
         allowNull: true,
       },

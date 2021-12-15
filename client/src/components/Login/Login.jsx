@@ -14,6 +14,12 @@ export const Login = () => {
         <h3>use Google to login</h3>
         <button onClick={google}>Login</button>
       </div>
+
+
+
+
+
+      
     </div>
   );
 };

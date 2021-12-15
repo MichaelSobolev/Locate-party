@@ -1,8 +1,8 @@
 export const initialState = {
-  user: {
-    value: null,
-    error: null,
-  },
+  // user: {
+  //   value: null,
+  //   error: null,
+  // },
   // validation: {
   //   error: null,
   //   value: false,

@@ -41,6 +41,7 @@ router
 
 router.route('/:id')
   .get(async (req, res) => {
+   
     const { id } = req.params;
     const post = await Post.findAll({
       include: [
@@ -67,7 +68,7 @@ router.route('/:id')
     await Post.update({ ...newData }, { where: { id } })
     // console.log(post);
     // res.status(200).jsson(post[0]);
-
+    res.sendStatus(200)
   })
 
 module.exports = router;
