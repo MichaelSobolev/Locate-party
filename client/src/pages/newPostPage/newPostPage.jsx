@@ -67,7 +67,8 @@ export const NewPostPage = () => {
     event.preventDefault();
     const request = {};
     inputs.forEach((el) => {
-      let { key, value } = el.getKeyValue();
+      let key, value;
+      // let { key, value } = el.getKeyValue();
       // TODO переписать этот костыль
       console.log(el.getValue());
       if (key === "system_id" || key === "isPaid" || key === "max_players") {
@@ -80,7 +81,7 @@ export const NewPostPage = () => {
 
   return (
     <div className={styles["new-post-page"]}>
-      <Title as="h2">Редактировать обьявление</Title>
+      <Title as="h2">Новая публикация</Title>
       <form
         className={styles["new-post-page__new-post-form"]}
         onSubmit={submitForm}
