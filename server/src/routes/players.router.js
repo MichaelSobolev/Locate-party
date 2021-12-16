@@ -61,24 +61,33 @@ router.route("/pending/:id")
     // Полчение всех юзеров в ожидании для поста по id
     try {
       const { id } = req.params;
-      const postPlayers = await PendingPlayer.findAll({
-        include: [
+
+      let postPlayers = await Post.findAll({
+        include: [ // FIXME Подтягивает только пост
           {
             model: User,
-          },
-          {
-            model: Post,
+            through: { attributes: ['post_id'], as: "pending_post", }
           },
         ],
         where: { id },
         raw: true,
       });
+      postPlayers = postPlayers.map(el => {
+        return {
+          ...el,
+          player_name: el["Users.name"],
+          player_icon: el["Users.image"],
+          player_id: el["Users.id"],
+          player_id_google: el["Users.googleId"],
+        }
+      })
       console.log(postPlayers);
       res.status(200).json(postPlayers);
     } catch (err) {
       res.sendStatus(500)
     }
   })
+
   .post(async (req, res) => {
     // Добавление связки post_id - user_id в ожидание
     // TODO Добавить проверку по наличию в BlackList

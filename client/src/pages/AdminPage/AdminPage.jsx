@@ -4,6 +4,7 @@ import {
   acceptPlayer,
   addPendingPlayer,
   declinePlayer,
+  getPendingPlayersByPost,
   getPlayersByPost,
   removePlayer,
 } from "../../redux/actions/players.actions";
@@ -77,7 +78,14 @@ export const AdminPage = () => {
             dispatch(getUserIdByGoogleId("106252397252127773101"));
           }}
         >
-          getPlayersByPost
+          getUserIdByGoogleId
+        </button>
+        <button
+          onClick={() => {
+            dispatch(getPendingPlayersByPost(12));
+          }}
+        >
+          getPendingPlayersByPost
         </button>
       </div>
     </div>

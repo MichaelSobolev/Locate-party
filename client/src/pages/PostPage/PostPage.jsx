@@ -94,7 +94,7 @@ export const PostPage = () => {
         </div>
         <div className={styles.button}>
           {isAuthor && (
-            <ButtonPost path="/announcements/edit/" id={parsedPost.id}>
+            <ButtonPost path="/announcements/edit/" props={parsedPost.id}>
               Редактировать
             </ButtonPost>
           )}

@@ -70,3 +70,17 @@ export const getPlayersByPost = (post_id) => async (dispatch) => {
   dispatch({ type: SET_ROOM_DATA, payload })
 };
 
+
+export const getPendingPlayersByPost = (post_id) => async (dispatch) => {
+  // ИГроки в посте 12
+  const response = await fetch(`${URL}/players/pending/${post_id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include'
+  });
+  const payload = await response.json()
+  dispatch({ type: SET_ROOM_DATA, payload })
+};
+
