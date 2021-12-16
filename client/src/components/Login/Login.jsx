@@ -18,12 +18,6 @@ export const Login = () => {
         <button className={styles.button} onClick={google}>
         <FcGoogle className='icon'/> Login with Google</button>
       </div>
-
-
-
-
-
-      
     </div>
   );
 };

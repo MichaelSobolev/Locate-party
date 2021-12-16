@@ -30,13 +30,16 @@ router
     } catch (err) {
       res.sendStatus(500)
     }
-
   })
   .post((req, res) => {
-    console.log({ ...req.body, isActive: true, isPaid: false, master_id: 1 });
-    //res.render('index')
-    Post.create({ ...req.body, isActive: true, isPaid: false, master_id: 1 });
-    res.sendStatus(200);
+    try {
+      console.log('_!_!_!_!_!_!_!POST_BACKEND', { ...req.body, isActive: true, isPaid: false, });
+      Post.create({ ...req.body, isActive: true, isPaid: false });
+      res.sendStatus(200);
+    } catch (error) {
+      console.log('===ERROR===', error, '=======')
+      res.sendStatus(500)
+    }
   });
 
 // router.route('/gameroom/:id')
@@ -47,7 +50,7 @@ router
 
 router.route('/:id')
   .get(async (req, res) => {
-   
+
     const { id } = req.params;
     const post = await Post.findOne({
       include: [

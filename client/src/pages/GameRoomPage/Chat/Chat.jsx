@@ -20,9 +20,10 @@ export const Chat = () => {
     <div className={style.chat}>
       <div className={style.container}>
         <img src={oleg.uri} alt="Avatar" />
-        <p>Hello. How are you today?</p>
+        <figcaption>User_Name</figcaption>
+        <p>Hello. How are you today? </p>
         <span className={style[ 'time-right']}>11:00</span>
-      </div>
+      </div>  
     </div>
     <div className={style.input}>
       <input className={style[ 'input-form']} type="text" onKeyPress={AddUser} placeholder='Enter'></input>
