@@ -90,7 +90,6 @@ export const createSession = (data) => async (dispatch) => {
   });
   dispatch(
     getUserIdByGoogleId(result.id)
-
   )
 };
 

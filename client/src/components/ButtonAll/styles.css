@@ -1,4 +1,4 @@
-.button, .button:focus {
+.buttonAll, .buttonAll:focus {
   width: 100%;
   height: 55px;
   background: var(--primarycolor);
@@ -11,15 +11,16 @@
 	color: #fff;
   cursor: pointer;
   transition: all 0.3s;
+  margin-top: 18px;
 }
 
-.button:hover {
+.buttonAll:hover {
   box-shadow: 0px 10px 30px 5px rgb(255, 0, 0);
   transform: translateY(-5px);
   border: 1px solid var(--blue);
 }
 
-.button:active {
+.buttonAll:active {
   transform: scale(0.9);
   box-shadow: 0 2px 25px #ff0000a2;
 }

@@ -1,5 +1,5 @@
-import styles from './styles.modules.css';
+import './styles.css';
 
-export const ButtonAll = ({vaule}) => (
-  <button className={styles.button}> { vaule }</button>
+export const ButtonAll = ({value}) => (
+  <button className='buttonAll'> { value }</button>
 )

@@ -30,7 +30,7 @@ router.get("/logout", (req, res) => {
   res.sendStatus(200);
 });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get("/google", passport.authenticate("google", { scope: ["profile", 'email'] }));
 
 router.get(
   "/google/callback",

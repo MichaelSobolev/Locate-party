@@ -5,6 +5,7 @@ import {
   BsGrid1X2Fill,
   BsHurricane,
 } from "react-icons/bs";
+import { D20Spinning } from "./D20Spinning/D20spinning";
 import { IoLogOut } from "react-icons/io5";
 import { FaDiceD20 } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -16,9 +17,11 @@ import "./index.css";
 export const NavBarPage = (props) => {
   const data = useSelector((state) => state.session);
 
+  console.log(props);
   return (
     <header className="header">
       <div className="sidenav">
+        <D20Spinning setTheme={props.setTheme}/>
         <NavLink
           className="header__link"
           activeClassName="header__link_active"

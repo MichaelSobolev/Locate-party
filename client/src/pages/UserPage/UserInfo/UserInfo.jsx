@@ -6,11 +6,18 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { addInfo, addInfoFetch, getUserIdByGoogleId } from "../../../redux/actions/user.actions";
+import { ButtonAll } from "../../../components/ButtonAll/ButtonAll";
+
 
 export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [image, setImage] = useState("");
+  const UserItems = useSelector((state) =>
+    state.session[0] 
+  )
+console.log(UserItems);
+
+  const [name, setName] = useState(UserItems._json.name);
+  const [email, setEmail] = useState(UserItems._json.email);
+  const [image, setImage] = useState(UserItems._json.picture);
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [experience, setExperience] = useState("");
@@ -178,7 +185,7 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
         
          </div>
         {/* </div> */}
-        <button type="submit">add info</button>
+        <ButtonAll type="submit" value={'Send'}/>
       </form>
       </div>
     </>

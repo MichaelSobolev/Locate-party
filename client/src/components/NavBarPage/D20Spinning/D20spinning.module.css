@@ -1,0 +1,25 @@
+.App-logo {
+  animation: App-logo-spin infinite 40s linear;
+  height: 80px;
+  /* background-color: rgba(32, 31,39); */
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.button {
+  background-color: rgba(32, 31,39);
+}
+
+.button, 
+.button:active, 
+.button:focus {
+    outline: none !important;
+    border: none;
+}
+
+.App-logo:hover{
+  animation: App-logo-spin infinite 2.5s linear;
+}
