@@ -3,27 +3,16 @@ const { User } = require("../db/models");
 const router = express.Router();
 
 router.route("/db").post(async (req, res) => {
-  console.log("DBDBDBDBDBDBDBDBDBDB", req.body);
-  await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    image: req.body.image,
-    age: req.body.age,
-    gender: req.body.gender,
-    experience: req.body.experience,
-    timezone: req.body.timezone,
-    prefered_schedule: req.body.prefered_schedule,
-    textarea: req.body.textarea,
-  });
+  // console.log("DBDBDBDBDBDBDBDBDBDB", req.body);
+  const request = await User.create({ ...req.body })
+  console.log({ user_id: request.dataValues.id })
+  res.status(201).json({ user_id: request.dataValues.id })
 });
 
 router.route("/").post(async (req, res) => {
   //res.locals.user = req.session;
   try {
-    console.log(
-      "REQ.SESSION (USER DATA)>>>>>>>>>>>>>>>",
-      req.session.passport.user
-    );
+    console.log("REQ.SESSION >>>>>>>>>>>>>>>", req.session);
 
     // findOrCreate
     // await User.create({

@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const passport = require("passport")
-require('../../passport.js');
+const passport = require("passport");
+require("../../passport.js");
 require("dotenv").config();
 const CLIENT_URL = "http://localhost:3000";
 const { User } = require("../db/models");
@@ -11,7 +11,6 @@ router.get("/login/success", (req, res) => {
       success: true,
       message: "successfull",
       user: req.user,
-      // cookies: req.cookies,
     });
   }
 });
@@ -25,12 +24,14 @@ router.get("/login/failed", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.session = null;
-  console.log("REQ.SESSION =", req.session);
+
   req.logout();
   res.sendStatus(200);
 });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get("/google", passport.authenticate("google", { scope: ["profile", 'email'] }));
+
+
 
 router.get(
   "/google/callback",
@@ -53,3 +54,5 @@ router.post("/mock", async (req, res) => {
 });
 
 module.exports = router;
+
+

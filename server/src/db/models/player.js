@@ -12,10 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
+  }
   Player.init({
     user_id: DataTypes.INTEGER,
-    post_id: DataTypes.INTEGER
+    post_id: DataTypes.INTEGER,
+    isPending: DataTypes.BOOLEAN,
+   
   }, {
     sequelize,
     modelName: 'Player',

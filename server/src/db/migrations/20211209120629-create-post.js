@@ -26,6 +26,9 @@ module.exports = {
           key: "id",
         },
       },
+      image: {
+        type: Sequelize.TEXT,
+      },
       title: {
         type: Sequelize.TEXT,
       },

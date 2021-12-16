@@ -26,6 +26,9 @@ module.exports = {
           key: "id",
         },
       },
+      isPending: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -33,6 +36,12 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+    }, {
+      uniqueKeys: {
+        actions_unique: {
+          fields: ['user_id', 'post_id']
+        }
       }
     });
   },

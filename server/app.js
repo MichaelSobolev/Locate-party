@@ -4,18 +4,25 @@
 // Connecting dependencies
 require("dotenv").config();
 const express = require("express");
+const cookieParser = require('cookie-parser');
+const ws = require('ws');
 const cors = require("cors");
 const morgan = require("morgan");
 const path = require("path");
 const cookieSession = require("cookie-session");
+const session = require('express-session');
 const passport = require("passport");
+require("./passport.js");
+const http = require("http");
+const redis = require('redis');
+const redisClient = redis.createClient();
+const RedisStore = require('connect-redis')(session);
+
 // const session = require("express-session");
 // const FileStore = require("session-file-store")(session);
 // const passportSetup = require("./passport");
 
-
-
-require('dotenv').config();
+require("dotenv").config();
 // ------------------------- //
 // Connecting routers
 const indexRouter = require("./src/routes/index.router");
@@ -23,8 +30,7 @@ const authRoute = require("./src/routes/auth");
 const postsRouter = require("./src/routes/posts.router");
 const userRouter = require("./src/routes/userRouter");
 const newsRouter = require("./src/routes/news.router");
-const playersRouter = require("./src/routes/players.router")
-
+const playersRouter = require("./src/routes/players.router");
 
 // ------------------------- //
 // Create an app
@@ -33,8 +39,8 @@ const app = express();
 // ------------------------- //
 // Express settings
 // HBS
-app.set("view engine", "hbs");
-app.set("views", path.join(process.env.PWD, "src", "views"));
+// app.set("view engine", "hbs");
+// app.set("views", path.join(process.env.PWD, "src", "views"));
 // morgan (TODO выпилить на релизе)
 app.use(morgan("dev"));
 // app.use(
@@ -46,28 +52,54 @@ app.use(morgan("dev"));
 //   );
 
 // Query encoders
-console.log(process.env.CLIENT_URL)
+console.log(process.env.CLIENT_URL);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // ------------------------- //
 // Session settings
+// const sessionParser = session({
+//   name: 'sesid',
+//   store: new RedisStore({ client: redisClient }),
+//   saveUninitialized: false,
+//   secret: 'cat',
+//   resave: false,
+//   cookie: {
+//     expries: 24 * 60 * 60e3,
+//     httpOnly: true,
+//   },
+// });
+
 const sessionParser = cookieSession({
   // FIXME
   name: "session",
   keys: ["lama"],
   maxAge: 24 * 60 * 60 * 100,
-})
+});
+app.use(sessionParser);
 
-app.use(
-  sessionParser
-);
 app.use(passport.initialize());
 app.use(passport.session());
+
+const wss = new ws.Server({ port: 3090 });
+wss.on('connection', (ws) => { // обработчик события "соединение установлено"
+  // console.log(wss.clients);
+  ws.on('message', async (data) => { // обработчик события "пришло сообщение"
+    const decodedMessage = JSON.parse(data);
+    console.log(decodedMessage);
+    //const message = await Message.create({ text: decodedMessage.text }); // db create message
+    // ws.send(JSON.stringify(message));
+    wss.clients.forEach((client) => {
+      client.send(JSON.stringify(decodedMessage)); // проходим по массиву всех подключенных юзеров и отправляем им сообщение TODO: добавить в сообщение имя юзера из сессии, который отправлят
+    });
+  });
+});
+
+
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
-    methods: 'GET, POST, PUT, DELETE',
+    methods: "GET, POST, PUT, DELETE",
     credentials: true,
   })
 );
@@ -81,14 +113,26 @@ app.use("/news", newsRouter);
 app.use("/players", playersRouter);
 app.use("/", indexRouter);
 
-// ------------------------- //
+// ------------------------- //'
+
+// server.on('upgrade', function (request, socket, head) {
+//   console.log('Parsing session from request...');
+
+//   sessionParser(request, {}, () => {
+//     if (!request.session?.user?.id) {
+//       socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
+//       socket.destroy();
+//       return;
+//     })
+
+
+
 
 // TODO Включить!
 app.listen(process.env.PORT, () =>
   console.log("Server is running on port", process.env.PORT)
 );
 // TODO Включить!
-
 
 // const { createServer } = require('http') // Веб - соктеы только с http сервером
 // const WebSocket = require('ws') // Достаём веб-сокеты

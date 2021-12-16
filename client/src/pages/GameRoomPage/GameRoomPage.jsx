@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { Button } from "../../components/Button/Button";
+import { PlayersList } from "../../components/PlayersList/PlayersList";
 import { getPlayersByPost } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
+import { Chat } from './Chat/Chat'
+
 import styles from "./styles.module.css";
 export const GameRoomPage = () => {
+  let oleg ={uri: 'https://www.seekpng.com/png/full/356-3562377_personal-user.png'}
   let [post, setPost] = useState({
     title: "",
     system_title: "",
@@ -82,20 +86,32 @@ export const GameRoomPage = () => {
           </div>
         </div>
       </div>
-      <div className={styles.gameTime}> 01/02/2013 Четверг 12.00</div>
+      <div className={styles.gameTime}> Время игры: 01/02/2013 Четверг 12.00</div>
       <div className={styles.chat_and_players}>
         <div className={styles.flex_container_row}>
           <div className={styles.players}>
             <div className={styles.flex_container_column}>
-              <ul>
+              <ul className={styles.ul}>
                 {players.map((el) => {
-                  return <li onClick={() => navigate(el.link)}> {el.name} </li>;
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' />  {el.name} </li>;
+                })}
+                 {players.map((el) => {
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                })}
+                 {players.map((el) => {
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                })}
+                 {players.map((el) => {
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                })}
+                 {players.map((el) => {
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
                 })}
               </ul>
             </div>
           </div>
           <div className={styles.chat}>
-            <h2>Чат</h2>
+            <Chat />
           </div>
         </div>
         <div className={styles.buttons}>
@@ -125,6 +141,9 @@ export const GameRoomPage = () => {
             </Button>
           </div>
         </div>
+      </div>
+      <div>
+        <PlayersList id={ id } />
       </div>
     </div>
   );

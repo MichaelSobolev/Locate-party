@@ -1,4 +1,7 @@
 import { useState } from "react";
+import {FcGoogle} from "react-icons/fc"
+
+import styles from "./styles.module.css";
 
 export const Login = () => {
   const [registerUsername, setRegisterUsername] = useState("");
@@ -11,8 +14,9 @@ export const Login = () => {
   return (
     <div>
       <div>
-        <h3>use Google to login</h3>
-        <button onClick={google}>Login</button>
+        <h3>Just Do it</h3>
+        <button className={styles.button} onClick={google}>
+        <FcGoogle className='icon'/> Login with Google</button>
       </div>
 
 

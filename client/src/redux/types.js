@@ -22,6 +22,13 @@ export const ADD_USER = 'ADD_USER'
 export const ADD_INFO = "ADD_INFO";
 export const ADD_SESSION = 'ADD_SESSION'
 export const CLEAR_SESSION = 'CLEAR_SESSION'
+export const ADD_SESSION_USER_ID = 'ADD_SESSION_USER_ID'
+export const CLEAR_USER = 'CLEAR_USER'
+export const SET_USER_REDUX = 'SET_USER_REDUX'
+
+// user additional info 
+export const SET_USER_ID = 'SET_USER_REDUX'
+
 
 
 
