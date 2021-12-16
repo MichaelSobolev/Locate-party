@@ -25,7 +25,7 @@ export const NavBarPage = (props) => {
           to="/"
         >
           <FaDiceD20 className="icon" />
-          findATable
+          Locate party
         </NavLink>
         <NavLink
           className="header__link"

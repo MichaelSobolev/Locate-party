@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { ButtonPost } from "../../components/PostCard/ButtonPost/ButtonPost";
 import { PostCard } from "../../components/PostCard/PostCard";
+import { addPendingPlayer } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
 import { PostList } from "../AnnouncementsPage/PostList/PostList";
 import styles from "./styles.module.css";
@@ -37,13 +38,13 @@ export const PostPage = () => {
   function join() {
     // На вход user_id | post_id
     const post_id = id;
-    fetch(`${process.env.REACT_APP_API_ADRESS}/`);
     // const user_id = session[0].id;
-    const user_id = session[0];
-    console.log("session user_id", user_id);
-    // dispatch()
+    // const user_id = session[0];
+  
+    // console.log("session user_id", user_id,);
+    console.log(user_info)
+    dispatch(addPendingPlayer({post_id, user_id:user_info}))
     navigate(`/announcements/interview/${post_id}/${user_info}`);
-    console.log("123123");
   }
 
   function editButtonVerification() {
