@@ -13,11 +13,6 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Player,
         foreignKey: "post_id",
       });
-      Post.belongsToMany(models.User, {
-        through: models.PendingPlayer,
-        foreignKey: "post_id",
-        as: "pending_post", //FIXME findAll через пост не пашет
-      });
       Post.belongsTo(models.User, {
         foreignKey: "master_id",
         as: "author",

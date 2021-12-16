@@ -18,7 +18,6 @@ export const addPendingPlayer = ({ post_id, user_id }) => async (dispatch) => {
 
 export const acceptPlayer = ({ post_id, user_id }) => async (dispatch) => {
   // Перенос  участника из комнаты ожидания
-  console.log('ogviewagnfoinhervpoiqepgiaaaaaaaa')
   await fetch(`${URL}/players/pending/accept/${post_id}`, {
     method: 'POST',
     headers: {

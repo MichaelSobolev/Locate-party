@@ -82,7 +82,7 @@ export const AdminPage = () => {
         </button>
         <button
           onClick={() => {
-            dispatch(getPendingPlayersByPost(12));
+            dispatch(getPendingPlayersByPost(1));
           }}
         >
           getPendingPlayersByPost

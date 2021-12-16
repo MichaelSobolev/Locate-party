@@ -14,10 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Post, { foreignKey: "master_id" });
       User.hasMany(models.Article, { foreignKey: "author_id" });
       User.belongsToMany(models.Post, {
-        through: models.PendingPlayer,
-        foreignKey: "user_id",
-      });
-      User.belongsToMany(models.Post, {
         through: models.Player,
         foreignKey: "user_id",
       });

@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Player.init({
     user_id: DataTypes.INTEGER,
     post_id: DataTypes.INTEGER,
+    isPending: DataTypes.BOOLEAN,
    
   }, {
     sequelize,
