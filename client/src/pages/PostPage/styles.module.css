@@ -1,0 +1,11 @@
+.post_normalize{
+  width: 70vw;
+}
+.horizontal_box{
+  display:flex;
+  justify-content: center; 
+} 
+
+.button{
+  margin: 0 2vw 0 2vw ;
+}

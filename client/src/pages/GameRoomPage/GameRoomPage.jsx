@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { Button } from "../../components/Button/Button";
+import { PlayersList } from "../../components/PlayersList/PlayersList";
 import { getPlayersByPost } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
 import styles from "./styles.module.css";
@@ -125,6 +126,9 @@ export const GameRoomPage = () => {
             </Button>
           </div>
         </div>
+      </div>
+      <div>
+        <PlayersList id={ id } />
       </div>
     </div>
   );

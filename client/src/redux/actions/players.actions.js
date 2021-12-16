@@ -3,7 +3,8 @@ import { SET_ROOM_DATA } from "../types";
 const URL = process.env.REACT_APP_API_ADRESS;
 export const addPendingPlayer = ({ post_id, user_id }) => async (dispatch) => {
   // Добавление игрока в ожидание
-  console.log(typeof post_id, typeof user_id)
+  console.log('====', post_id, user_id, '====')
+
   await fetch(`${URL}/players/pending/${post_id}`, {
     method: 'POST',
     headers: {
@@ -12,11 +13,11 @@ export const addPendingPlayer = ({ post_id, user_id }) => async (dispatch) => {
     credentials: 'include',
     body: JSON.stringify({ user_id }),
   });
+
 };
 
 export const acceptPlayer = ({ post_id, user_id }) => async (dispatch) => {
   // Перенос  участника из комнаты ожидания
-  console.log('ogviewagnfoinhervpoiqepgiaaaaaaaa')
   await fetch(`${URL}/players/pending/accept/${post_id}`, {
     method: 'POST',
     headers: {
@@ -55,9 +56,23 @@ export const removePlayer = ({ post_id, user_id }) => async (dispatch) => {
 };
 
 export const getPlayersByPost = (post_id) => async (dispatch) => {
-  // Удаление участника из комнаты
+  // ИГроки в посте
 
   const response = await fetch(`${URL}/players/${post_id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include'
+  });
+  const payload = await response.json()
+  dispatch({ type: SET_ROOM_DATA, payload })
+};
+
+
+export const getPendingPlayersByPost = (post_id) => async (dispatch) => {
+  // ИГроки в посте 12
+  const response = await fetch(`${URL}/players/pending/${post_id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

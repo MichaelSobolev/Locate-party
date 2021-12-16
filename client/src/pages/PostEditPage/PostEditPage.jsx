@@ -70,11 +70,11 @@ export const PostEditPage = () => {
     });
     console.log(id, request);
     dispatch(updatePost(id, request));
-    navigate('/announcements')
+    navigate(`/announcements/${id}`)
   };
 
   return (
-    <main>
+    <>
       <div className={styles["new-post-page"]}>
         <Title as="h2">Новая публикация</Title>
         <form
@@ -102,6 +102,6 @@ export const PostEditPage = () => {
           </Button>
         </form>
       </div>
-    </main>
+    </>
   );
 };

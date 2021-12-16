@@ -4,10 +4,12 @@ import {
   acceptPlayer,
   addPendingPlayer,
   declinePlayer,
+  getPendingPlayersByPost,
   getPlayersByPost,
   removePlayer,
 } from "../../redux/actions/players.actions";
 import { addMockUser, addSystem } from "../../redux/actions/posts.actions";
+import { fetchTester, getUserIdByGoogleId } from "../../redux/actions/user.actions";
 
 export const AdminPage = () => {
   const dispatch = useDispatch();
@@ -70,6 +72,20 @@ export const AdminPage = () => {
           }}
         >
           getPlayersByPost
+        </button>
+        <button
+          onClick={() => {
+            dispatch(getUserIdByGoogleId("106252397252127773101"));
+          }}
+        >
+          getUserIdByGoogleId
+        </button>
+        <button
+          onClick={() => {
+            dispatch(getPendingPlayersByPost(1));
+          }}
+        >
+          getPendingPlayersByPost
         </button>
       </div>
     </div>

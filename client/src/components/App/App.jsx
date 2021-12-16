@@ -24,6 +24,7 @@ import { NewsPage } from "../../pages/NewsPage/NewsPage";
 import { GameRoomPage } from "../../pages/GameRoomPage/GameRoomPage";
 import { InterviewPage } from "../../pages/InterviewPage/InterviewPage";
 import { TestForSocket } from "../testForSocket/testForSocket";
+import { UserInfo } from "../../pages/UserPage/UserInfo/UserInfo";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function App() {
         .then((resObject) => {
           console.log("@@@@@@@@@@@@@@@@@@@@@@@@", resObject.user);
           dispatch(createSession(resObject.user));
+
           // setUser(resObject.user);
           console.log("THIS", resObject.user);
         })
@@ -63,8 +65,13 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} exact />
             <Route path="/user-page" element={<UserPage />} />
+            <Route path="/user-page/firstEdit" element={<UserInfo />} />
             <Route path="/announcements" element={<AnnouncementsPage />} />
             <Route path="/announcements/new" element={<NewPostPage />} />
+            <Route
+              path="/announcements/interview/:post_id/:user_id"
+              element={<InterviewPage />}
+            />
             <Route path="/announcements/edit/:id" element={<PostEditPage />} />
             <Route path="/announcements/:id" element={<PostPage />} />
             <Route path="/logout" element={<Logout />} />
@@ -75,11 +82,7 @@ function App() {
             {/* АХТУНГ НИЖЕ ВРЕМЕННЫЙ РОУТ */}
             <Route path="/gameroom/:id" element={<GameRoomPage />} />
             <Route path="/admin" element={<AdminPage />} />
-            <Route
-              path="/admin/test/:post_id/:user_id"
-              element={<InterviewPage />}
-            />
-
+            <Route path="/setup" element={<AdminPage />} />
             <Route path="*" element={<ErorPage />} />
           </Routes>
         </ErrorBoundary>
