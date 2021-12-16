@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Avatar } from "../../../components/Avatar/Avatar";
 import { Title } from "../../../components/Title/Title";
 import styles from "./styles.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { addInfo, addInfoFetch } from "../../../redux/actions/user.actions";
+import { addInfo, addInfoFetch, getUserIdByGoogleId } from "../../../redux/actions/user.actions";
 
 export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
   const [name, setName] = useState("");
@@ -20,7 +20,10 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
 
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
+  let user_info = useSelector((state) => state.user_info.user_id);
   console.log(session[0]);
+  user_info = user_info ? user_info : false;
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -37,7 +40,7 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
       prefered_schedule: prefered_schedule,
       textarea: textarea,
     };
-    dispatch(addInfoFetch(obj))
+    dispatch(addInfoFetch(obj));
     // dispatch(addInfo(obj));
     // fetch(`http://localhost:5000/users/db`, {
     //   method: "POST",
@@ -50,7 +53,14 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
     // const userTrueId = await response.json();
     // console.log(userTrueId);
   };
-
+  let counter = 0;
+  useEffect(() => {
+    counter++;
+    console.log("counter", counter);
+    if (session[0]?.id) {
+      dispatch(getUserIdByGoogleId(session[0].id));
+    }
+  }, [session]);
   return (
     <>
       <section className={`${styles["user-info"]} ${className}`}>

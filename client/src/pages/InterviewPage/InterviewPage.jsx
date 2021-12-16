@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { ButtonPost } from "../../components/PostCard/ButtonPost/ButtonPost";
 import { acceptPlayer } from "../../redux/actions/players.actions";
