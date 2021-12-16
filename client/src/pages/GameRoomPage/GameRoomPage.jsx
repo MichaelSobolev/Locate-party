@@ -8,7 +8,7 @@ import { Chat } from './Chat/Chat'
 
 import styles from "./styles.module.css";
 export const GameRoomPage = () => {
-  let oleg ={uri: 'https://sozh.info/wp-content/uploads/2019/09/Oleg-Mongol.jpg'}
+  let oleg ={uri: 'https://www.seekpng.com/png/full/356-3562377_personal-user.png'}
   let [post, setPost] = useState({
     title: "",
     system_title: "",
@@ -85,7 +85,7 @@ export const GameRoomPage = () => {
           </div>
         </div>
       </div>
-      <div className={styles.gameTime}> 01/02/2013 Четверг 12.00</div>
+      <div className={styles.gameTime}> Время игры: 01/02/2013 Четверг 12.00</div>
       <div className={styles.chat_and_players}>
         <div className={styles.flex_container_row}>
           <div className={styles.players}>

@@ -1,8 +1,12 @@
-.chat{
-color: black;
+.input-form {
+  width: 100%;
+  border-color: red;
+  border-radius:10px;
+  box-shadow: 1px 4px 10px 1px rgba(248, 0, 0, 0.404);
 }
 
 .container {
+  overflow-y: scroll;
   border: 2px solid #dedede;
   background-color: #f1f1f1;
   border-radius: 5px;
@@ -51,3 +55,11 @@ color: black;
   color: #999;
 }
 
+.chat{
+color: black;
+overflow-y: scroll;
+margin-left: 1vw;
+flex-grow: 1;
+border-color: red;
+height: 50vh;
+}
