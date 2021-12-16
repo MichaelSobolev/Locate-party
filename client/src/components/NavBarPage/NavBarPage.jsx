@@ -19,74 +19,72 @@ export const NavBarPage = (props) => {
   return (
     <header className="header">
       <div className="sidenav">
-        <NavLink
-          className="header__link"
-          activeClassName="header__link_active"
-          to="/"
-        >
-          <FaDiceD20 className="icon" />
-          findATable
-        </NavLink>
-        <NavLink
-          className="header__link"
-          activeClassName="header__link_active"
-          to="/announcements"
-        >
-          <GiSpikedDragonHead className="icon" />
-          Найти игру
-        </NavLink>
-        <NavLink
-          className="header__link"
-          activeClassName="header__link_active"
-          to="/user-page"
-        >
-          <BsFillPersonLinesFill className="icon" />
-          Профиль
-        </NavLink>
-
         {data[0]?.id ? (
-          <NavLink
-            className="header__link"
-            activeClassName="header__link_active"
-            to="/logout"
-          >
-            <IoLogOut className="icon" />
-            Выйти
-          </NavLink>
-        ) : (
-          <NavLink
-            className="header__link"
-            activeClassName="header__link_active"
-            to="/login"
-          >
-            <FcGoogle className="icon" />
-            Войти
-          </NavLink>
-        )}
+          <>
+            <NavLink
+              className="header__link"
+              activeClassName="header__link_active"
+              to="/"
+            >
+              <FaDiceD20 className="icon" />
+              findATable
+            </NavLink>
 
-        <NavLink
-          className="header__link"
-          activeClassName="header__link_active"
-          to="/news"
-        >
-          <BsGrid1X2Fill className="icon" />
-          Новости
-        </NavLink>
-        <NavLink
-          className="header__link"
-          activeClassName="header__link_active"
-          to="/announcements/new"
-        >
-          <BsHurricane className="icon" />
-          Новый Пост
-        </NavLink>
-        <NavLink
-          className="header__link"
-          activeClassName="header__link_active"
-          to="/admin"
-        >
-          Админ
-        </NavLink>
+            <NavLink
+              className="header__link"
+              activeClassName="header__link_active"
+              to="/announcements"
+            >
+              <GiSpikedDragonHead className="icon" />
+              Найти игру
+            </NavLink>
+            <NavLink
+              className="header__link"
+              activeClassName="header__link_active"
+              to="/user-page"
+            >
+              <BsFillPersonLinesFill className="icon" />
+              Профиль
+            </NavLink>
+
+            <NavLink
+              className="header__link"
+              activeClassName="header__link_active"
+              to="/logout"
+            >
+              <IoLogOut className="icon" />
+              Выйти
+            </NavLink>
+
+            <NavLink
+              className="header__link"
+              activeClassName="header__link_active"
+              to="/news"
+            >
+              <BsGrid1X2Fill className="icon" />
+              Новости
+            </NavLink>
+            <NavLink
+              className="header__link"
+              activeClassName="header__link_active"
+              to="/announcements/new"
+            >
+              <BsHurricane className="icon" />
+              Новый Пост
+            </NavLink>
+            <NavLink
+              className="header__link"
+              activeClassName="header__link_active"
+              to="/admin"
+            >
+              Админ
+            </NavLink>
+          </>
+        ) : (
+
+          ""
+         
+        )}
       </div>
     </header>
   );
