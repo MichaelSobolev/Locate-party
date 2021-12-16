@@ -82,7 +82,6 @@ export const PostPage = () => {
     <div className={styles.post_normalize}>
       {isPostExist && <PostCard props={parsedPost} />}
       <div className={styles.horizontal_box}>
-        <h2>{user_info}</h2>
         <div className={styles.button}>
           {isPostloaded && user_info ? (
             <ButtonPost isNavigation={false} action={join} id={parsedPost.id}>
