@@ -32,7 +32,7 @@ router.route("/").post(async (req, res) => {
     //   isAdmin: false,
     // });
 
-    res.json(req.session);
+    res.json(req.session.passport.user);
     //   {
     //   id: Number(req.body.id),
     //   name: req.body.name,
