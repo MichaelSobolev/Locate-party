@@ -11,9 +11,15 @@ export const Login = () => {
   return (
     <div>
       <div>
-        <h3>используйте аккаунт Google для входа</h3>
-        <button onClick={google}>Войти</button>
+        <h3>use Google to login</h3>
+        <button onClick={google}>Login</button>
       </div>
+
+
+
+
+
+      
     </div>
   );
 };

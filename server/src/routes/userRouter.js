@@ -20,10 +20,7 @@ router.route("/db").post(async (req, res) => {
 router.route("/").post(async (req, res) => {
   //res.locals.user = req.session;
   try {
-    console.log(
-      "REQ.SESSION (USER DATA)>>>>>>>>>>>>>>>",
-      req.session.passport.user
-    );
+    console.log("REQ.SESSION >>>>>>>>>>>>>>>", req.session);
 
     // findOrCreate
     // await User.create({
@@ -35,7 +32,7 @@ router.route("/").post(async (req, res) => {
     //   isAdmin: false,
     // });
 
-    res.json(req.session.passport.user);
+    res.json(req.session);
     //   {
     //   id: Number(req.body.id),
     //   name: req.body.name,

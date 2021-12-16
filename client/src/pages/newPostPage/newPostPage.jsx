@@ -8,7 +8,6 @@ import styles from "./styles.module.css";
 
 export const NewPostPage = () => {
   const dispatch = useDispatch();
-
   const messages = {
     title: `Заголовок объявления`,
     system_id: `Игровая система (ID!) (TODO Добавить сюда селектор)`,
@@ -27,10 +26,7 @@ export const NewPostPage = () => {
       name: "system_id",
       id: "system_id",
       label: messages.system_id,
-      options: [
-        { text: "Pathfinder", value: 1 },
-        { text: "Манчкин", value: 2 },
-      ],
+      options: [{text: 'Pathfinder', value: 1}, {text: 'Манчкин', value: 2}],
     }),
     useInput({ name: "schedule", id: "schedule", label: messages.schedule }),
     useInput({ name: "platform", id: "platform", label: messages.platform }),

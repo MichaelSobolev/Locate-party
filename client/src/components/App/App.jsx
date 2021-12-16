@@ -23,6 +23,7 @@ import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
 import { NewsPage } from "../../pages/NewsPage/NewsPage";
 import { GameRoomPage } from "../../pages/GameRoomPage/GameRoomPage";
 import { InterviewPage } from "../../pages/InterviewPage/InterviewPage";
+import { TestForSocket } from "../testForSocket/testForSocket";
 
 function App() {
   const dispatch = useDispatch();
@@ -84,6 +85,7 @@ function App() {
         </ErrorBoundary>
       </main>
       <Sidebar />
+      <TestForSocket/>
     </div>
   );
 }

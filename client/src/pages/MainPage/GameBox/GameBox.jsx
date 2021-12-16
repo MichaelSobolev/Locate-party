@@ -10,7 +10,6 @@ export const GameBox = () => (
       <img src={logo1} width="250" height="250" />
       <figcaption>САРИГРА</figcaption>
     </div>
-
     <div className={styles.boxtext} >
       <img src={logo2} width="250" height="250" />
       <figcaption>BEAVER GAMES</figcaption>
