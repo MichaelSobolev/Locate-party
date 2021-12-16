@@ -1,9 +1,31 @@
-import { CREATE_POST, SET_POSTS, SET_CURRENT_POST, UPDATE_POST } from '../types';
+
+import { CREATE_POST, SET_POSTS, SET_CURRENT_POST, UPDATE_POST, SET_USER_REDUX } from '../types';
 
 const URL = process.env.REACT_APP_API_ADRESS;
 
+
+export const getAuthorId = () => async (dispatch) => {
+  // Получение автора поста по гугл id
+  // getState()
+  try {
+    // const response = await fetch(`${URL}/players/user/${googleId}`, {
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   credentials: 'include',
+    // });
+    // const user = await response.json();
+    // dispatch({ type: SET_USER_REDUX, payload: user });
+  } catch (err) {
+    console.log('Fetching err');
+  }
+};
+
 export const getPosts = () => async (dispatch) => {
   // Получает все посты из бд и перезаписывает состояние ими!
+
+
   console.log(`${URL}/posts`)
   const response = await fetch(`${URL}/posts`, {
     method: 'GET',
@@ -38,8 +60,8 @@ export const getPost = (id) => async (dispatch) => {
 
 export const createPost = (newPost) => async (dispatch) => {
   // Создание 1го поста и запись в бд и состояние
-  console.log(newPost)
-    await fetch(`${URL}/posts`, {
+  console.log('newPost', newPost)
+  await fetch(`${URL}/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -48,10 +70,10 @@ export const createPost = (newPost) => async (dispatch) => {
     body: JSON.stringify(newPost),
   });
 
-  // dispatch({
-  //   type: CREATE_POST,
-  //   payload: { newPost },
-  // });
+  dispatch({
+    type: CREATE_POST,
+    payload: { newPost },
+  });
 };
 
 export const updatePost = (id, payload) => async (dispatch) => {

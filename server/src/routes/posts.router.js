@@ -33,8 +33,8 @@ router
   })
   .post((req, res) => {
     try {
-      console.log('_!_!_!_!_!_!_!POST_BACKEND', { ...req.body, isActive: true, isPaid: false, master_id: 1 });
-      Post.create({ ...req.body, isActive: true, isPaid: false, master_id: 1 });
+      console.log('_!_!_!_!_!_!_!POST_BACKEND', { ...req.body, isActive: true, isPaid: false, });
+      Post.create({ ...req.body, isActive: true, isPaid: false });
       res.sendStatus(200);
     } catch (error) {
       console.log('===ERROR===', error, '=======')

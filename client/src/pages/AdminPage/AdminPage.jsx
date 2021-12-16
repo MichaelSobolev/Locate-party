@@ -8,6 +8,7 @@ import {
   removePlayer,
 } from "../../redux/actions/players.actions";
 import { addMockUser, addSystem } from "../../redux/actions/posts.actions";
+import { fetchTester, getUserIdByGoogleId } from "../../redux/actions/user.actions";
 
 export const AdminPage = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,13 @@ export const AdminPage = () => {
         <button
           onClick={() => {
             dispatch(getPlayersByPost(1));
+          }}
+        >
+          getPlayersByPost
+        </button>
+        <button
+          onClick={() => {
+            dispatch(getUserIdByGoogleId("106252397252127773101"));
           }}
         >
           getPlayersByPost

@@ -5,10 +5,18 @@ const { Post, User, Player, PendingPlayer, BlackList } = require('../db/models')
 
 const router = express.Router();
 
-// router.route("/user/:googleId").get(async (req, res) => {
-//   const { googleId } = req.params;
-//   const request = await User.findOne({ where: {googleId}})
-// })
+router.route("/user/:googleId").get(async (req, res) => {
+  const { googleId } = req.params;
+  console.log('googleId', googleId)
+  try {
+    const response = await User.findOne({ where: { googleId }, raw: true })
+    // const user = await response.json()
+    console.log(response.id)
+    res.status(200).json(response.id)
+  } catch (error) {
+    res.status(404).json(0)
+  }
+})
 router.route("/pending/accept/:id")
   .post(async (req, res) => {
     // Добавляет пользователи в players

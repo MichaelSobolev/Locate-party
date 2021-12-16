@@ -5,6 +5,7 @@ import { currentPostReducer } from "./currentPost.reducer"
 import { newsReducer } from "./news.reducer"
 import { currentRoomReducer } from "./currentRoom.reducer"
 import { sessionReducer } from "./sessionReducer";
+import { userInfoReducer } from "./userInfoReducer"
 
 
 
@@ -15,4 +16,5 @@ export const rootReducer = combineReducers({
   news: newsReducer,
   user: userReducer,
   session: sessionReducer,
+  user_info: userInfoReducer
 })

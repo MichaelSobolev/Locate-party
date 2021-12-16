@@ -3,9 +3,9 @@ import { Avatar } from "../../../components/Avatar/Avatar";
 import { Title } from "../../../components/Title/Title";
 import styles from "./styles.module.css";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { addInfo } from "../../../redux/actions/user.actions";
+import { addInfo, addInfoFetch } from "../../../redux/actions/user.actions";
 
 export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
   const [name, setName] = useState("");
@@ -19,15 +19,17 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
   const [textarea, setTextarea] = useState("");
 
   const dispatch = useDispatch();
-
+  const session = useSelector((state) => state.session);
+  console.log(session[0]);
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const obj = {
       //id: uuidv4(),
+      googleId: session[0].id,
       name: name,
       email: email,
-      image: image,
+      image: image ? image : session[0].photos[0].value,
       age: age,
       gender: gender,
       experience: experience,
@@ -35,16 +37,18 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
       prefered_schedule: prefered_schedule,
       textarea: textarea,
     };
-    dispatch(addInfo(obj));
-
-    fetch(`http://localhost:5000/users/db`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(obj),
-    });
+    dispatch(addInfoFetch(obj))
+    // dispatch(addInfo(obj));
+    // fetch(`http://localhost:5000/users/db`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   credentials: "include",
+    //   body: JSON.stringify(obj),
+    // })
+    // const userTrueId = await response.json();
+    // console.log(userTrueId);
   };
 
   return (

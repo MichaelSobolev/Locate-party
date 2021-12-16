@@ -4,9 +4,10 @@ import {
   USER_LOGOUT,
   VALIDATE_SUCCESS,
   VALIDATE_ERROR,
-  ADD_USER,
   ADD_INFO,
   ADD_SESSION,
+  MODIFY_SESSION,
+  SET_USER_ID,
 } from "../types";
 
 const url = process.env.REACT_APP_API_ADRESS;
@@ -83,13 +84,49 @@ export const createSession = (data) => async (dispatch) => {
   });
   console.log("RESULT ####################################");
   const result = await response.json();
-  console.log(result);
-
   dispatch({
     type: ADD_SESSION,
     payload: result,
   });
+  dispatch(
+    getUserIdByGoogleId(result.id)
+
+  )
 };
+
+export const getUserIdByGoogleId = (google_id) => async (dispatch) => {
+  console.log('getUserIdByGoogleId')
+  const response = await fetch(`http://localhost:5000/players/user/${google_id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  })
+  const user_id = await response.json()
+  if (user_id) {
+    console.log('TRUE ID', user_id)
+    dispatch({
+      type: SET_USER_ID,
+      payload: { user_id },
+    });
+  } else {
+    console.log('Юзер не найден')
+  }
+}
+export const addInfoFetch = (value) => async (dispatch) => {
+  const response = await fetch(`http://localhost:5000/users/db`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(value),
+  })
+  const id = await response.json()
+  dispatch(addInfo({ ...value, ...id }))
+
+}
 
 export const addInfo = (value) => {
   return {

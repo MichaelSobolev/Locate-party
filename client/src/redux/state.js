@@ -3,7 +3,8 @@ export const initialState = {
   currentGameRoom: [{}],
   posts: [],
   news: [],
-  session: [{}]
+  session: [{}],
+  user_info: { id: 0 }
 }
 
 
