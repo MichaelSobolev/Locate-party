@@ -25,6 +25,7 @@ import { GameRoomPage } from "../../pages/GameRoomPage/GameRoomPage";
 import { InterviewPage } from "../../pages/InterviewPage/InterviewPage";
 import { TestForSocket } from "../testForSocket/testForSocket";
 import { UserInfo } from "../../pages/UserPage/UserInfo/UserInfo";
+import Snowfall from 'react-snowfall'
 
 function App() {
   const dispatch = useDispatch();
@@ -57,9 +58,16 @@ function App() {
     getUser();
   }, []);
 
+
+const [theme, setTheme] = useState(false);
+
+console.log(theme);
+
+
+
   return (
     <div className={styles.app}>
-      <NavBarPage />
+      <NavBarPage setTheme={setTheme}/>
       <main className={styles.main}>
         <ErrorBoundary>
           <Routes>
@@ -86,9 +94,13 @@ function App() {
             <Route path="*" element={<ErorPage />} />
           </Routes>
         </ErrorBoundary>
+        {theme ? 
+        <Snowfall /> 
+        :null
+        }
       </main>
       <Sidebar />
-      <TestForSocket/>
+      {/* <TestForSocket/> */}
     </div>
   );
 }

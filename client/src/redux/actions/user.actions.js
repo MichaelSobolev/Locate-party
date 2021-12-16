@@ -90,7 +90,6 @@ export const createSession = (data) => async (dispatch) => {
   });
   dispatch(
     getUserIdByGoogleId(result.id)
-
   )
 };
 
@@ -128,8 +127,7 @@ export const addInfoFetch = (value) => async (dispatch) => {
   dispatch({
     type: SET_USER_ID,
     payload:  id,
-  })  // dispatch(addInfo({ ...value, ...id }))
-
+  })  
 }
 
 export const addInfo = (value) => {
