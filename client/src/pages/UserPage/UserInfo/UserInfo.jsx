@@ -18,6 +18,7 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
   const [prefered_schedule, setPrefered_schedule] = useState("");
   const [textarea, setTextarea] = useState("");
 
+  const [isInfoAdded, setIsInfoAdded] = useState(false)
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
   let user_info = useSelector((state) => state.user_info.user_id);

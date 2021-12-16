@@ -124,7 +124,11 @@ export const addInfoFetch = (value) => async (dispatch) => {
     body: JSON.stringify(value),
   })
   const id = await response.json()
-  dispatch(addInfo({ ...value, ...id }))
+  console.log('addInfoFetch ID: ', id)
+  dispatch({
+    type: SET_USER_ID,
+    payload:  id,
+  })  // dispatch(addInfo({ ...value, ...id }))
 
 }
 
