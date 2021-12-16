@@ -12,11 +12,14 @@ export const PostPage = () => {
   const [isPostExist, setIsPostExist] = useState(false);
   const [parsedPost, setParsedPost] = useState(null);
   const [isPostloaded, setIsPostLoaded] = useState(false);
+  const [isAuthor, setIsAuthor] = useState(false);
 
   const { id } = useParams();
   const dispatch = useDispatch();
   const post = useSelector((state) => state.currentPostStore);
   const session = useSelector((state) => state.session);
+  let user_info = useSelector((state) => state.user_info.user_id);
+  user_info = user_info ? user_info : false;
 
   function parsePost(post) {
     if (post) {
@@ -36,10 +39,10 @@ export const PostPage = () => {
     const post_id = id;
     fetch(`${process.env.REACT_APP_API_ADRESS}/`);
     // const user_id = session[0].id;
-    const user_id = session[0]  
+    const user_id = session[0];
     console.log("session user_id", user_id);
     // dispatch()
-    // navigate(`/announcements/interview/${post_id}/${user_id}`);
+    navigate(`/announcements/interview/${post_id}/${user_info}`);
     console.log("123123");
   }
 
@@ -59,8 +62,13 @@ export const PostPage = () => {
 
   useEffect(() => {
     parsePost(post);
+
     if (post) {
       setIsPostLoaded(true);
+    }
+    if (user_info === post.master_id) {
+      console.log(user_info === post?.master_id);
+      setIsAuthor(true);
     }
   }, [post]);
 
@@ -69,39 +77,29 @@ export const PostPage = () => {
       editButtonVerification();
     }
   }, [parsedPost]);
-  // console.log(12312313123,  parsedPost);
+  // console.log(12312 313123,  parsedPost);
   return (
     <div className={styles.post_normalize}>
-      {/* {isPostExist && <PostList posts={[parsedPost]} />} */}
       {isPostExist && <PostCard props={parsedPost} />}
       <div className={styles.horizontal_box}>
+        <h2>{user_info}</h2>
         <div className={styles.button}>
-          {isPostloaded && (
+          {isPostloaded && user_info ? (
             <ButtonPost isNavigation={false} action={join} id={parsedPost.id}>
               Присоединиться
             </ButtonPost>
+          ) : (
+            <p>Идёт загрузка...</p>
           )}
         </div>
         <div className={styles.button}>
-          {isPostExist && (
+          {isAuthor && (
             <ButtonPost path="/announcements/edit/" id={parsedPost.id}>
               Редактировать
             </ButtonPost>
           )}
         </div>
       </div>
-      {/* <div>
-        {isPostloaded && (
-          <ButtonPost path="/announcements/edit/" id={parsedPost.id}>
-            Присоединиться
-          </ButtonPost>
-        )}
-        {isPostExist && (
-          <ButtonPost path="/announcements/edit/" id={parsedPost.id}>
-            Отправить
-          </ButtonPost>
-        )}
-      </div> */}
     </div>
   );
 };
