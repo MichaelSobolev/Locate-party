@@ -5,17 +5,22 @@ import { Button } from "../../components/Button/Button";
 import { PlayersList } from "../../components/PlayersList/PlayersList";
 import { getPlayersByPost } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
-import { Chat } from './Chat/Chat'
+import { Chat } from "./Chat/Chat";
 
 import styles from "./styles.module.css";
 export const GameRoomPage = () => {
-  let oleg ={uri: 'https://www.seekpng.com/png/full/356-3562377_personal-user.png'}
+  let oleg = {
+    uri: "https://www.seekpng.com/png/full/356-3562377_personal-user.png",
+  };
+
   let [post, setPost] = useState({
     title: "",
     system_title: "",
     requirements: "",
     description: "",
   });
+  const [isAuthor, setIsAuthor] = useState(false);
+
   console.log("STATE_POST", post);
   console.log("STATE_POST.title", post?.title);
   const { id } = useParams();
@@ -23,17 +28,16 @@ export const GameRoomPage = () => {
   const fetchedPost = useSelector((state) => state.currentPostStore);
   console.log(fetchedPost?.title);
   const postPlayers = useSelector((state) => state.currentGameRoom);
+  console.log(postPlayers)
   const players = postPlayers.map((user) => {
-    return { name: user.player_name, link: `/user-page/${user.player_id}` };
+    console.log('Players_map', user)
+    console.log('User', user?.user_to_player)
+    return { name: "user", link: `/user-page/${user.player_id}` };
   });
 
-  // [
-  //   { name: "Vasya", link: "/user-page" },
-  //   { name: "Masha", link: "/user-page" },
-  //   { name: "Kolya", link: "/user-page" },
-  //   { name: "Dasha", link: "/user-page" },
-  //   { name: "I_Tvoya_Mamasha", link: "/user-page" },
-  // ];
+  let user_info = useSelector((state) => state.user_info.user_id);
+  user_info = user_info ? user_info : false;
+
   let user = {
     image:
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -48,6 +52,10 @@ export const GameRoomPage = () => {
 
   useEffect(() => {
     setPost(fetchedPost);
+    if (user_info === post.master_id) {
+      console.log(user_info === post?.master_id);
+      setIsAuthor(true);
+    }
   }, [fetchedPost]);
 
   useEffect(() => {
@@ -86,27 +94,33 @@ export const GameRoomPage = () => {
           </div>
         </div>
       </div>
-      <div className={styles.gameTime}> Время игры: 01/02/2013 Четверг 12.00</div>
+      <div className={styles.gameTime}>
+        {" "}
+        Время игры: 01/02/2013 Четверг 12.00
+      </div>
       <div className={styles.chat_and_players}>
         <div className={styles.flex_container_row}>
           <div className={styles.players}>
             <div className={styles.flex_container_column}>
               <ul className={styles.ul}>
                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' />  {el.name} </li>;
+                  console.log('------',el)
+                  return (
+                    <li className={styles.li} onClick={() => navigate(el.link)}>
+                      {" "}
+                      <img
+                        className={styles.img}
+                        src={oleg.uri}
+                        width="80%"
+                      />{" "}
+                      {el.name}{" "}
+                    </li>
+                  );
                 })}
-                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
-                })}
-                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
-                })}
-                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
-                })}
-                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
-                })}
+                
+                
+                
+                
               </ul>
             </div>
           </div>
@@ -143,7 +157,7 @@ export const GameRoomPage = () => {
         </div>
       </div>
       <div>
-        <PlayersList id={ id } />
+        <PlayersList id={id} />
       </div>
     </div>
   );

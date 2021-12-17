@@ -22,6 +22,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "system_id",
         onDelete: "CASCADE",
       });
+      Post.hasMany(models.Player, { foreignKey: "post_id" });
+
     }
   }
   Post.init(

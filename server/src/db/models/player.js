@@ -11,13 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Player.belongsTo(models.User, {
+        foreignKey: "user_id",
+        as: "user_to_player",
+        onDelete: "CASCADE",
+      });
+      Player.belongsTo(models.Post, {
+        foreignKey: "post_id",
+        as: "post_to_player",
+        onDelete: "CASCADE",
+      });
     }
   }
   Player.init({
     user_id: DataTypes.INTEGER,
     post_id: DataTypes.INTEGER,
     isPending: DataTypes.BOOLEAN,
-   
+
   }, {
     sequelize,
     modelName: 'Player',

@@ -11,7 +11,8 @@ export const PostCard = ({ props }) => (
             <div className={styles["card-item__side"]}>
               <div className={styles["card-item__cover"]}>
                 <img
-                  src="https://images.pexels.com/photos/6541817/pexels-photo-6541817.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  src={props.image}
+                  alt="https://images.pexels.com/photos/6541817/pexels-photo-6541817.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                   className={styles["card-item__bg"]}
                 />
               </div>

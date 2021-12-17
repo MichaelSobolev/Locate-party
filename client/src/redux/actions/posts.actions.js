@@ -27,17 +27,21 @@ export const getPosts = () => async (dispatch) => {
 
 
   console.log(`${URL}/posts`)
-  const response = await fetch(`${URL}/posts`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include',
-  });
-  const posts = await response.json();
-  // console.log('fetch posts')
-  console.log(posts);
-  dispatch({ type: SET_POSTS, payload: posts })
+  try {
+    const response = await fetch(`${URL}/posts`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    });
+    const posts = await response.json();
+    // console.log('fetch posts')
+    console.log(posts);
+    dispatch({ type: SET_POSTS, payload: posts })
+  } catch (err) {
+    console.log()
+  }
 }
 
 
