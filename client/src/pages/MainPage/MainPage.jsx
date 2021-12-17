@@ -4,14 +4,14 @@ import { Text } from '../../components/Text/Text';
 import { Title } from '../../components/Title/Title';
 
 import styles from './styles.module.css';
-import { Video } from './Video/Video';
 import { GameBox } from './GameBox/GameBox'
-import video from './Video/videofiles/VideoDragon.mp4';
+// import { Video } from './Video/Video';
+// import video from './Video/videofiles/VideoDragon.mp4';
 
 
 export const MainPage = () => (
   <div>
-    <Video source={video} />
+    {/* <Video source={video} /> */}
     <h3>Топ игр недели </h3>
     <GameBox />
     <Title as="h2">О нас: Сайт для любителей настольных игр и все что с этим  связанно.</Title>

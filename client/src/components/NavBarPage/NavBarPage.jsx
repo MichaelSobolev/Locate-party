@@ -7,12 +7,12 @@ import {
 } from "react-icons/bs";
 import { D20Spinning } from "./D20Spinning/D20spinning";
 import { IoLogOut } from "react-icons/io5";
-import { FaDiceD20 } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
-import { GiSpikedDragonHead } from "react-icons/gi";
-import { useSelector } from "react-redux";
+import {FaDiceD20} from "react-icons/fa"
+import {FcGoogle} from "react-icons/fc"
+import {GiSpikedDragonHead} from "react-icons/gi"
 
 import "./index.css";
+import { useSelector } from "react-redux";
 
 export const NavBarPage = (props) => {
   const data = useSelector((state) => state.session);
@@ -35,7 +35,7 @@ export const NavBarPage = (props) => {
           activeClassName="header__link_active"
           to="/announcements"
         >
-          <GiSpikedDragonHead className="icon" />
+          <GiSpikedDragonHead className='icon'/>
           Найти игру
         </NavLink>
         <NavLink
@@ -43,36 +43,31 @@ export const NavBarPage = (props) => {
           activeClassName="header__link_active"
           to="/user-page"
         >
-          <BsFillPersonLinesFill className="icon" />
+          <BsFillPersonLinesFill className='icon'/>
           Профиль
         </NavLink>
-
-        {data[0]?.id ? (
-          <NavLink
-            className="header__link"
-            activeClassName="header__link_active"
-            to="/logout"
-          >
-            <IoLogOut className="icon" />
-            Выйти
-          </NavLink>
-        ) : (
-          <NavLink
-            className="header__link"
-            activeClassName="header__link_active"
-            to="/login"
-          >
-            <FcGoogle className="icon" />
-            Войти
-          </NavLink>
-        )}
-
+        <NavLink
+          className="header__link"
+          activeClassName="header__link_active"
+          to="/logout"
+        >
+        <IoLogOut className='icon'/>
+          Выйти
+        </NavLink>
+        <NavLink
+          className="header__link"
+          activeClassName="header__link_active"
+          to="/login"
+        >
+        <FcGoogle className='icon'/>
+          Войти
+        </NavLink>
         <NavLink
           className="header__link"
           activeClassName="header__link_active"
           to="/news"
         >
-          <BsGrid1X2Fill className="icon" />
+          <BsGrid1X2Fill className='icon'/>
           Новости
         </NavLink>
         <NavLink
@@ -80,7 +75,7 @@ export const NavBarPage = (props) => {
           activeClassName="header__link_active"
           to="/announcements/new"
         >
-          <BsHurricane className="icon" />
+          <BsHurricane className='icon'/>
           Новый Пост
         </NavLink>
         <NavLink

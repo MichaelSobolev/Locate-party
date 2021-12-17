@@ -12,10 +12,7 @@ router.route("/db").post(async (req, res) => {
 router.route("/").post(async (req, res) => {
   //res.locals.user = req.session;
   try {
-    console.log(
-      "REQ.SESSION (USER DATA)>>>>>>>>>>>>>>>",
-      req.session.passport.user
-    );
+    console.log("REQ.SESSION >>>>>>>>>>>>>>>", req.session);
 
     // findOrCreate
     // await User.create({

@@ -23,6 +23,7 @@ import { PostEditPage } from "../../pages/PostEditPage/PostEditPage";
 import { NewsPage } from "../../pages/NewsPage/NewsPage";
 import { GameRoomPage } from "../../pages/GameRoomPage/GameRoomPage";
 import { InterviewPage } from "../../pages/InterviewPage/InterviewPage";
+import { TestForSocket } from "../testForSocket/testForSocket";
 import { UserInfo } from "../../pages/UserPage/UserInfo/UserInfo";
 import Snowfall from 'react-snowfall'
 
@@ -99,6 +100,7 @@ console.log(theme);
         }
       </main>
       <Sidebar />
+      {/* <TestForSocket/> */}
     </div>
   );
 }

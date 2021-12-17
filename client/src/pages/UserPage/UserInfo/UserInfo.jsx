@@ -13,6 +13,7 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
   const UserItems = useSelector((state) =>
     state.session[0] 
   )
+  
 console.log(UserItems);
 
   const [name, setName] = useState(UserItems?._json?.name);
@@ -24,13 +25,15 @@ console.log(UserItems);
   const [timezone, setTimezone] = useState("");
   const [prefered_schedule, setPrefered_schedule] = useState("");
   const [textarea, setTextarea] = useState("");
-
   const [isInfoAdded, setIsInfoAdded] = useState(false)
+
+
   const dispatch = useDispatch();
+
   const session = useSelector((state) => state.session);
   let user_info = useSelector((state) => state.user_info.user_id);
-  console.log(session[0]);
-  user_info = user_info ? user_info : false;
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,18 +52,8 @@ console.log(UserItems);
       textarea: textarea,
     };
     dispatch(addInfoFetch(obj));
-    // dispatch(addInfo(obj));
-    // fetch(`http://localhost:5000/users/db`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   credentials: "include",
-    //   body: JSON.stringify(obj),
-    // })
-    // const userTrueId = await response.json();
-    // console.log(userTrueId);
   };
+
   let counter = 0;
   useEffect(() => {
     counter++;
@@ -97,7 +90,6 @@ console.log(UserItems);
           name = 'name'
           placeholder="name" 
           className={styles.form__field}
-          
         />
           <label for="name" className={styles.form__label}>Name</label>
         </div>

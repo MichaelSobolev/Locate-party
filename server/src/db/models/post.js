@@ -13,12 +13,6 @@ module.exports = (sequelize, DataTypes) => {
         through: models.Player,
         foreignKey: "post_id",
       });
-      Post.belongsToMany(models.User, {
-        through: models.PendingPlayer,
-        foreignKey: "post_id",
-        as:"parent_post",
-
-      });
       Post.belongsTo(models.User, {
         foreignKey: "master_id",
         as: "author",
@@ -42,8 +36,9 @@ module.exports = (sequelize, DataTypes) => {
       max_players: DataTypes.INTEGER,
       isPaid: DataTypes.BOOLEAN,
       pricing: DataTypes.INTEGER,
-      adress:DataTypes.TEXT,
-      gameDates:DataTypes.DATE,
+      adress: DataTypes.TEXT,
+      gameDates: DataTypes.DATE,
+      image: DataTypes.TEXT,
       // 
       description: DataTypes.TEXT,
       isActive: DataTypes.BOOLEAN,

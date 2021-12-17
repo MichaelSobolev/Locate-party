@@ -18,7 +18,6 @@ export const addPendingPlayer = ({ post_id, user_id }) => async (dispatch) => {
 
 export const acceptPlayer = ({ post_id, user_id }) => async (dispatch) => {
   // Перенос  участника из комнаты ожидания
-  console.log('ogviewagnfoinhervpoiqepgiaaaaaaaa')
   await fetch(`${URL}/players/pending/accept/${post_id}`, {
     method: 'POST',
     headers: {
@@ -60,6 +59,20 @@ export const getPlayersByPost = (post_id) => async (dispatch) => {
   // ИГроки в посте
 
   const response = await fetch(`${URL}/players/${post_id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include'
+  });
+  const payload = await response.json()
+  dispatch({ type: SET_ROOM_DATA, payload })
+};
+
+
+export const getPendingPlayersByPost = (post_id) => async (dispatch) => {
+  // ИГроки в посте 12
+  const response = await fetch(`${URL}/players/pending/${post_id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
