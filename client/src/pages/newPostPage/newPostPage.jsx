@@ -16,6 +16,7 @@ export const NewPostPage = () => {
   const user_info = useSelector((state) => state.user_info.user_id);
   console.log("user_info=====", user_info);
   const messages = {
+    image: 'Фотография',
     title: `Заголовок объявления`,
     system_id: `Игровая система (ID!) (TODO Добавить сюда селектор)`,
     schedule: `Удобное время и дни недели для проведения игр`,
@@ -27,6 +28,7 @@ export const NewPostPage = () => {
     description: `Описание:`,
   };
   const inputs = [
+    useInput({ name: "image", id: "image", label: messages.image }),
     useInput({ name: "title", id: "title", label: messages.title }),
     useInput({
       type: "number",
