@@ -56,10 +56,11 @@
 }
 
 .chat{
-color: black;
-overflow-y: scroll;
-margin-left: 1vw;
-flex-grow: 1;
-border-color: red;
-height: 50vh;
+  color: black;
+  overflow-y: scroll;
+  margin-left: 1vw;
+  flex-grow: 1;
+  background-color: white;
+  border-color: red;
+  height: 50vh;
 }

@@ -6,6 +6,8 @@ import { acceptPlayer } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
 import { Chat } from "../GameRoomPage/Chat/Chat";
 
+import "./styles.css";
+
 export const InterviewPage = () => {
   const [isAuthor, setIsAuthor] = useState(false);
   const { user_id, post_id } = useParams();
@@ -37,14 +39,14 @@ export const InterviewPage = () => {
   }, [post]);
 
   return (
-    <div>
-      <div>
-        <div>
+    <div className='chat_main'>
+        <div className='game_description'>
+        <div className='chatik'>
           <Chat isAuthor={isAuthor} dispatchPayload={{ user_id, post_id }} />
-        </div>
       </div>
       {/* <h2> {isAuthor}</h2> */}
       {/* TODO проверка на сессию */}
+    </div>
     </div>
   );
 };
