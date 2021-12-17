@@ -77,7 +77,7 @@ router
 
 router.route('/:id')
   .get(async (req, res) => {
-
+    try{
     const { id } = req.params;
     const post = await Post.findOne({
       include: [
@@ -95,6 +95,9 @@ router.route('/:id')
     res.status(200).json({
       ...post, system_title: post['System.title']
     });
+  }catch(err){
+    res.sendStatus(500)
+  }
   }).put(async (req, res) => {
     console.log('==============')
     console.log(req.body)
