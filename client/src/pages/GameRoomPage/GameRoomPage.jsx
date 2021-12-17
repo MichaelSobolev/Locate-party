@@ -21,26 +21,31 @@ export const GameRoomPage = () => {
   });
   const [isAuthor, setIsAuthor] = useState(false);
   const [players, setPlayers] = useState([]);
+  const session = useSelector((state) => state?.session[0]);
 
-  const { id } = useParams();
+  const user_name = session?.displayName;
+  console.log();
+  const image = session?.photos[0]?.value;
+
+  const { post_id } = useParams();
   const navigate = useNavigate();
   const fetchedPost = useSelector((state) => state.currentPostStore);
   const postPlayers = useSelector((state) => state.currentGameRoom);
+  let user_info = useSelector((state) => state.user_info.user_id);
+  user_info = user_info ? user_info : false;
 
   useEffect(() => {
     if (postPlayers.length) {
       setPlayers(
         postPlayers.map((user) => {
-          console.log("AAAAAAAAAAAAAAA", user.player_email);
-          return { name: "user", link: `/user-page/${user.player_id}` };
+          console.log("AAAAAAAAAAAAAAA", user);
+          return { name:"", link: `/user-page/${user.player_id}` };
         })
       );
     }
   }, [postPlayers]);
 
-  let user_info = useSelector((state) => state.user_info.user_id);
-  user_info = user_info ? user_info : false;
-
+ 
   let user = {
     image:
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -49,8 +54,8 @@ export const GameRoomPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPlayersByPost(id));
-    dispatch(getPost(id));
+    dispatch(getPlayersByPost(post_id));
+    dispatch(getPost(post_id));
   }, []);
 
   useEffect(() => {
@@ -124,18 +129,21 @@ export const GameRoomPage = () => {
             </div>
           </div>
           <div className={styles.chat}>
-            <Chat />
+            <Chat
+              isAuthor={isAuthor}
+              dispatchPayload={{ user_info, post_id }}
+              user_name={user_name}
+              uri={image}
+            />
           </div>
         </div>
         <div className={styles.buttons}>
           <div className={styles.Button}></div>
-          <div>
-
-          </div>
+          <div></div>
           <div>
             <Button
               className={styles["new-post-page__new-post-form-submit-button"]}
-              onClick = {() =>navigate (`/announcements/edit/${id}`) }
+              onClick={() => navigate(`/announcements/edit/${post_id}`)}
             >
               Редактировать
             </Button>
@@ -147,8 +155,7 @@ export const GameRoomPage = () => {
           </div>
         </div>
       </div>
-      <div>
-      </div>
+      <div></div>
     </div>
   );
 };
