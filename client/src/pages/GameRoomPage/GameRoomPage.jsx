@@ -117,10 +117,6 @@ export const GameRoomPage = () => {
                     </li>
                   );
                 })}
-                
-                
-                
-                
               </ul>
             </div>
           </div>
@@ -131,9 +127,9 @@ export const GameRoomPage = () => {
         <div className={styles.buttons}>
           <div className={styles.Button}></div>
           <div>
-
           </div>
-          <div>
+          {isAuthor && (
+              <div>
             <Button
               className={styles["new-post-page__new-post-form-submit-button"]}
               onClick = {() =>navigate (`/announcements/edit/${id}`) }
@@ -146,6 +142,7 @@ export const GameRoomPage = () => {
               Удалить обьявление
             </Button>
           </div>
+          )}
         </div>
       </div>
       <div>
