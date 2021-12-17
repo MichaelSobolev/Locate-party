@@ -24,10 +24,14 @@ router.get("/login/failed", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.session = null;
+  req.logOut();
 
-  req.logout();
+  res.clearCookie('session');
+  res.redirect('/')
+  res.clearCookie('session.sig');
   res.sendStatus(200);
 });
+
 
 router.get("/google", passport.authenticate("google", { scope: ["profile", 'email'] }));
 

@@ -33,6 +33,7 @@ router.route("/").post(async (req, res) => {
     //req.session.password.user.id
   } catch (err) {
     console.log(err);
+    res.sendStatus(500)
   }
 });
 
