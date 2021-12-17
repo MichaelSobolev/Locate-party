@@ -15,9 +15,9 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
   )
 console.log(UserItems);
 
-  const [name, setName] = useState(UserItems._json.name);
-  const [email, setEmail] = useState(UserItems._json.email);
-  const [image, setImage] = useState(UserItems._json.picture);
+  const [name, setName] = useState(UserItems?._json?.name);
+  const [email, setEmail] = useState(UserItems?._json?.email);
+  const [image, setImage] = useState(UserItems?._json?.picture);
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [experience, setExperience] = useState("");
@@ -85,9 +85,6 @@ console.log(UserItems);
           <span className={styles["user-info__email"]}>{email}</span>
         </div>
       </section>
-
-
-
 
       <div className={styles.divinfo}>
       <form onSubmit={handleSubmit} className={styles.form}>

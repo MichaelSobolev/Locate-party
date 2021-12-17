@@ -9,6 +9,7 @@ import { Chat } from './Chat/Chat'
 import styles from "./styles.module.css";
 export const GameRoomPage = () => {
   let oleg ={uri: 'https://www.seekpng.com/png/full/356-3562377_personal-user.png'}
+  
   let [post, setPost] = useState({
     title: "",
     system_title: "",
@@ -95,7 +96,7 @@ export const GameRoomPage = () => {
                   return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' />  {el.name} </li>;
                 })}
                  {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={el.pict} width='80%' /> {el.name} </li>;
                 })}
                  {players.map((el) => {
                   return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
