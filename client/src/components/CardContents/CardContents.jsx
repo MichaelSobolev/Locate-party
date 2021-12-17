@@ -1,12 +1,13 @@
 import { ButtonPost } from "../PostCard/ButtonPost/ButtonPost";
 
 export const CardContents = ({ props }) => {
+  console.log(props);
   return (
     <>
       <div>
         <h2>{props.title}</h2>
       </div>
-      <img src={props.image} />
+      <img src={props.icon} />
       <div>
         <strong>Тэги:</strong>
         <p> {props.tags}</p>
@@ -18,7 +19,6 @@ export const CardContents = ({ props }) => {
 
       <strong>Ведущий</strong>
       <p>{props.name}</p>
-      <image src={props.icon} />
       <div>
         <strong>Расписание:</strong>
         <p>{props.schedule}</p>
@@ -35,7 +35,7 @@ export const CardContents = ({ props }) => {
         <strong>Описание игры:</strong>
         <p>{props.description}</p>
       </div>
-      <div>{props.button ? <ButtonPost id={props.id}></ButtonPost> : ""}</div>
+      <div>{props.button ? <ButtonPost id={props.id}>Подробнее</ButtonPost> : ""}</div>
     </>
   );
 };

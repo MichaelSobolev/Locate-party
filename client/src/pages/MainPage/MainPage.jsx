@@ -28,6 +28,16 @@ export const MainPage = () => {
         Наша цель - сделать так, чтобы как можно больше игроков смогли найти
         себе игру, а ведущим было удобно создавать обьявления о наборе.
       </Text>
+      {/* <div className={styles["registations-main"] }> */}
+      {/* <iframe
+          src="https://discord.com/widget?id=921347124573134889&theme=dark"
+          width="auto"
+          height="500"
+          allowtransparency="true"
+          frameborder="0"
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+        ></iframe> */}
+      {/* </div> */}
 
       <div>
         {data[0]?.id ? (

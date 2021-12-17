@@ -28,8 +28,11 @@ export const GameRoomPage = () => {
   const fetchedPost = useSelector((state) => state.currentPostStore);
   console.log(fetchedPost?.title);
   const postPlayers = useSelector((state) => state.currentGameRoom);
+  console.log(postPlayers)
   const players = postPlayers.map((user) => {
-    return { name: user.player_name, link: `/user-page/${user.player_id}` };
+    console.log('Players_map', user)
+    console.log('User', user?.user_to_player)
+    return { name: "user", link: `/user-page/${user.player_id}` };
   });
 
   let user_info = useSelector((state) => state.user_info.user_id);
@@ -49,7 +52,7 @@ export const GameRoomPage = () => {
 
   useEffect(() => {
     setPost(fetchedPost);
-    if (user_info === fetchedPost.master_id) {
+    if (user_info === post.master_id) {
       console.log(user_info === post?.master_id);
       setIsAuthor(true);
     }
@@ -101,6 +104,7 @@ export const GameRoomPage = () => {
             <div className={styles.flex_container_column}>
               <ul className={styles.ul}>
                 {players.map((el) => {
+                  console.log('------',el)
                   return (
                     <li className={styles.li} onClick={() => navigate(el.link)}>
                       {" "}
@@ -113,58 +117,10 @@ export const GameRoomPage = () => {
                     </li>
                   );
                 })}
-                {players.map((el) => {
-                  return (
-                    <li className={styles.li} onClick={() => navigate(el.link)}>
-                      {" "}
-                      <img
-                        className={styles.img}
-                        src={el.pict}
-                        width="80%"
-                      />{" "}
-                      {el.name}{" "}
-                    </li>
-                  );
-                })}
-                {players.map((el) => {
-                  return (
-                    <li className={styles.li} onClick={() => navigate(el.link)}>
-                      {" "}
-                      <img
-                        className={styles.img}
-                        src={oleg.uri}
-                        width="80%"
-                      />{" "}
-                      {el.name}{" "}
-                    </li>
-                  );
-                })}
-                {players.map((el) => {
-                  return (
-                    <li className={styles.li} onClick={() => navigate(el.link)}>
-                      {" "}
-                      <img
-                        className={styles.img}
-                        src={oleg.uri}
-                        width="80%"
-                      />{" "}
-                      {el.name}{" "}
-                    </li>
-                  );
-                })}
-                {players.map((el) => {
-                  return (
-                    <li className={styles.li} onClick={() => navigate(el.link)}>
-                      {" "}
-                      <img
-                        className={styles.img}
-                        src={oleg.uri}
-                        width="80%"
-                      />{" "}
-                      {el.name}{" "}
-                    </li>
-                  );
-                })}
+                
+                
+                
+                
               </ul>
             </div>
           </div>
@@ -175,20 +131,12 @@ export const GameRoomPage = () => {
         <div className={styles.buttons}>
           <div className={styles.Button}></div>
           <div>
-            <Button
-              className={styles["new-post-page__new-post-form-submit-button"]}
-            >
-              Игроки в ожидании
-            </Button>
-            <Button
-              className={styles["new-post-page__new-post-form-submit-button"]}
-            >
-              Установить дату игры
-            </Button>
+
           </div>
           <div>
             <Button
               className={styles["new-post-page__new-post-form-submit-button"]}
+              onClick = {() =>navigate (`/announcements/edit/${id}`) }
             >
               Редактировать
             </Button>
@@ -201,7 +149,6 @@ export const GameRoomPage = () => {
         </div>
       </div>
       <div>
-        <PlayersList id={id} />
       </div>
     </div>
   );

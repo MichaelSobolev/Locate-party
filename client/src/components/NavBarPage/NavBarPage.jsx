@@ -50,21 +50,13 @@ export const NavBarPage = (props) => {
               <BsFillPersonLinesFill className="icon" />
               Профиль
             </NavLink>
-            <NavLink
-              className="header__link"
-              activeClassName="header__link_active"
-              to="/logout"
-            >
-              <IoLogOut className="icon" />
-              Выйти
-            </NavLink>
 
             {/* <NavLink
           className="header__link"
           activeClassName="header__link_active"
           to="/login"
-        >
-        <FcGoogle className='icon'/>
+          >
+          <FcGoogle className='icon'/>
           Войти
         </NavLink> */}
 
@@ -72,7 +64,7 @@ export const NavBarPage = (props) => {
               className="header__link"
               activeClassName="header__link_active"
               to="/news"
-            >
+              >
               <BsGrid1X2Fill className="icon" />
               Новости
             </NavLink> */}
@@ -87,9 +79,10 @@ export const NavBarPage = (props) => {
             <NavLink
               className="header__link"
               activeClassName="header__link_active"
-              to="/admin"
+              to="/logout"
             >
-              Админ
+              <IoLogOut className="icon" />
+              Выйти
             </NavLink>
           </>
         ) : (
