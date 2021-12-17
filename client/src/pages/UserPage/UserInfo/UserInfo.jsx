@@ -17,9 +17,9 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
 
   console.log("UserItems", UserItems);
 
-  const [name, setName] = useState(UserItems?._json.name);
-  const [email, setEmail] = useState(UserItems?._json.email);
-  const [image, setImage] = useState(UserItems?._json.picture);
+  const [name, setName] = useState(UserItems?._json?.name);
+  const [email, setEmail] = useState(UserItems?._json?.email);
+  const [image, setImage] = useState(UserItems?._json?.picture);
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [experience, setExperience] = useState("");
