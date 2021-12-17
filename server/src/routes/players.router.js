@@ -59,11 +59,10 @@ router.route("/pending/:post_id")
     try {
       const { post_id } = req.params;
 
-      let postPlayers = await Post.findAll({
+      let postPlayers = await Player.findAll({
         include: [ // FIXME Подтягивает только пост
           {
             model: User,
-            through: { attributes: ['post_id'] }
           },
         ],
         where: { post_id, isPending: true },
@@ -108,14 +107,13 @@ router.route("/:post_id")
     try {
       const { post_id } = req.params;
 
-      let postPlayers = await Post.findAll({
+      let postPlayers = await Player.findAll({
         include: [
           {
             model: User,
-            through: { attributes: ['post_id'] }
           },
         ],
-        where: { id:post_id },
+        where: { id:post_id, isPending:false },
         raw: true,
       });
       postPlayers = postPlayers.map(el => {

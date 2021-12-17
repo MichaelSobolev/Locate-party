@@ -5,8 +5,25 @@ const express = require('express');
 const router = express.Router();
 router.route('/system').post(async (req, res) => {
   const { system } = req.body;
-  await System.create({ title: system });
+  // await System.create({ title: system });
   console.log(system);
+
+  const seedSys = [{
+    title: 'D&D5e'
+  },
+  { title: 'D&D3.5' },
+  {
+    title: 'Pathfinder',
+  },
+  {
+    title: 'VtM',
+  },
+  {
+    title: 'Starfinder',
+  }]
+  seedSys.forEach(async (el) => {
+    await System.create({ title: el.title });
+  })
   res.sendStatus(200);
 });
 
@@ -33,8 +50,14 @@ router
   })
   .post((req, res) => {
     try {
-      console.log('_!_!_!_!_!_!_!POST_BACKEND', { ...req.body, isActive: true, isPaid: false, });
+      console.log('_!_!_!_!_!_!_!POST_BACKEND', { ...req.body, isActive: true, isPaid: false });
       Post.create({ ...req.body, isActive: true, isPaid: false });
+     
+
+
+
+
+
       res.sendStatus(200);
     } catch (error) {
       console.log('===ERROR===', error, '=======')
@@ -46,6 +69,10 @@ router
 //   .get(async (req, res) => {
 //     const { id } = req.params;
 //   })
+
+
+
+
 
 
 router.route('/:id')

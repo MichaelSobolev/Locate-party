@@ -6,7 +6,6 @@ import {
   VALIDATE_ERROR,
   ADD_INFO,
   ADD_SESSION,
-  MODIFY_SESSION,
   SET_USER_ID,
 } from "../types";
 

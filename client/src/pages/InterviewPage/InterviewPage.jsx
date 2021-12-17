@@ -22,11 +22,13 @@ export const InterviewPage = () => {
   }, [post]);
 
   useEffect(() => {
-    if (user_id === post.master_id) {
+    console.log("|user_id|", typeof user_id, "|post.master_id|", post.master_id);
+
+    if (Number(user_id) === post.master_id) {
       console.log(user_id === post?.master_id);
       setIsAuthor(true);
     }
-  }, []);
+  }, [post]);
 
   const addUser = () => {
     dispatch(acceptPlayer({ post_id, user_id }));
@@ -37,6 +39,7 @@ export const InterviewPage = () => {
       <div>
         <h2>Тут будет чат</h2>
       </div>
+      <h2> {isAuthor}</h2>
       {/* TODO проверка на сессию */}
       {isAuthor && (
         <ButtonPost action={addUser} isNavigation={false} path="">
