@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.INTEGER,
     post_id: DataTypes.INTEGER,
     isPending: DataTypes.BOOLEAN,
-   
+
   }, {
     sequelize,
     modelName: 'Player',

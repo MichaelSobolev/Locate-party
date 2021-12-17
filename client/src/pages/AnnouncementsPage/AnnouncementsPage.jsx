@@ -19,6 +19,7 @@ export const AnnouncementsPage = () => {
     };
     return newPost;
   });
+  console.log(parsedPosts)
 
   useEffect(() => {
     dispatch(getPosts());

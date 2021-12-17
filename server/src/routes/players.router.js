@@ -111,9 +111,10 @@ router.route("/:post_id")
         include: [
           {
             model: User,
+            as: "user_to_player",
           },
         ],
-        where: { id:post_id, isPending:false },
+        where: { post_id, isPending: false },
         raw: true,
       });
       postPlayers = postPlayers.map(el => {

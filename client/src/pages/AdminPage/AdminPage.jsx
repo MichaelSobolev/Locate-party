@@ -9,7 +9,10 @@ import {
   removePlayer,
 } from "../../redux/actions/players.actions";
 import { addMockUser, addSystem } from "../../redux/actions/posts.actions";
-import { fetchTester, getUserIdByGoogleId } from "../../redux/actions/user.actions";
+import {
+  fetchTester,
+  getUserIdByGoogleId,
+} from "../../redux/actions/user.actions";
 
 export const AdminPage = () => {
   const dispatch = useDispatch();
@@ -68,7 +71,7 @@ export const AdminPage = () => {
         </button>
         <button
           onClick={() => {
-            dispatch(getPlayersByPost(1));
+            dispatch(getPlayersByPost(7));
           }}
         >
           getPlayersByPost
@@ -87,6 +90,9 @@ export const AdminPage = () => {
         >
           getPendingPlayersByPost
         </button>
+      </div>
+      <div>
+      {/* <iframe src="https://discord.com/widget?id=918399057280520243&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe> */}
       </div>
     </div>
   );
