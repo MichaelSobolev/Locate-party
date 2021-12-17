@@ -6,16 +6,19 @@ import { Title } from "../../components/Title/Title";
 import { Button } from "../../components/Button/Button";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 export const NewPostPage = () => {
   const [userId, setUserId] = useState("123123");
   const [allowRender, setAllowRender] = useState("");
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const user_info = useSelector((state) => state.user_info.user_id);
   console.log("user_info=====", user_info);
   const messages = {
+    image: "Фотография",
     title: `Заголовок объявления`,
     system_id: `Игровая система (ID!) (TODO Добавить сюда селектор)`,
     schedule: `Удобное время и дни недели для проведения игр`,
@@ -27,6 +30,7 @@ export const NewPostPage = () => {
     description: `Описание:`,
   };
   const inputs = [
+    useInput({ name: "image", id: "image", label: messages.image }),
     useInput({ name: "title", id: "title", label: messages.title }),
     useInput({
       type: "number",
@@ -97,6 +101,7 @@ export const NewPostPage = () => {
       request[key] = value;
     });
     dispatch(createPost(request));
+    navigate('/announcements')
   };
 
   return (

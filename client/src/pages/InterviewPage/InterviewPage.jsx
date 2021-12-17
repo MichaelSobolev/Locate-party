@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import { ButtonPost } from "../../components/PostCard/ButtonPost/ButtonPost";
 import { acceptPlayer } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
+import { Chat } from "../GameRoomPage/Chat/Chat";
 
 export const InterviewPage = () => {
   const [isAuthor, setIsAuthor] = useState(false);
@@ -22,27 +23,28 @@ export const InterviewPage = () => {
   }, [post]);
 
   useEffect(() => {
-    if (user_id === post.master_id) {
+    console.log(
+      "|user_id|",
+      typeof user_id,
+      "|post.master_id|",
+      post.master_id
+    );
+
+    if (Number(user_id) === post.master_id) {
       console.log(user_id === post?.master_id);
       setIsAuthor(true);
     }
-  }, []);
+  }, [post]);
 
-  const addUser = () => {
-    dispatch(acceptPlayer({ post_id, user_id }));
-    navigate(`/gameroom/${post_id}`);
-  };
   return (
     <div>
       <div>
-        <h2>Тут будет чат</h2>
+        <div>
+          <Chat isAuthor={isAuthor} dispatchPayload={{ user_id, post_id }} />
+        </div>
       </div>
+      {/* <h2> {isAuthor}</h2> */}
       {/* TODO проверка на сессию */}
-      {isAuthor && (
-        <ButtonPost action={addUser} isNavigation={false} path="">
-          Принять юзера
-        </ButtonPost>
-      )}
     </div>
   );
 };

@@ -28,13 +28,7 @@ export const GameRoomPage = () => {
     return { name: user.player_name, link: `/user-page/${user.player_id}` };
   });
 
-  // [
-  //   { name: "Vasya", link: "/user-page" },
-  //   { name: "Masha", link: "/user-page" },
-  //   { name: "Kolya", link: "/user-page" },
-  //   { name: "Dasha", link: "/user-page" },
-  //   { name: "I_Tvoya_Mamasha", link: "/user-page" },
-  // ];
+
   let user = {
     image:
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -158,3 +152,4 @@ export const GameRoomPage = () => {
 // Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
 //   gameDates: "Четверг 13.30",
 // };
+
