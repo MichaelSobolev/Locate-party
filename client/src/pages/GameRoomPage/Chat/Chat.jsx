@@ -18,9 +18,11 @@ const AddUser = (event) => {
 export const Chat = ({
   isAuthor = false,
   dispatchPayload = { user_id: 1, post_id: 1 },
+  user_name = "Олег",
+  uri
 }) => {
   console.log("CHat");
-  console.log(dispatchPayload);
+  console.log('uri',uri);
   const [input, setInput] = useState("");
   const [arrMessages, setArrMessages] = useState([]);
   const navigate = useNavigate();
@@ -52,8 +54,18 @@ export const Chat = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     // dispatch(socketReferens())
+    const today = new Date();
+
+    const time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     socket.send(
-      JSON.stringify({ redirect: false, text: e.target.message.value })
+      JSON.stringify({
+        redirect: false,
+        text: e.target.message.value,
+        user_name,
+        time,
+        uri
+      })
     ); // отправляем сообщение на сервер через вебсокет
     setInput("");
   };
@@ -65,10 +77,10 @@ export const Chat = ({
           {arrMessages.map((el, i) => (
             <>
               <div className={style.container}>
-                <img src={oleg.uri} alt="Avatar" />
-                <figcaption>User_Name</figcaption>
+                <img src={el.uri} alt="Avatar" />
+                <figcaption>{user_name}</figcaption>
                 <p key={i}>{el.text}</p>
-                <span className={style["time-right"]}>11:00</span>
+                <span className={style["time-right"]}>{el.time}</span>
               </div>
             </>
           ))}

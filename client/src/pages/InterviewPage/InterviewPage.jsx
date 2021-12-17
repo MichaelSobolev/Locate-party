@@ -8,11 +8,17 @@ import { Chat } from "../GameRoomPage/Chat/Chat";
 
 export const InterviewPage = () => {
   const [isAuthor, setIsAuthor] = useState(false);
+
   const { user_id, post_id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const post = useSelector((state) => state.currentPostStore);
   console.log(post?.master_id);
+  const session = useSelector((state) => state?.session[0]);
+  const user_name = session?.displayName;
+  console.log();
+  const image = session?.photos[0]?.value
+
   useEffect(() => {
     dispatch(getPost(post_id));
   }, []);
@@ -40,7 +46,12 @@ export const InterviewPage = () => {
     <div>
       <div>
         <div>
-          <Chat isAuthor={isAuthor} dispatchPayload={{ user_id, post_id }} />
+          <Chat
+            isAuthor={isAuthor}
+            dispatchPayload={{ user_id, post_id }}
+            user_name={user_name}
+            uri={image}
+          />
         </div>
       </div>
       {/* <h2> {isAuthor}</h2> */}
