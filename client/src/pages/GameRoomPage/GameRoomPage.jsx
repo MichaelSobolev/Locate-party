@@ -5,18 +5,22 @@ import { Button } from "../../components/Button/Button";
 import { PlayersList } from "../../components/PlayersList/PlayersList";
 import { getPlayersByPost } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
-import { Chat } from './Chat/Chat'
+import { Chat } from "./Chat/Chat";
 
 import styles from "./styles.module.css";
 export const GameRoomPage = () => {
-  let oleg ={uri: 'https://www.seekpng.com/png/full/356-3562377_personal-user.png'}
-  
+  let oleg = {
+    uri: "https://www.seekpng.com/png/full/356-3562377_personal-user.png",
+  };
+
   let [post, setPost] = useState({
     title: "",
     system_title: "",
     requirements: "",
     description: "",
   });
+  const [isAuthor, setIsAuthor] = useState(false);
+
   console.log("STATE_POST", post);
   console.log("STATE_POST.title", post?.title);
   const { id } = useParams();
@@ -28,6 +32,8 @@ export const GameRoomPage = () => {
     return { name: user.player_name, link: `/user-page/${user.player_id}` };
   });
 
+  let user_info = useSelector((state) => state.user_info.user_id);
+  user_info = user_info ? user_info : false;
 
   let user = {
     image:
@@ -43,6 +49,10 @@ export const GameRoomPage = () => {
 
   useEffect(() => {
     setPost(fetchedPost);
+    if (user_info === fetchedPost.master_id) {
+      console.log(user_info === post?.master_id);
+      setIsAuthor(true);
+    }
   }, [fetchedPost]);
 
   useEffect(() => {
@@ -81,26 +91,79 @@ export const GameRoomPage = () => {
           </div>
         </div>
       </div>
-      <div className={styles.gameTime}> Время игры: 01/02/2013 Четверг 12.00</div>
+      <div className={styles.gameTime}>
+        {" "}
+        Время игры: 01/02/2013 Четверг 12.00
+      </div>
       <div className={styles.chat_and_players}>
         <div className={styles.flex_container_row}>
           <div className={styles.players}>
             <div className={styles.flex_container_column}>
               <ul className={styles.ul}>
                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' />  {el.name} </li>;
+                  return (
+                    <li className={styles.li} onClick={() => navigate(el.link)}>
+                      {" "}
+                      <img
+                        className={styles.img}
+                        src={oleg.uri}
+                        width="80%"
+                      />{" "}
+                      {el.name}{" "}
+                    </li>
+                  );
                 })}
-                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={el.pict} width='80%' /> {el.name} </li>;
+                {players.map((el) => {
+                  return (
+                    <li className={styles.li} onClick={() => navigate(el.link)}>
+                      {" "}
+                      <img
+                        className={styles.img}
+                        src={el.pict}
+                        width="80%"
+                      />{" "}
+                      {el.name}{" "}
+                    </li>
+                  );
                 })}
-                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                {players.map((el) => {
+                  return (
+                    <li className={styles.li} onClick={() => navigate(el.link)}>
+                      {" "}
+                      <img
+                        className={styles.img}
+                        src={oleg.uri}
+                        width="80%"
+                      />{" "}
+                      {el.name}{" "}
+                    </li>
+                  );
                 })}
-                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                {players.map((el) => {
+                  return (
+                    <li className={styles.li} onClick={() => navigate(el.link)}>
+                      {" "}
+                      <img
+                        className={styles.img}
+                        src={oleg.uri}
+                        width="80%"
+                      />{" "}
+                      {el.name}{" "}
+                    </li>
+                  );
                 })}
-                 {players.map((el) => {
-                  return <li className={styles.li} onClick={() => navigate(el.link)}> <img className={styles.img} src={oleg.uri} width='80%' /> {el.name} </li>;
+                {players.map((el) => {
+                  return (
+                    <li className={styles.li} onClick={() => navigate(el.link)}>
+                      {" "}
+                      <img
+                        className={styles.img}
+                        src={oleg.uri}
+                        width="80%"
+                      />{" "}
+                      {el.name}{" "}
+                    </li>
+                  );
                 })}
               </ul>
             </div>
@@ -138,7 +201,7 @@ export const GameRoomPage = () => {
         </div>
       </div>
       <div>
-        <PlayersList id={ id } />
+        <PlayersList id={id} />
       </div>
     </div>
   );
@@ -152,4 +215,3 @@ export const GameRoomPage = () => {
 // Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
 //   gameDates: "Четверг 13.30",
 // };
-

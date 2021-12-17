@@ -6,6 +6,8 @@ import { acceptPlayer } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
 import { Chat } from "../GameRoomPage/Chat/Chat";
 
+import "./styles.css";
+
 export const InterviewPage = () => {
   const [isAuthor, setIsAuthor] = useState(false);
 
@@ -17,7 +19,7 @@ export const InterviewPage = () => {
   const session = useSelector((state) => state?.session[0]);
   const user_name = session?.displayName;
   console.log();
-  const image = session?.photos[0]?.value
+  const image = session?.photos[0]?.value;
 
   useEffect(() => {
     dispatch(getPost(post_id));
@@ -43,19 +45,20 @@ export const InterviewPage = () => {
   }, [post]);
 
   return (
-    <div>
-      <div>
-        <div>
+    <div className="chat_main">
+      <div className="game_description">
+        <div className="chatik">
           <Chat
             isAuthor={isAuthor}
             dispatchPayload={{ user_id, post_id }}
             user_name={user_name}
             uri={image}
+            
           />
         </div>
+        {/* <h2> {isAuthor}</h2> */}
+        {/* TODO проверка на сессию */}
       </div>
-      {/* <h2> {isAuthor}</h2> */}
-      {/* TODO проверка на сессию */}
     </div>
   );
 };

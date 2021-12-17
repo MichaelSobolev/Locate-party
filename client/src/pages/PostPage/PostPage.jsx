@@ -48,13 +48,7 @@ export const PostPage = () => {
   }
 
   function editButtonVerification() {
-    // const author = parsedPost; // ["name"];
-    // const userName = session[0];
-    // console.log("author", author, "userName", userName);
 
-    // if (author === userName) {
-    //   setIsPostExist(true);
-    // }
     setIsPostExist(true);
   }
   useEffect(() => {

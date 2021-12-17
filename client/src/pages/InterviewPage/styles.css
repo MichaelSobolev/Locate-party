@@ -1,0 +1,63 @@
+.flex_container_column {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.chat_main {
+  font-size: Lato, sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 100%;
+}
+
+.chat_and_players {
+  margin: 5vh;
+}
+
+.flex_container_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.gameTime {
+  font-size: 17px;
+  margin-top: 1px;
+  text-align: center;
+  border-color: red;
+  border-radius:10px;
+  text-shadow:  rgba(248, 0, 0, 0.404);
+}
+
+.game_master_icon {
+  
+  border-radius: 10px;
+  height: 10vh;
+  margin-right: 1vw;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 70vw;
+}
+
+.game_description {
+  justify-content: center;
+}
+
+.chat {
+  margin-top: 10px;
+  overflow-y: scroll;
+  margin-left: 1vw;
+  border-radius: 10px;
+  flex-grow: 1;
+  border-radius: 10px;
+  background-color: white;
+  height: 50vh;
+  margin-bottom: 10px;
+}

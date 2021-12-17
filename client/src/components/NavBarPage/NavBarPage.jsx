@@ -68,14 +68,14 @@ export const NavBarPage = (props) => {
           Войти
         </NavLink> */}
 
-            <NavLink
+            {/* <NavLink
               className="header__link"
               activeClassName="header__link_active"
               to="/news"
             >
               <BsGrid1X2Fill className="icon" />
               Новости
-            </NavLink>
+            </NavLink> */}
             <NavLink
               className="header__link"
               activeClassName="header__link_active"
