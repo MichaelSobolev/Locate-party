@@ -1,5 +1,4 @@
 import styles from './styles.module.css';
-
 import {PostCard} from '../../../components/PostCard/PostCard';
 
 export const PostList = ({posts}) => (

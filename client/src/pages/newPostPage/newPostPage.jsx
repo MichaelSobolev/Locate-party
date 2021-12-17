@@ -16,7 +16,7 @@ export const NewPostPage = () => {
   const user_info = useSelector((state) => state.user_info.user_id);
   console.log("user_info=====", user_info);
   const messages = {
-    image: 'Фотография',
+    image: "Фотография",
     title: `Заголовок объявления`,
     system_id: `Игровая система (ID!) (TODO Добавить сюда селектор)`,
     schedule: `Удобное время и дни недели для проведения игр`,
@@ -27,8 +27,10 @@ export const NewPostPage = () => {
     pricing: `Это поле появляется только если свитч isPaid =true`,
     description: `Описание:`,
   };
+
   const inputs = [
     useInput({ name: "image", id: "image", label: messages.image }),
+
     useInput({ name: "title", id: "title", label: messages.title }),
     useInput({
       type: "number",
@@ -86,6 +88,7 @@ export const NewPostPage = () => {
     console.log(1);
     console.log(userId);
   }, [userId]);
+
   const submitForm = (event) => {
     event.preventDefault();
     const request = { master_id: user_info };

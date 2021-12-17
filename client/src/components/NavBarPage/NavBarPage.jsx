@@ -23,9 +23,9 @@ export const NavBarPage = (props) => {
   return (
     <header className="header">
       <div className="sidenav">
+        <D20Spinning setTheme={props.setTheme} />
         {data[0]?.id ? (
           <>
-            <D20Spinning setTheme={props.setTheme} />
             <NavLink
               className="header__link"
               activeClassName="header__link_active"
@@ -34,6 +34,7 @@ export const NavBarPage = (props) => {
               <FaDiceD20 className="icon" />
               Locate party
             </NavLink>
+
             <NavLink
               className="header__link"
               activeClassName="header__link_active"
@@ -42,6 +43,7 @@ export const NavBarPage = (props) => {
               <GiSpikedDragonHead className="icon" />
               Найти игру
             </NavLink>
+
             <NavLink
               className="header__link"
               activeClassName="header__link_active"
