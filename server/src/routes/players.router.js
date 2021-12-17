@@ -112,20 +112,25 @@ router.route("/:post_id")
           {
             model: User,
             as: "user_to_player",
+            attributes: ['email', 'id', 'name']
           },
         ],
         where: { post_id, isPending: false },
         raw: true,
       });
+
       postPlayers = postPlayers.map(el => {
         return {
           ...el,
-          player_name: el["Users.name"],
-          player_icon: el["Users.image"],
-          player_id: el["Users.id"],
-          player_id_google: el["Users.googleId"],
+          player_email: el["user_to_player.email"],
+          player_name: el["user_to_player.name"],
+          player_icon: el["user_to_player.image"],
+          player_id: el["user_to_player.id"],
+          player_id_google: el["user_to_player.googleId"],
         }
       })
+
+      console.log(postPlayers);
       res.status(200).json(postPlayers);
     } catch (err) {
       console.log(err)

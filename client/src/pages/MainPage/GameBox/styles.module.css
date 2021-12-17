@@ -1,6 +1,6 @@
-img {
+/* img {
   border-radius: 20%;
-}
+} */
 
 .gamebox {
   display: flex;
@@ -9,4 +9,8 @@ img {
 
 .boxtext {
   text-align: center;
+}
+
+.boxtext img {
+  border-radius: 20%;
 }

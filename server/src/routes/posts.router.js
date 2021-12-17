@@ -52,7 +52,7 @@ router
     try {
       console.log('_!_!_!_!_!_!_!POST_BACKEND', { ...req.body, isActive: true, isPaid: false });
       Post.create({ ...req.body, isActive: true, isPaid: false });
-     
+
 
 
 
@@ -77,27 +77,27 @@ router
 
 router.route('/:id')
   .get(async (req, res) => {
-    try{
-    const { id } = req.params;
-    const post = await Post.findOne({
-      include: [
-        {
-          model: User,
-          as: 'author',
-        },
-        {
-          model: System,
-        },
-      ],
-      where: { id },
-      raw: true,
-    });
-    res.status(200).json({
-      ...post, system_title: post['System.title']
-    });
-  }catch(err){
-    res.sendStatus(500)
-  }
+    try {
+      const { id } = req.params;
+      const post = await Post.findOne({
+        include: [
+          {
+            model: User,
+            as: 'author',
+          },
+          {
+            model: System,
+          },
+        ],
+        where: { id },
+        raw: true,
+      });
+      res.status(200).json({
+        ...post, system_title: post['System.title']
+      });
+    } catch (err) {
+      res.sendStatus(500)
+    }
   }).put(async (req, res) => {
     console.log('==============')
     console.log(req.body)
@@ -110,6 +110,12 @@ router.route('/:id')
     // console.log(post);
     // res.status(200).jsson(post[0]);
     res.sendStatus(200)
+  })
+  .delete(async (req, res) => {
+    const { id } = req.params;
+    await Post.destroy(
+      { where: { id } }
+    )
   })
 
 module.exports = router;

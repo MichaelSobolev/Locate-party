@@ -20,20 +20,23 @@ export const GameRoomPage = () => {
     description: "",
   });
   const [isAuthor, setIsAuthor] = useState(false);
+  const [players, setPlayers] = useState([]);
 
-  console.log("STATE_POST", post);
-  console.log("STATE_POST.title", post?.title);
   const { id } = useParams();
   const navigate = useNavigate();
   const fetchedPost = useSelector((state) => state.currentPostStore);
-  console.log(fetchedPost?.title);
   const postPlayers = useSelector((state) => state.currentGameRoom);
-  console.log(postPlayers)
-  const players = postPlayers.map((user) => {
-    console.log('Players_map', user)
-    console.log('User', user?.user_to_player)
-    return { name: "user", link: `/user-page/${user.player_id}` };
-  });
+
+  useEffect(() => {
+    if (postPlayers.length) {
+      setPlayers(
+        postPlayers.map((user) => {
+          console.log("AAAAAAAAAAAAAAA", user.player_email);
+          return { name: "user", link: `/user-page/${user.player_id}` };
+        })
+      );
+    }
+  }, [postPlayers]);
 
   let user_info = useSelector((state) => state.user_info.user_id);
   user_info = user_info ? user_info : false;
@@ -104,7 +107,7 @@ export const GameRoomPage = () => {
             <div className={styles.flex_container_column}>
               <ul className={styles.ul}>
                 {players.map((el) => {
-                  console.log('------',el)
+                  console.log("------", el);
                   return (
                     <li className={styles.li} onClick={() => navigate(el.link)}>
                       {" "}
@@ -117,10 +120,6 @@ export const GameRoomPage = () => {
                     </li>
                   );
                 })}
-                
-                
-                
-                
               </ul>
             </div>
           </div>
