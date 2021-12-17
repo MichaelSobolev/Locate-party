@@ -130,20 +130,12 @@ export const GameRoomPage = () => {
         <div className={styles.buttons}>
           <div className={styles.Button}></div>
           <div>
-            <Button
-              className={styles["new-post-page__new-post-form-submit-button"]}
-            >
-              Игроки в ожидании
-            </Button>
-            <Button
-              className={styles["new-post-page__new-post-form-submit-button"]}
-            >
-              Установить дату игры
-            </Button>
+
           </div>
           <div>
             <Button
               className={styles["new-post-page__new-post-form-submit-button"]}
+              onClick = {() =>navigate (`/announcements/edit/${id}`) }
             >
               Редактировать
             </Button>
@@ -156,7 +148,6 @@ export const GameRoomPage = () => {
         </div>
       </div>
       <div>
-        <PlayersList id={id} />
       </div>
     </div>
   );

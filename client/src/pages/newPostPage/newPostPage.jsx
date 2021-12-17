@@ -20,13 +20,11 @@ export const NewPostPage = () => {
   const messages = {
     image: "Фотография",
     title: `Заголовок объявления`,
-    system_id: `Игровая система (ID!) (TODO Добавить сюда селектор)`,
+    system_id: `Игровая система `,
     schedule: `Удобное время и дни недели для проведения игр`,
     platform: `Необходимые для игры  программы/приложения`,
     requirements: `Требования к игрокам`,
     max_players: `максимальное количество игроков`,
-    isPaid: `(TODO тут надо сделать свитч)`,
-    pricing: `Это поле появляется только если свитч isPaid =true`,
     description: `Описание:`,
   };
   const inputs = [
@@ -61,20 +59,7 @@ export const NewPostPage = () => {
       label: messages.description,
     }),
 
-    // FIXME нужно сделать чекбокс/кнопку, по нажатию на которую выпадает дополнительное поле с суммой оплаты.
-    // useInput({
-    //   type: "checkbox",
-    //   name: "isPaid",
-    //   id: "isPaid",
-    //   label: messages.isPaid,
-    //   defaultValue: false
-    // }),
-    useInput({
-      type: "number",
-      name: "pricing",
-      id: "pricing",
-      label: messages.pricing,
-    }),
+   
   ];
   // useEffect(() => {dispatch(getAuthorId())}, []);
   useEffect(() => {
