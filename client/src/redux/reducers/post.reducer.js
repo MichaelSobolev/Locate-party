@@ -1,4 +1,4 @@
-import { CREATE_POST, SET_POSTS, UPDATE_POST } from '../types'
+import { CREATE_POST, DELETE_POST, SET_POSTS, UPDATE_POST } from '../types'
 
 export const postReducer = (state = [], action) => {
   const { type, payload } = action
@@ -14,6 +14,11 @@ export const postReducer = (state = [], action) => {
     case UPDATE_POST: {
       const post = payload
       return state.filter(el => el !== post)
+    }
+    case DELETE_POST: {
+      const id = payload
+
+      return state.filter(el => el.id !== id)
     }
     default: {
       return state

@@ -27,7 +27,9 @@ export const CLEAR_USER = 'CLEAR_USER'
 export const SET_USER_REDUX = 'SET_USER_REDUX'
 
 // user additional info 
-export const SET_USER_ID = 'SET_USER_REDUX'
+export const SET_USER_ID = 'SET_USER_ID'
+export const DELETE_POST = 'DELETE_POST'
+
 
 
 

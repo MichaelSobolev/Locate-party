@@ -1,5 +1,5 @@
 
-import { CREATE_POST, SET_POSTS, SET_CURRENT_POST, UPDATE_POST, SET_USER_REDUX } from '../types';
+import { CREATE_POST, SET_POSTS, SET_CURRENT_POST, UPDATE_POST, SET_USER_REDUX, DELETE_POST } from '../types';
 
 const URL = process.env.REACT_APP_API_ADRESS;
 
@@ -96,16 +96,20 @@ export const updatePost = (id, payload) => async (dispatch) => {
 
 export const deletePost = (id) => async (dispatch) => {
   // Обновление содержимого 1го поста
-  const response = await fetch(`${URL}/posts/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include',
-  });
-  const post = await response.json();
-  console.log(post);
-  // dispatch({ type: DELETE_POSTS, payload: post })
+  console.log(id)
+  // try {
+  //   await fetch(`${URL}/posts/${id}`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     credentials: 'include',
+  //   });
+
+  //   dispatch({ type: DELETE_POST, payload: id })
+  // } catch (err) {
+  //   console.log(err)
+  }
 };
 
 export const addSystem = () => async (dispatch) => {

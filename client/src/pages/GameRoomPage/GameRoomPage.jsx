@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import { Button } from "../../components/Button/Button";
 import { PlayersList } from "../../components/PlayersList/PlayersList";
 import { getPlayersByPost } from "../../redux/actions/players.actions";
-import { getPost } from "../../redux/actions/posts.actions";
+import { deletePost, getPost } from "../../redux/actions/posts.actions";
 import { Chat } from "./Chat/Chat";
 
 import styles from "./styles.module.css";
@@ -28,6 +28,7 @@ export const GameRoomPage = () => {
   const image = session?.photos[0]?.value;
 
   const { post_id } = useParams();
+  console.log('1jipfvwh;oi  2ebhovig3', post_id)
   const navigate = useNavigate();
   const fetchedPost = useSelector((state) => state.currentPostStore);
   const postPlayers = useSelector((state) => state.currentGameRoom);
@@ -39,13 +40,12 @@ export const GameRoomPage = () => {
       setPlayers(
         postPlayers.map((user) => {
           console.log("AAAAAAAAAAAAAAA", user);
-          return { name:"", link: `/user-page/${user.player_id}` };
+          return { name: "", link: `/user-page/${user.player_id}` };
         })
       );
     }
   }, [postPlayers]);
 
- 
   let user = {
     image:
       "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -143,12 +143,16 @@ export const GameRoomPage = () => {
           <div>
             <Button
               className={styles["new-post-page__new-post-form-submit-button"]}
-              clickFunction={()=> navigate(`/announcements/edit/${post_id}`)}
+              clickFunction={() => navigate(`/announcements/edit/${post_id}`)}
             >
               Редактировать
             </Button>
             <Button
               className={styles["new-post-page__new-post-form-submit-button"]}
+              clickFunction={() => {
+                dispatch(deletePost({ post_id }));
+                navigate(`/announcements`);
+              }}
             >
               Удалить обьявление
             </Button>
