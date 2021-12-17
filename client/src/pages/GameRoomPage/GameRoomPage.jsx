@@ -69,7 +69,7 @@ export const GameRoomPage = () => {
         <img
           className={styles.game_master_icon}
           src={
-            "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            "https://lh3.googleusercontent.com/a-/AOh14GgRr9yqb8NHjy0z-x89YhNqrmMyIQf_Pj7qOJQ7kA=s96-c"
           }
           alt={"Master"}
           onClick={() => console.log("Click on gamemaster icon!")}
