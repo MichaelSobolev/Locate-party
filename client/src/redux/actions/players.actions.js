@@ -57,7 +57,6 @@ export const removePlayer = ({ post_id, user_id }) => async (dispatch) => {
 
 export const getPlayersByPost = (post_id) => async (dispatch) => {
   // ИГроки в посте
-
   const response = await fetch(`${URL}/players/${post_id}`, {
     method: 'GET',
     headers: {
@@ -66,6 +65,7 @@ export const getPlayersByPost = (post_id) => async (dispatch) => {
     credentials: 'include'
   });
   const payload = await response.json()
+  console.log('ASDASDASDASDSADASDASD', payload)
   dispatch({ type: SET_ROOM_DATA, payload })
 };
 

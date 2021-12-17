@@ -143,7 +143,7 @@ export const GameRoomPage = () => {
           <div>
             <Button
               className={styles["new-post-page__new-post-form-submit-button"]}
-              onClick={() => navigate(`/announcements/edit/${post_id}`)}
+              clickFunction={()=> navigate(`/announcements/edit/${post_id}`)}
             >
               Редактировать
             </Button>
