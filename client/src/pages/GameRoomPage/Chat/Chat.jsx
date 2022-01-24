@@ -4,25 +4,17 @@ import { useNavigate } from "react-router";
 import { ButtonPost } from "../../../components/PostCard/ButtonPost/ButtonPost";
 import { acceptPlayer } from "../../../redux/actions/players.actions";
 import style from "./chat.module.css";
-let oleg = {
-  uri: "https://www.seekpng.com/png/full/356-3562377_personal-user.png",
-};
-// import oleg from 'https://sozh.info/wp-content/uploads/2019/09/Oleg-Mongol.jpg'
-const socket = new WebSocket("ws://localhost:3090");
 
-const AddUser = (event) => {
-  if (event.key === "Enter") {
-  }
-};
+const socket = new WebSocket("ws://localhost:3090");
 
 export const Chat = ({
   isAuthor = false,
   dispatchPayload = { user_id: 1, post_id: 1 },
   user_name = "Олег",
-  uri
+  uri,
 }) => {
   console.log("CHat");
-  console.log('uri',uri);
+  console.log("uri", uri);
   const [input, setInput] = useState("");
   const [arrMessages, setArrMessages] = useState([]);
   const navigate = useNavigate();
@@ -33,7 +25,7 @@ export const Chat = ({
       console.log("Соединение установлено.");
     };
     socket.onmessage = function (event) {
-      const message = JSON.parse(event.data); // достаем текст сообщения из ответа от сервера // TODO: доставать еще и имя
+      const message = JSON.parse(event.data); // достаем текст сообщения из ответа от сервера
       console.log("message", message);
       if (message.text !== "") {
         setArrMessages((prev) => [...prev, message]);
@@ -64,7 +56,7 @@ export const Chat = ({
         text: e.target.message.value,
         user_name,
         time,
-        uri
+        uri,
       })
     ); // отправляем сообщение на сервер через вебсокет
     setInput("");

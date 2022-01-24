@@ -7,7 +7,6 @@ export const Logout = () => {
   const dispatch = useDispatch();
 
   const logout = async () => {
-    //window.open("http://localhost:5000/auth/logout", "_self");
     dispatch({type:CLEAR_SESSION})
     dispatch({type:CLEAR_USER})
 

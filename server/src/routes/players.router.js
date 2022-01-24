@@ -60,7 +60,7 @@ router.route("/pending/:post_id")
       const { post_id } = req.params;
 
       let postPlayers = await Player.findAll({
-        include: [ // FIXME Подтягивает только пост
+        include: [
           {
             model: User,
           },

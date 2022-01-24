@@ -20,7 +20,6 @@ function useInput({
   }
 
   function getValue() {
-    // console.log(value);
     return value;
   }
 

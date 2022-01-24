@@ -38,10 +38,6 @@ export const PostPage = () => {
   function join() {
     // На вход user_id | post_id
     const post_id = id;
-    // const user_id = session[0].id;
-    // const user_id = session[0];
-  
-    // console.log("session user_id", user_id,);
     console.log(user_info)
     dispatch(addPendingPlayer({post_id, user_id:user_info}))
     navigate(`/announcements/interview/${post_id}/${user_info}`);
@@ -72,7 +68,6 @@ export const PostPage = () => {
       editButtonVerification();
     }
   }, [parsedPost]);
-  // console.log(12312 313123,  parsedPost);
   return (
     <div className={styles.post_normalize}>
       {isPostExist && <PostCard props={parsedPost} />}

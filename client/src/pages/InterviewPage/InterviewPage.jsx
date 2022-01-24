@@ -56,8 +56,6 @@ export const InterviewPage = () => {
             
           />
         </div>
-        {/* <h2> {isAuthor}</h2> */}
-        {/* TODO проверка на сессию */}
       </div>
     </div>
   );

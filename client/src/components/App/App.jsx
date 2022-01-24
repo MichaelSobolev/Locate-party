@@ -25,7 +25,7 @@ import { GameRoomPage } from "../../pages/GameRoomPage/GameRoomPage";
 import { InterviewPage } from "../../pages/InterviewPage/InterviewPage";
 import { TestForSocket } from "../testForSocket/testForSocket";
 import { UserInfo } from "../../pages/UserPage/UserInfo/UserInfo";
-import Snowfall from 'react-snowfall'
+import Snowfall from "react-snowfall";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,8 +47,6 @@ function App() {
         .then((resObject) => {
           console.log("@@@@@@@@@@@@@@@@@@@@@@@@", resObject.user);
           dispatch(createSession(resObject.user));
-
-          // setUser(resObject.user);
           console.log("THIS", resObject.user);
         })
         .catch((err) => {
@@ -58,16 +56,13 @@ function App() {
     getUser();
   }, []);
 
+  const [theme, setTheme] = useState(false);
 
-const [theme, setTheme] = useState(false);
-
-console.log(theme);
-
-
+  console.log(theme);
 
   return (
     <div className={styles.app}>
-      <NavBarPage setTheme={setTheme}/>
+      <NavBarPage setTheme={setTheme} />
       <main className={styles.main}>
         <ErrorBoundary>
           <Routes>
@@ -84,23 +79,15 @@ console.log(theme);
             <Route path="/announcements/:id" element={<PostPage />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/admin" element={<AdminPage />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/postcard" element={<PostCard />} />
-            {/* АХТУНГ НИЖЕ ВРЕМЕННЫЙ РОУТ */}
             <Route path="/gameroom/:id" element={<GameRoomPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/setup" element={<AdminPage />} />
             <Route path="*" element={<ErorPage />} />
           </Routes>
         </ErrorBoundary>
-        {theme ? 
-        <Snowfall /> 
-        :null
-        }
+        {theme ? <Snowfall /> : null}
       </main>
       <Sidebar />
-      {/* <TestForSocket/> */}
     </div>
   );
 }

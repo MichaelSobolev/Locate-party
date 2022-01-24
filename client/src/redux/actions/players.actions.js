@@ -56,7 +56,7 @@ export const removePlayer = ({ post_id, user_id }) => async (dispatch) => {
 };
 
 export const getPlayersByPost = (post_id) => async (dispatch) => {
-  // ИГроки в посте
+  // Игроки в посте
 
   const response = await fetch(`${URL}/players/${post_id}`, {
     method: 'GET',
@@ -71,7 +71,7 @@ export const getPlayersByPost = (post_id) => async (dispatch) => {
 
 
 export const getPendingPlayersByPost = (post_id) => async (dispatch) => {
-  // ИГроки в посте 12
+  // Игроки в посте в ожидании
   const response = await fetch(`${URL}/players/pending/${post_id}`, {
     method: 'GET',
     headers: {

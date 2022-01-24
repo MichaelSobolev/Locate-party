@@ -4,8 +4,7 @@ import {
 } from "../types";
 
 export const userReducer = (state = [], action) => {
-  //const { type, payload } = action;
-  switch (action.type) {
+=  switch (action.type) {
     case ADD_INFO:
       return [...state, action.payload];
     case SET_USER_REDUX:
@@ -14,49 +13,7 @@ export const userReducer = (state = [], action) => {
     case CLEAR_USER:
       return []
 
-    // case SET_USER_ERROR: {
-    //   const { error } = payload;
-
-    //   return {
-    //     value: null,
-    //     error,
-    //   };
-    // }
-    // case ADD_USER:
-    //   const { user } = payload;
-    //   return { value: user, error: null };
-
-
-    // case SET_USER: {
-    //   const { user } = payload;
-
-    //   return {
-    //     value: user,
-    //     error: null,
-    //   };
-    // }
-    // case USER_LOGOUT: {
-    //   return {
-    //     value: null,
-    //     error: null,
-    //   };
-    // }
-    // case VALIDATE_SUCCESS: {
-    //   return {
-    //     error: null,
-    //     value: true,
-    //     // number: null
-    //   };
-    // }
-
-    // case VALIDATE_ERROR: {
-    //   const { error } = payload;
-    //   return {
-    //     error,
-    //     value: false,
-    //     // number: null
-    //   };
-    // }
+   
     default:
       return state;
   }

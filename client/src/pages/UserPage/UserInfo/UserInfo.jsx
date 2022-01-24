@@ -37,7 +37,6 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
     e.preventDefault();
 
     const obj = {
-      //id: uuidv4(),
       googleId: session[0].id,
       name: name,
       email: email,
@@ -58,7 +57,7 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
     setName(UserItems?._json.name);
     setEmail(UserItems?._json.email);
     setImage(UserItems?._json.picture);
-  },[]);
+  }, []);
   useEffect(() => {
     counter++;
     console.log("counter", counter);
@@ -184,7 +183,6 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
             <label for="prefered schedule" className={styles.form__label}>
               prefered schedule
             </label>
-            {/* <div className={`${styles["form__group"]} ${styles.field}`}> */}
             <textarea
               value={textarea}
               onChange={(e) => setTextarea(e.target.value)}
@@ -192,7 +190,6 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
               placeholder="about you"
             />
           </div>
-          {/* </div> */}
           <ButtonAll type="submit" value={"Send"} />
         </form>
       </div>
