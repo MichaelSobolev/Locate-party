@@ -4,7 +4,7 @@ export const ChatTest = () => {
   const [messages, setMessages] = useState([]);
   const [messageTextField, setMessageTextField] = useState("");
 
-  const socket = new WebSocket(`ws://localhost:${5000}`); // FIXME: сделать через window.location чтобы адрес был динамическим
+  const socket = new WebSocket(`ws://localhost:${5000}`);
   socket.onopen = function () {
     // обработчик срабатывает при установке соединения
     console.log("Соединение установлено.");
@@ -12,7 +12,7 @@ export const ChatTest = () => {
 
   socket.onmessage = function (event) {
     // обработчик события "пришло сообщение от сервера"
-    const message = JSON.parse(event.data); // достаем текст сообщения из ответа от сервера // TODO: доставать еще и имя
+    const message = JSON.parse(event.data); // достаем текст сообщения из ответа от сервера
     setMessages([...messages, <div>{message.text}</div>]);
   };
 

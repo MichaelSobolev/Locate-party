@@ -13,13 +13,13 @@ export const TestForSocket = () => {
     };
     socket.onmessage = function (event) {
       // обработчик события "пришло сообщение от сервера
-      const message = JSON.parse(event.data); // достаем текст сообщения из ответа от сервера // TODO: доставать еще и имя
+      const message = JSON.parse(event.data); // достаем текст сообщения из ответа от сервера //
       console.log("message", message);
-      if (message.text !== ""){
+      if (message.text !== "") {
         setArrMessages((prev) => [...prev, message]);
       }
       if (message?.redirect) {
-        console.log("succes!")
+        console.log("succes!");
         navigate("/admin");
       }
       console.log(arrMessages);
@@ -27,15 +27,16 @@ export const TestForSocket = () => {
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(socketReferens())
-    socket.send(JSON.stringify({ redirect:false,text: e.target.message.value })); // отправляем сообщение на сервер через вебсокет
+    socket.send(
+      JSON.stringify({ redirect: false, text: e.target.message.value })
+    ); // отправляем сообщение на сервер через вебсокет
     setInput("");
   };
 
   const redirect = (e) => {
     e.preventDefault();
 
-    socket.send(JSON.stringify({ redirect: true, text:""}));
+    socket.send(JSON.stringify({ redirect: true, text: "" }));
   };
 
   return (

@@ -24,8 +24,6 @@ router
 
   })
   .post(async (req, res) => {
-
-    // Article.create({ ...req.body, isActive: true, isPaid: false, master_id: 1 });
     await Article.create({
       author_id: 1,
       title: "NEWPOST",

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Input } from "../../components/Input/Input";
 import useInput from "../../customHooks/inputHook";
-import { createPost, getAuthorId } from "../../redux/actions/posts.actions";
+import { createPost } from "../../redux/actions/posts.actions";
 import { Title } from "../../components/Title/Title";
 import { Button } from "../../components/Button/Button";
 import styles from "./styles.module.css";
@@ -61,14 +61,7 @@ export const NewPostPage = () => {
       label: messages.description,
     }),
 
-    // FIXME нужно сделать чекбокс/кнопку, по нажатию на которую выпадает дополнительное поле с суммой оплаты.
-    // useInput({
-    //   type: "checkbox",
-    //   name: "isPaid",
-    //   id: "isPaid",
-    //   label: messages.isPaid,
-    //   defaultValue: false
-    // }),
+
     useInput({
       type: "number",
       name: "pricing",
@@ -76,7 +69,6 @@ export const NewPostPage = () => {
       label: messages.pricing,
     }),
   ];
-  // useEffect(() => {dispatch(getAuthorId())}, []);
   useEffect(() => {
     console.log(user);
     if (user.length > 1) {
@@ -93,8 +85,6 @@ export const NewPostPage = () => {
     const request = { master_id: user_info };
     inputs.forEach((el) => {
       let { key, value } = el.getKeyValue();
-      // TODO переписать этот костыль
-      console.log(el.getValue());
       if (key === "system_id" || key === "isPaid" || key === "max_players") {
         value = Number(value);
       }

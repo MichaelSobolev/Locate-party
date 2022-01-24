@@ -55,41 +55,16 @@ export const NavBarPage = (props) => {
               activeClassName="header__link_active"
               to="/logout"
             >
+              <NavLink
+                className="header__link"
+                activeClassName="header__link_active"
+                to="/announcements/new"
+              >
+                <BsHurricane className="icon" />
+                Новый Пост
+              </NavLink>
               <IoLogOut className="icon" />
               Выйти
-            </NavLink>
-
-            {/* <NavLink
-          className="header__link"
-          activeClassName="header__link_active"
-          to="/login"
-        >
-        <FcGoogle className='icon'/>
-          Войти
-        </NavLink> */}
-
-            {/* <NavLink
-              className="header__link"
-              activeClassName="header__link_active"
-              to="/news"
-            >
-              <BsGrid1X2Fill className="icon" />
-              Новости
-            </NavLink> */}
-            <NavLink
-              className="header__link"
-              activeClassName="header__link_active"
-              to="/announcements/new"
-            >
-              <BsHurricane className="icon" />
-              Новый Пост
-            </NavLink>
-            <NavLink
-              className="header__link"
-              activeClassName="header__link_active"
-              to="/admin"
-            >
-              Админ
             </NavLink>
           </>
         ) : (

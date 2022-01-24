@@ -4,28 +4,8 @@ import { CREATE_POST, SET_POSTS, SET_CURRENT_POST, UPDATE_POST, SET_USER_REDUX }
 const URL = process.env.REACT_APP_API_ADRESS;
 
 
-export const getAuthorId = () => async (dispatch) => {
-  // Получение автора поста по гугл id
-  // getState()
-  try {
-    // const response = await fetch(`${URL}/players/user/${googleId}`, {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   credentials: 'include',
-    // });
-    // const user = await response.json();
-    // dispatch({ type: SET_USER_REDUX, payload: user });
-  } catch (err) {
-    console.log('Fetching err');
-  }
-};
-
 export const getPosts = () => async (dispatch) => {
   // Получает все посты из бд и перезаписывает состояние ими!
-
-
   console.log(`${URL}/posts`)
   try {
     const response = await fetch(`${URL}/posts`, {

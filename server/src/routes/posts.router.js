@@ -5,8 +5,6 @@ const express = require('express');
 const router = express.Router();
 router.route('/system').post(async (req, res) => {
   const { system } = req.body;
-  // await System.create({ title: system });
-  console.log(system);
 
   const seedSys = [{
     title: 'D&D5e'
@@ -65,15 +63,6 @@ router
     }
   });
 
-// router.route('/gameroom/:id')
-//   .get(async (req, res) => {
-//     const { id } = req.params;
-//   })
-
-
-
-
-
 
 router.route('/:id')
   .get(async (req, res) => {
@@ -104,11 +93,8 @@ router.route('/:id')
     const { id } = req.params;
     const newData = req.body
     console.log(id, newData)
-    // const post = await Post.update(newData, { where: id }
-    // )
+
     await Post.update({ ...newData }, { where: { id } })
-    // console.log(post);
-    // res.status(200).jsson(post[0]);
     res.sendStatus(200)
   })
 

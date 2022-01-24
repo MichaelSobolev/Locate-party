@@ -62,7 +62,6 @@ export const PostEditPage = () => {
       let { key, value } = el.getKeyValue();
       if (value !== "") {
         if (key === "system_id" || key === "isPaid" || key === "max_players") {
-          // TODO переписать этот костыль
           value = Number(value);
         }
         request[key] = value;
