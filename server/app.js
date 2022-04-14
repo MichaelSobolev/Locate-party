@@ -27,6 +27,7 @@ const postsRouter = require("./src/routes/posts.router");
 const userRouter = require("./src/routes/userRouter");
 const newsRouter = require("./src/routes/news.router");
 const playersRouter = require("./src/routes/players.router");
+const { post } = require("./src/routes/index.router");
 
 // ------------------------- //
 // Create an app
@@ -58,19 +59,55 @@ app.use(sessionParser);
 app.use(passport.initialize());
 app.use(passport.session());
 
+// const wss = new ws.Server({ port: 3090 });
 const wss = new ws.Server({ port: 3090 });
-wss.on('connection', (ws) => { // обработчик события "соединение установлено"
-  // console.log(wss.clients);
+
+const rooms = {}
+
+wss.getUniqueID = function () {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+  return s4() + s4() + '-' + s4();
+};
+
+
+
+wss.on('connection', (ws, req) => { // обработчик события "соединение установлено"
+  ws.id = wss.getUniqueID();
+
   ws.on('message', async (data) => { // обработчик события "пришло сообщение"
     const decodedMessage = JSON.parse(data);
-    console.log(decodedMessage);
+    const { post_id, wssUserId } = decodedMessage
     //const message = await Message.create({ text: decodedMessage.text }); // db create message
-    // ws.send(JSON.stringify(message));
-    wss.clients.forEach((client) => {
-      client.send(JSON.stringify(decodedMessage)); // проходим по массиву всех подключенных юзеров и отправляем им сообщени 
-    });
-  });
-});
+    if (wssUserId) {
+
+      wss.clients.forEach((client) => {
+        decodedMessage.wssUserId = client.id;
+        const message = (JSON.stringify(decodedMessage))
+        if (rooms[post_id] && !(rooms[post_id].includes({ wssId: wssUserId }))) {
+          rooms[post_id] = [...rooms[post_id], { wssId: wssUserId, client }]
+        }
+        if (!rooms[post_id]) {
+          rooms[post_id] = [{ wssId: wssUserId, client }]
+        }
+      });
+      console.log(rooms);
+      rooms[post_id].forEach(({ client }) => {
+        decodedMessage.wssUserId = client.id;
+        const message = (JSON.stringify(decodedMessage))
+        client.send(message)
+      })
+    } else {
+      wss.clients.forEach((client) => {
+        decodedMessage.wssUserId = client.id;
+        const message = (JSON.stringify(decodedMessage))
+        client.send(message)
+      })
+    }
+  })
+})
+
 
 
 app.use(

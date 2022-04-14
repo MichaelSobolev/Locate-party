@@ -7,6 +7,9 @@ import {
   ADD_INFO,
   ADD_SESSION,
   SET_USER_ID,
+  CLEAR_USER_DATA,
+  SET_USER_DATA,
+  SET_CHOSEN_PROFILE,
 } from "../types";
 
 const url = process.env.REACT_APP_API_ADRESS;
@@ -62,39 +65,18 @@ export const validateUser = (current, reference) => (dispatch) => {
   }
 };
 
-export const createSession = (data) => async (dispatch) => {
-  console.log(
-    "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
-    data.id,
-    data.displayName,
-    data.photos[0].value
-  );
-  const response = await fetch(`http://localhost:5000/users`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify({
-      id: data.id,
-      name: data.displayName,
-      image: data.photos[0].value,
-    }),
-  });
-  console.log("RESULT ####################################");
-  const result = await response.json();
+export const createSession = (userInfo) => async (dispatch) => {
+
+  dispatch(getUserDataByGoogleId(userInfo.googleId))
   dispatch({
     type: ADD_SESSION,
-    payload: result,
+    payload: userInfo,
   });
-  dispatch(
-    getUserIdByGoogleId(result.id)
-  )
 };
 
 export const getUserIdByGoogleId = (google_id) => async (dispatch) => {
-  console.log('getUserIdByGoogleId')
-  const response = await fetch(`http://localhost:5000/players/user/${google_id}`, {
+
+  const response = await fetch(`http://localhost:5000/players/userId/${google_id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -103,7 +85,6 @@ export const getUserIdByGoogleId = (google_id) => async (dispatch) => {
   })
   const user_id = await response.json()
   if (user_id) {
-    console.log('TRUE ID', user_id)
     dispatch({
       type: SET_USER_ID,
       payload: { user_id },
@@ -112,8 +93,57 @@ export const getUserIdByGoogleId = (google_id) => async (dispatch) => {
     console.log('Юзер не найден')
   }
 }
+
+export const getUserDataByGoogleId = (google_id, isCurrentUser = true) => async (dispatch) => {
+  const type = isCurrentUser ? SET_USER_DATA : SET_CHOSEN_PROFILE
+  const response = await fetch(`http://localhost:5000/players/user/${google_id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  })
+  const userData = await response.json()
+  const isEmpty = Object.values(userData).includes(null)
+
+  if (isEmpty) {
+    userData.isFilled = false
+  } else {
+    userData.isFilled = true
+  }
+
+  dispatch({
+    type,
+    payload: userData,
+  })
+}
+
+
+export const getUserProfileInfoById = (user_id) => async (dispatch) => {
+
+  const response = await fetch(`http://localhost:5000/users/getProfileInfo/userId/${user_id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  })
+  const userData = await response.json()
+  const isEmpty = Object.values(userData).includes(null)
+
+  if (isEmpty) {
+    userData.isFilled = false
+  } else {
+    userData.isFilled = true
+  }
+  dispatch({
+    type: SET_CHOSEN_PROFILE,
+    payload: userData,
+  })
+}
+
 export const addInfoFetch = (value) => async (dispatch) => {
-  const response = await fetch(`http://localhost:5000/users/db`, {
+  const response = await fetch(`http://localhost:5000/users/update`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -121,12 +151,7 @@ export const addInfoFetch = (value) => async (dispatch) => {
     credentials: "include",
     body: JSON.stringify(value),
   })
-  const id = await response.json()
-  console.log('addInfoFetch ID: ', id)
-  dispatch({
-    type: SET_USER_ID,
-    payload:  id,
-  })  
+
 }
 
 export const addInfo = (value) => {

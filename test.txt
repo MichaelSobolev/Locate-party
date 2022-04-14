@@ -1,0 +1,41 @@
+const x = {
+  id: 1,
+  master_id: 2,
+  system_id: 1,
+  title: '12312',
+  platform: '12312',
+  schedule: '12312',
+  requirements: '21312',
+  max_players: 12312,
+  location: '123',
+  image: '123',
+  description: '1231231',
+  isActive: true,
+  createdAt: 2022 - 04 - 05T06: 23: 36.072Z,
+  updatedAt: 2022 - 04 - 05T06: 23: 36.072Z,
+  author: User {
+    dataValues: {
+      id: 2,
+      name: 'Mikhail Sobolev',
+      email: 'coboilebmuxa@gmail.com',
+      googleId: '115361850241479626432',
+      picture_link: 'https://lh3.googleusercontent.com/a-/AOh14GgEqtGjKn_021SPAslP3XHaTfRSeZtr8EqDiBNkCg=s96-c',
+      age: null,
+      gender: null,
+      experience: null,
+      timezone: null,
+      prefered_schedule: null,
+      textarea: null,
+      isAdmin: false,
+      createdAt: 2022-04 - 05T06: 22: 54.201Z,
+        updatedAt: 2022 - 04 - 05T06: 22: 54.201Z
+    },
+System: System {
+  dataValues: {
+    id: 1,
+      title: 'D&D',
+        createdAt: 2022 - 04 - 04T15: 26: 49.529Z,
+          updatedAt: 2022 - 04 - 04T15: 26: 49.529Z
+
+  }
+}

@@ -29,6 +29,26 @@ export const SET_USER_REDUX = 'SET_USER_REDUX'
 // user additional info 
 export const SET_USER_ID = 'SET_USER_REDUX'
 
+// user data
+export const SET_USER_DATA = 'SET_USER_DATA'
+export const CLEAR_USER_DATA = 'CLEAR_USER_DATA'
+
+// user data for other user
+export const SET_CHOSEN_PROFILE = 'SET_CHOSEN_PROFILE'
+export const CLEAR_CHOSEN_PROFILE = 'CLEAR_CHOSEN_PROFILE'
 
 
+// GameSystems
+export const SET_SYSTEMS = 'SET_SYSTEMS'
+export const SET_SYSTEM_NAMES = 'SET_SYSTEM_NAMES'
 
+// My games as Author
+export const SET_MY_GAMES = 'SET_MY_GAMES'
+export const DELETE_MY_GAME = 'DELETE_MY_GAME'
+
+// My games as Player
+export const SET_MY_GAMES_AS_PlAYER = 'SET_MY_GAMES_AS_PlAYER'
+export const DELETE_MY_GAME_AS_PlAYER = 'DELETE_MY_GAME_AS_PlAYER'
+
+// Interviews
+export const SET_INTERVIEWS = 'SET_INTERVIEWS'

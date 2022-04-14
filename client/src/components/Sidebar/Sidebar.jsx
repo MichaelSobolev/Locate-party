@@ -1,14 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./styles.module.css";
 import { Avatar } from "../Avatar/Avatar";
 
 export const Sidebar = () => {
-  const UserItemsBar = useSelector((state) => state.session[0]);
-  const [name, setName] = useState(UserItemsBar?._json?.name);
-  const [image, setImage] = useState(UserItemsBar?.photos[0]);
-
-  console.log(UserItemsBar?.photos[0].value);
+  const UserItemsBar = useSelector((state) => state.session);
+  const [name, setName] = useState(UserItemsBar?.name);
+  const [image, setImage] = useState(UserItemsBar?.picture_link);
   return (
     <div className={styles.sidebar}>
       <div className={styles["sidebar__wrapper"]}>

@@ -4,43 +4,41 @@ import { Title } from "../../../components/Title/Title";
 import styles from "./styles.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
 import {
-  addInfo,
   addInfoFetch,
-  getUserIdByGoogleId,
+  getUserDataByGoogleId,
 } from "../../../redux/actions/user.actions";
 import { ButtonAll } from "../../../components/ButtonAll/ButtonAll";
+import { useNavigate } from "react-router";
 
-export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
-  const UserItems = useSelector((state) => state?.session[0]);
+export const UserInfo = ({ namee, picture_linke, emaile, className = "" }) => {
+  const navigate = useNavigate();
+  const session = useSelector((state) => state.session);
+  const userInfo = useSelector((state) => state.userData);
 
-  console.log("UserItems", UserItems);
-
-  const [name, setName] = useState(UserItems?._json?.name);
-  const [email, setEmail] = useState(UserItems?._json?.email);
-  const [image, setImage] = useState(UserItems?._json?.picture);
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
-  const [experience, setExperience] = useState("");
-  const [timezone, setTimezone] = useState("");
-  const [prefered_schedule, setPrefered_schedule] = useState("");
-  const [textarea, setTextarea] = useState("");
+  const [name, setName] = useState(session?.name);
+  const [email, setEmail] = useState(session?.email);
+  const [picture_link, setpicture_link] = useState(session?.picture);
+  const [age, setAge] = useState(userInfo?.age);
+  const [gender, setGender] = useState(userInfo?.gender);
+  const [experience, setExperience] = useState(userInfo?.experience);
+  const [timezone, setTimezone] = useState(userInfo?.timezone);
+  const [prefered_schedule, setPrefered_schedule] = useState(
+    userInfo?.prefered_schedule
+  );
+  const [textarea, setTextarea] = useState(userInfo?.textarea);
   const [isInfoAdded, setIsInfoAdded] = useState(false);
 
   const dispatch = useDispatch();
-
-  const session = useSelector((state) => state.session);
-  let user_info = useSelector((state) => state.user_info.user_id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const obj = {
-      googleId: session[0].id,
+      googleId: session.googleId,
       name: name,
       email: email,
-      image: image ? image : session[0].photos[0].value,
+      picture_link: picture_link,
       age: age,
       gender: gender,
       experience: experience,
@@ -49,149 +47,150 @@ export const UserInfo = ({ namee, imagee, emaile, className = "" }) => {
       textarea: textarea,
     };
     dispatch(addInfoFetch(obj));
+    navigate("/user-page");
   };
 
-  let counter = 0;
+  useEffect(() => {
+    setName(userInfo?.name);
+    setpicture_link(session?.picture_link);
+    setAge(userInfo?.age);
+    setGender(userInfo?.gender);
+    setEmail(session?.email);
+    setExperience(userInfo?.experience);
+    setTimezone(userInfo?.timezone);
+    setPrefered_schedule(userInfo?.prefered_schedule);
+    setTextarea(userInfo?.textarea);
+  }, []);
 
   useEffect(() => {
-    setName(UserItems?._json.name);
-    setEmail(UserItems?._json.email);
-    setImage(UserItems?._json.picture);
-  }, []);
-  useEffect(() => {
-    counter++;
-    console.log("counter", counter);
-    if (session[0]?.id) {
-      dispatch(getUserIdByGoogleId(session[0].id));
+    if (session) {
+      dispatch(getUserDataByGoogleId(session.googleId));
     }
-  }, [session]);
+  }, [dispatch, session]);
 
   return (
     <>
-      <section className={`${styles["user-info"]} ${className}`}>
-        <Avatar
-          className={styles["user-info__avatar"]}
-          src={image}
-          alt={`Фотография пользователя ${name}`}
-          size="xl"
-        />
-        <h2 className="visually-hidden">Информация о пользователе {name}</h2>
-        <div className={styles["user-info__name-email-wrapper"]}>
-          <Title className={styles["user-info__name"]}>{name}</Title>
-          <span className={styles["user-info__email"]}>{email}</span>
+      <div className={`${styles["input-container"]}`}>
+        <section className={`${styles["user-info"]} ${className}`}>
+          <Avatar
+            className={styles["user-info__avatar"]}
+            src={picture_link}
+            alt={`Фотография пользователя ${name}`}
+            size="xl"
+          />
+          <h2 className="visually-hidden">Информация о пользователе {name}</h2>
+          <div className={styles["user-info__name-email-wrapper"]}>
+            <Title className={styles["user-info__name"]}>{name}</Title>
+            <span className={styles["user-info__email"]}>{email}</span>
+          </div>
+        </section>
+
+        <div className={styles.divinfo}>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={`${styles["form__group"]} ${styles.field}`}>
+              <input
+                type="text"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                id="name"
+                name="name"
+                placeholder="name"
+                className={styles.form__field}
+                maxLength={30}
+              />
+              <label for="name" className={styles.form__label}>
+                Ник:
+              </label>
+            </div>
+
+            <div className={`${styles["form__group"]} ${styles.field}`}>
+              {/* <input
+                type="text"
+                onChange={(e) => setpicture_link(e.target.value)}
+                value={picture_link}
+                placeholder="Ссылка на фото профиля"
+                className={styles.form__field}
+              />
+              <label for="picture_link" className={styles.form__label}>
+                Url для фото:
+              </label> */}
+            </div>
+            <div className={`${styles["form__group"]} ${styles.field}`}>
+              <input
+                type="number"
+                onChange={(e) => setAge(e.target.value)}
+                value={age}
+                placeholder="Возраст:"
+                className={styles.form__field}
+                min={1}
+                max={125}
+              />
+              <label for="age" className={styles.form__label}>
+                Возраст:
+              </label>
+            </div>
+            <div className={`${styles["form__group"]} ${styles.field}`}>
+              <input
+                type="text"
+                onChange={(e) => setGender(e.target.value)}
+                value={gender}
+                placeholder="Пол:"
+                className={styles.form__field}
+                maxLength={30}
+              />
+              <label for="gender" className={styles.form__label}>
+                Пол:
+              </label>
+            </div>
+
+            <div className={`${styles["form__group"]} ${styles.field}`}>
+              <input
+                type="text"
+                onChange={(e) => setExperience(e.target.value)}
+                value={experience}
+                placeholder="Ваш опыт в НРИ:"
+                className={styles.form__field}
+                maxLength={200}
+              />
+              <label for="experience" className={styles.form__label}>
+                Ваш опыт в НРИ:
+              </label>
+            </div>
+            <div className={`${styles["form__group"]} ${styles.field}`}>
+              <input
+                type="text"
+                onChange={(e) => setTimezone(e.target.value)}
+                value={timezone}
+                placeholder="Часовой пояс"
+                className={styles.form__field}
+              />
+              <label for="timezone" className={styles.form__label}>
+                Часовой пояс:
+              </label>
+            </div>
+            <div className={`${styles["form__group"]} ${styles.field}`}>
+              <input
+                type="text"
+                onChange={(e) => setPrefered_schedule(e.target.value)}
+                value={prefered_schedule}
+                placeholder="Предпочитаемый график:"
+                className={styles.form__field}
+                maxLength={100}
+              />
+              <label for="prefered schedule" className={styles.form__label}>
+                Предпочитаемый график:
+              </label>
+              <textarea
+                value={textarea}
+                onChange={(e) => setTextarea(e.target.value)}
+                className={`${styles.form__field} ${styles.form__field_for_area} ${styles.form__bio}`}
+                placeholder="О себе:"
+                maxLength={500}
+              />
+            </div>
+            <ButtonAll type="submit" value={"Подтвердить изменения"} />
+          </form>
         </div>
-      </section>
-
-      <div className={styles.divinfo}>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={`${styles["form__group"]} ${styles.field}`}>
-            <input
-              type="text"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              id="name"
-              name="name"
-              placeholder="name"
-              className={styles.form__field}
-            />
-            <label for="name" className={styles.form__label}>
-              Name
-            </label>
-          </div>
-
-          <div className={`${styles["form__group"]} ${styles.field}`}>
-            <input
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              placeholder="email"
-              className={styles.form__field}
-            />
-            <label for="email" className={styles.form__label}>
-              email
-            </label>
-          </div>
-          <div className={`${styles["form__group"]} ${styles.field}`}>
-            <input
-              type="text"
-              onChange={(e) => setImage(e.target.value)}
-              value={image}
-              placeholder="image"
-              className={styles.form__field}
-            />
-            <label for="image" className={styles.form__label}>
-              Photo
-            </label>
-          </div>
-          <div className={`${styles["form__group"]} ${styles.field}`}>
-            <input
-              type="text"
-              onChange={(e) => setAge(e.target.value)}
-              value={age}
-              placeholder="age"
-              className={styles.form__field}
-            />
-            <label for="age" className={styles.form__label}>
-              age
-            </label>
-          </div>
-          <div className={`${styles["form__group"]} ${styles.field}`}>
-            <input
-              type="text"
-              onChange={(e) => setGender(e.target.value)}
-              value={gender}
-              placeholder="gender"
-              className={styles.form__field}
-            />
-            <label for="gender" className={styles.form__label}>
-              gender
-            </label>
-          </div>
-
-          <div className={`${styles["form__group"]} ${styles.field}`}>
-            <input
-              type="text"
-              onChange={(e) => setExperience(e.target.value)}
-              value={experience}
-              placeholder="experience"
-              className={styles.form__field}
-            />
-            <label for="experience" className={styles.form__label}>
-              experience
-            </label>
-          </div>
-          <div className={`${styles["form__group"]} ${styles.field}`}>
-            <input
-              type="text"
-              onChange={(e) => setTimezone(e.target.value)}
-              value={timezone}
-              placeholder="timezone"
-              className={styles.form__field}
-            />
-            <label for="timezone" className={styles.form__label}>
-              timezone
-            </label>
-          </div>
-          <div className={`${styles["form__group"]} ${styles.field}`}>
-            <input
-              type="text"
-              onChange={(e) => setPrefered_schedule(e.target.value)}
-              value={prefered_schedule}
-              placeholder="prefered schedule"
-              className={styles.form__field}
-            />
-            <label for="prefered schedule" className={styles.form__label}>
-              prefered schedule
-            </label>
-            <textarea
-              value={textarea}
-              onChange={(e) => setTextarea(e.target.value)}
-              className={`${styles.form__field} ${styles.form__field_for_area}`}
-              placeholder="about you"
-            />
-          </div>
-          <ButtonAll type="submit" value={"Send"} />
-        </form>
       </div>
     </>
   );

@@ -3,8 +3,8 @@ import {
   ADD_INFO, CLEAR_USER, SET_USER_REDUX,
 } from "../types";
 
-export const userReducer = (state = [], action) => {
-=  switch (action.type) {
+export const userReducer = (state = false, action) => {
+  switch (action.type) {
     case ADD_INFO:
       return [...state, action.payload];
     case SET_USER_REDUX:
@@ -13,7 +13,6 @@ export const userReducer = (state = [], action) => {
     case CLEAR_USER:
       return []
 
-   
     default:
       return state;
   }

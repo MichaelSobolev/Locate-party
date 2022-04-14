@@ -36,7 +36,6 @@ wss.on('connection', (ws, request) => {
     //
     // Here we can now use session parameters.
     //
-
     const parsed = JSON.parse(message)
 
     switch (parsed.type) {

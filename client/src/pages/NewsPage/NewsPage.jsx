@@ -14,13 +14,13 @@ export const NewsPage = () => {
       icon: el?.creator?.image,
       button: true,
     };
-    console.log(newPost);
+
     return newPost;
   });
 
   useEffect(() => {
     dispatch(getNews());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles["announcements-page"]}>

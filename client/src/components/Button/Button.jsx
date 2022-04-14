@@ -12,7 +12,7 @@ export const Button = ({
     onClick={clickFunction ? clickFunction : ""}
     className={`${styles.button} ${styles[`button_size_${size}`]} ${
       styles[`button_view_${view}`]
-    } ${className}`}
+    }  ${styles[`${className}`]}`}
     type={type}
   >
     {children}

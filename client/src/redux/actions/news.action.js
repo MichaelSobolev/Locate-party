@@ -1,4 +1,4 @@
-import { CREATE_ARTICLE, SET_ARTICLES, UPDATE_ARTICLE, } from '../types'
+import { CREATE_ARTICLE, SET_ARTICLES, } from '../types'
 
 const URL = process.env.REACT_APP_API_ADRESS;
 

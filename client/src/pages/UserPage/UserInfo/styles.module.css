@@ -1,25 +1,26 @@
 .user-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 40px;
 }
 
 .user-info__name-email-wrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .user-info__name {
-    color: var(--color-white);
+  color: var(--color-white);
 }
 
 .user-info__avatar {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .user-info__email {
-    color: var(--color-gray);
+  color: var(--color-gray);
 }
 
 .form {
@@ -35,7 +36,7 @@
 
 .form__field {
   font-family: inherit;
-  width: 100%;
+  min-width: 100%;
   border: 0;
   border-bottom: 2px solid #9b9b9b;
   outline: 0;
@@ -58,6 +59,11 @@
   font-size: 1.3rem;
   cursor: text;
   top: 20px;
+}
+
+.form__bio {
+  min-height: 200px;
+  resize: none;
 }
 
 .form__label {
@@ -85,7 +91,8 @@
   font-weight: 700;
 }
 /* reset input */
-.form__field:required, .form__field:invalid {
+.form__field:required,
+.form__field:invalid {
   box-shadow: none;
 }
 /* demo */
@@ -97,4 +104,3 @@
   font-size: 1.5rem;
   background-color: rgb(24, 24, 32);
 }
-

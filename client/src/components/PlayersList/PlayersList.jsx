@@ -5,11 +5,10 @@ import { getPlayersByPost } from "../../redux/actions/players.actions";
 export const PlayersList = ({ id }) => {
   const dispatch = useDispatch();
   let players = useSelector((state) => state.currentGameRoom);
-  console.log("||||||players||||||", players);
 
   useEffect(() => {
     dispatch(getPlayersByPost(id));
-  }, []);
+  }, [dispatch, id]);
   return (
     <>
       <ul>

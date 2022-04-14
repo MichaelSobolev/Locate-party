@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router";
-import { ButtonPost } from "../../components/PostCard/ButtonPost/ButtonPost";
-import { acceptPlayer } from "../../redux/actions/players.actions";
+import { useParams } from "react-router";
+// import { ButtonPost } from "../../components/PostCard/ButtonPost/ButtonPost";
+// import { acceptPlayer } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
 import { Chat } from "../GameRoomPage/Chat/Chat";
 
@@ -13,36 +13,22 @@ export const InterviewPage = () => {
 
   const { user_id, post_id } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const post = useSelector((state) => state.currentPostStore);
-  console.log(post?.master_id);
-  const session = useSelector((state) => state?.session[0]);
-  const user_name = session?.displayName;
-  console.log();
-  const image = session?.photos[0]?.value;
+  const userDatabaseId = useSelector((state) => state.userData.id);
+  const session = useSelector((state) => state?.session);
+  const user_name = session?.name;
+  const image = session?.picture_link;
 
   useEffect(() => {
     dispatch(getPost(post_id));
-  }, []);
-  useEffect(() => {
-    if (post.length > 0) {
-      console.log(post?.master_id);
-    }
-  }, [post]);
+  }, [dispatch]);
 
   useEffect(() => {
-    console.log(
-      "|user_id|",
-      typeof user_id,
-      "|post.master_id|",
-      post.master_id
-    );
-
-    if (Number(user_id) === post.master_id) {
-      console.log(user_id === post?.master_id);
+    if (userDatabaseId === post.master_id) {
       setIsAuthor(true);
     }
-  }, [post]);
+  }, []);
 
   return (
     <div className="chat_main">
@@ -53,7 +39,8 @@ export const InterviewPage = () => {
             dispatchPayload={{ user_id, post_id }}
             user_name={user_name}
             uri={image}
-            
+            user_id={user_id}
+            post_id={post_id}
           />
         </div>
       </div>

@@ -5,42 +5,60 @@ import { ButtonPost } from "../../../components/PostCard/ButtonPost/ButtonPost";
 import { acceptPlayer } from "../../../redux/actions/players.actions";
 import style from "./chat.module.css";
 
-const socket = new WebSocket("ws://localhost:3090");
+// const socket = new WebSocket("ws://localhost:3090");
+const socket = new WebSocket(`ws://localhost:3090`);
+socket.onopen = function () {
+  console.log("Соединение установлено.");
+};
 
 export const Chat = ({
   isAuthor = false,
-  dispatchPayload = { user_id: 1, post_id: 1 },
+  user_id = 1,
+  post_id = 1,
   user_name = "Олег",
   uri,
 }) => {
-  console.log("CHat");
-  console.log("uri", uri);
   const [input, setInput] = useState("");
   const [arrMessages, setArrMessages] = useState([]);
+  const [wssId, setWssId] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    socket.onopen = function () {
-      console.log("Соединение установлено.");
-    };
+    socket.send(
+      JSON.stringify({
+        redirect: false,
+        text: `${user_name} Подключился`,
+        user_name: "",
+        time: "",
+        uri,
+        connection: true,
+        post_id,
+        user_id,
+      })
+    );
+  }, []);
+  useEffect(() => {
     socket.onmessage = function (event) {
       const message = JSON.parse(event.data); // достаем текст сообщения из ответа от сервера
-      console.log("message", message);
-      if (message.text !== "") {
+      if (message.wssUserid && wssId) {
+        setWssId(message.wssUserid);
+      }
+
+      if (message.text !== "" && !message.connection) {
         setArrMessages((prev) => [...prev, message]);
       }
       if (message?.redirect) {
-        console.log("succes!");
-        navigate(`/gameroom/${dispatchPayload.post_id}`);
+        navigate(`/gameroom/${post_id}`);
       }
-      console.log(arrMessages);
     };
   }, []);
 
+
+
   const redirect = (e) => {
     e.preventDefault();
-    dispatch(acceptPlayer(dispatchPayload));
+    dispatch(acceptPlayer({ user_id, post_id }));
     socket.send(JSON.stringify({ redirect: true, text: "" }));
   };
   const handleSubmit = (e) => {
@@ -50,6 +68,7 @@ export const Chat = ({
 
     const time =
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
     socket.send(
       JSON.stringify({
         redirect: false,
@@ -57,6 +76,9 @@ export const Chat = ({
         user_name,
         time,
         uri,
+        post_id,
+        user_id,
+        wssUserId: wssId,
       })
     ); // отправляем сообщение на сервер через вебсокет
     setInput("");
@@ -69,8 +91,8 @@ export const Chat = ({
           {arrMessages.map((el, i) => (
             <>
               <div className={style.container}>
-                <img src={el.uri} alt="Avatar" />
-                <figcaption>{user_name}</figcaption>
+                {el.uri && <img src={el.uri} alt="Avatar" />}
+                <figcaption>{el.user_name}</figcaption>
                 <p key={i}>{el.text}</p>
                 <span className={style["time-right"]}>{el.time}</span>
               </div>

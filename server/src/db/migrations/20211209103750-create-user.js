@@ -17,20 +17,17 @@ module.exports = {
         allowNull: true,
         unique: true,
       },
-      password: {
-        type: Sequelize.TEXT,
-        allowNull: true,
-      },
       googleId: {
         type: Sequelize.TEXT,
-        allowNull: true,
+        allowNull: false,
+        unique: true,
       },
-      image: {
+      picture_link: {
         type: Sequelize.TEXT,
         allowNull: true,
       },
       age: {
-        type: Sequelize.TEXT,
+        type: Sequelize.INTEGER,
         allowNull: true,
       },
       gender: {

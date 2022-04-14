@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import { CardContents } from "../CardContents/CardContents";
 
 import styles from "./styles.module.css";
-export const PostCard = ({ props }) => (
+export const PostCard = ({ props, short }) => (
   <div className={styles["post-card-size"]}>
     <div className={styles["wrapper"]} id="app">
       <div className={styles["card-form"]}>
@@ -22,11 +23,10 @@ export const PostCard = ({ props }) => (
         <div className={styles["normalize-color"]}></div>
         <div className={styles["card-form__inner"]}>
           <div className={styles["card-form__inner"]}>
-            <CardContents props={props} />
+            <CardContents props={props} short={short} />
           </div>
         </div>
       </div>
     </div>
   </div>
 );
-
