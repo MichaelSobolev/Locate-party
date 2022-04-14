@@ -19,48 +19,39 @@ export const GameRoomPage = () => {
     requirements: "",
     description: "",
   });
+  // eslint-disable-next-line no-unused-vars
   const [isAuthor, setIsAuthor] = useState(false);
 
-  console.log("STATE_POST", post);
-  console.log("STATE_POST.title", post?.title);
   const { id } = useParams();
   const navigate = useNavigate();
   const fetchedPost = useSelector((state) => state.currentPostStore);
-  console.log(fetchedPost?.title);
   const postPlayers = useSelector((state) => state.currentGameRoom);
-  console.log(postPlayers)
   const players = postPlayers.map((user) => {
-    console.log('Players_map', user)
-    console.log('User', user?.user_to_player)
-    return { name: "user", link: `/user-page/${user.player_id}` };
+    return {
+      name: user["user_to_player.name"],
+      link: `/user-page/${user["user_to_player.id"]}`,
+      ...user,
+    };
   });
 
   let user_info = useSelector((state) => state.user_info.user_id);
   user_info = user_info ? user_info : false;
-
-  let user = {
-    image:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  };
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPlayersByPost(id));
     dispatch(getPost(id));
-  }, []);
+  }, [dispatch, id]);
 
   useEffect(() => {
     setPost(fetchedPost);
     if (user_info === post.master_id) {
-      console.log(user_info === post?.master_id);
       setIsAuthor(true);
     }
-  }, [fetchedPost]);
+  }, [fetchedPost, post.master_id, user_info]);
 
   useEffect(() => {
-    console.log("POST", post);
-    console.log("POST.title2", post?.title);
     // parsePost(post)
   }, [post]);
   return (
@@ -68,11 +59,11 @@ export const GameRoomPage = () => {
       <div className={styles.game_description_container}>
         <img
           className={styles.game_master_icon}
-          src={
+          src={fetchedPost["author.picture_link"]}
+          alt={
             "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
           }
-          alt={"Master"}
-          onClick={() => console.log("Click on gamemaster icon!")}
+          onClick={() => navigate(`/user-page/${fetchedPost["author.id"]}`)}
         />
         <div className={styles.flex_container_column}>
           <div className={styles.outer_box}></div>
@@ -95,7 +86,6 @@ export const GameRoomPage = () => {
         </div>
       </div>
       <div className={styles.gameTime}>
-        {" "}
         Время игры: 01/02/2013 Четверг 12.00
       </div>
       <div className={styles.chat_and_players}>
@@ -104,23 +94,19 @@ export const GameRoomPage = () => {
             <div className={styles.flex_container_column}>
               <ul className={styles.ul}>
                 {players.map((el) => {
-                  console.log('------',el)
+                  console.log("elllllll", el);
                   return (
                     <li className={styles.li} onClick={() => navigate(el.link)}>
-                      {" "}
                       <img
                         className={styles.img}
-                        src={oleg.uri}
+                        src={el["user_to_player.picture_link"]}
                         width="80%"
-                      />{" "}
+                        alt={"https://picsum.photos/200/300"}
+                      />
                       {el.name}{" "}
                     </li>
                   );
                 })}
-                
-                
-                
-                
               </ul>
             </div>
           </div>
@@ -128,36 +114,6 @@ export const GameRoomPage = () => {
             <Chat />
           </div>
         </div>
-        <div className={styles.buttons}>
-          <div className={styles.Button}></div>
-          <div>
-            <Button
-              className={styles["new-post-page__new-post-form-submit-button"]}
-            >
-              Игроки в ожидании
-            </Button>
-            <Button
-              className={styles["new-post-page__new-post-form-submit-button"]}
-            >
-              Установить дату игры
-            </Button>
-          </div>
-          <div>
-            <Button
-              className={styles["new-post-page__new-post-form-submit-button"]}
-            >
-              Редактировать
-            </Button>
-            <Button
-              className={styles["new-post-page__new-post-form-submit-button"]}
-            >
-              Удалить обьявление
-            </Button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <PlayersList id={id} />
       </div>
     </div>
   );

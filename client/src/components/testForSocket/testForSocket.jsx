@@ -14,15 +14,12 @@ export const TestForSocket = () => {
     socket.onmessage = function (event) {
       // обработчик события "пришло сообщение от сервера
       const message = JSON.parse(event.data); // достаем текст сообщения из ответа от сервера //
-      console.log("message", message);
       if (message.text !== "") {
         setArrMessages((prev) => [...prev, message]);
       }
       if (message?.redirect) {
-        console.log("succes!");
         navigate("/admin");
       }
-      console.log(arrMessages);
     };
   }, []);
   const handleSubmit = (e) => {

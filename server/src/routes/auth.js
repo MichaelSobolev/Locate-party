@@ -2,15 +2,62 @@ const router = require("express").Router();
 const passport = require("passport");
 require("../../passport.js");
 require("dotenv").config();
-const CLIENT_URL = "http://localhost:3000";
 const { User } = require("../db/models");
 
-router.get("/login/success", (req, res) => {
+
+async function createUser(userObj) {
+  let status = 201
+  const userExist = await checkIfUserExists(userObj.id)
+  if (!userExist) {
+    try {
+      User.create({
+        name: userObj.displayName,
+        email: userObj.emails[0].value,
+        googleId: userObj.id,
+        picture_link: userObj.photos[0].value,
+        isAdmin: false
+      })
+
+    } catch (err) {
+      console.log('Error in userCreation. auth.js', err);
+    }
+  } else {
+    status = 200
+  }
+  return status
+}
+
+async function checkIfUserExists(googleId) {
+  let response;
+  try {
+    const userExists = await User.findOne({ where: { googleId }, raw: true })
+
+    if (userExists) {
+      response = true
+    } else {
+      response = false
+    }
+  } catch (err) {
+    console.log('Error in user existance verification. auth.js', err);
+  }
+  return response
+}
+
+router.get("/login/success", async (req, res) => {
+  console.log(`Backend: User Google login`)
+  // console.log(req.user.id);
   if (req.user) {
-    res.status(200).json({
+    const status = await createUser(req.user)
+    res.status(status).json({
       success: true,
       message: "successfull",
-      user: req.user,
+      user: {
+        name: req.user.displayName,
+        email: req.user.emails[0].value,
+        googleId: req.user.id,
+        picture_link: req.user.photos[0].value,
+        isAdmin: false
+      },
     });
   }
 });
@@ -23,9 +70,9 @@ router.get("/login/failed", (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
+  req.logout();
   req.session = null;
 
-  req.logout();
   res.sendStatus(200);
 });
 
@@ -36,22 +83,10 @@ router.get("/google", passport.authenticate("google", { scope: ["profile", 'emai
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: CLIENT_URL,
+    successRedirect: process.env.CLIENT_URL,
     failureRedirect: "/login/failed",
   })
 );
-
-router.post("/mock", async (req, res) => {
-  await User.create({
-    name: "Beb",
-    password: "123",
-    email: "beb@mail.com",
-    image:
-      "https://us.123rf.com/450wm/triken/triken1608/triken160800029/61320775-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg?ver=6",
-    isAdmin: false,
-  });
-  res.sendStatus(200);
-});
 
 module.exports = router;
 

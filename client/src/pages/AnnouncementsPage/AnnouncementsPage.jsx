@@ -13,24 +13,23 @@ export const AnnouncementsPage = () => {
     const newPost = {
       ...el,
       name: el?.author?.name,
-      icon: el?.author?.image,
-      tags: el?.System?.title,
+      icon: el?.author?.picture_link,
+      gameSystem: el?.System?.title,
       button: true,
     };
     return newPost;
   });
-  console.log(parsedPosts)
 
   useEffect(() => {
     dispatch(getPosts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles["announcements-page"]}>
       <h2 className="visually-hidden"> AnnouncementsPage</h2>
       <Header />
       <section className={styles["announcements-page__posts"]}>
-        <PostList posts={parsedPosts} />
+        <PostList posts={parsedPosts} short />
       </section>
     </div>
   );

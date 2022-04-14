@@ -8,10 +8,34 @@ router.route("/db").post(async (req, res) => {
   res.status(201).json({ user_id: request.dataValues.id })
 });
 
+router.route("/update").post(async (req, res) => {
+  const { googleId, age } = req.body
+  // const userToUpdate = await User.findOne({ where: { googleId }, raw: true })
+  // console.log(newValues);
+  await User.update({ ...req.body, age: Number(age) }, { where: { googleId } })
+  // console.log({ user_id: request.dataValues.id })
+  res.sendStatus(201) //.json({ user_id: request.dataValues.id })
+});
+
+router.route("/getProfileInfo/:googleId").get(async (req, res) => {
+  const { googleId } = req.params;
+
+  const user = await User.findOne({ where: { googleId } })
+
+  res.status(200).json(user)
+});
+
+router.route("/getProfileInfo/userId/:id").get(async (req, res) => {
+  const { id } = req.params;
+  console.log('id-----------', id);
+
+  const user = await User.findOne({ where: { id } })
+
+  res.status(200).json(user)
+});
+
 router.route("/").post(async (req, res) => {
   try {
-    console.log("REQ.SESSION >>>>>>>>>>>>>>>", req.session);
-
 
     res.json(req.session.passport.user);
 

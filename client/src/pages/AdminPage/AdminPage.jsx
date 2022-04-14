@@ -9,13 +9,19 @@ import {
   removePlayer,
 } from "../../redux/actions/players.actions";
 import { addMockUser, addSystem } from "../../redux/actions/posts.actions";
-import {
-  fetchTester,
-  getUserIdByGoogleId,
-} from "../../redux/actions/user.actions";
+import { getUserIdByGoogleId } from "../../redux/actions/user.actions";
+import { D20Spinner } from "../../components/D20Spinner/D20Spinner";
+import { List } from "../../components/List/List";
 
 export const AdminPage = () => {
   const dispatch = useDispatch();
+  const items = [
+    { text: "Игра 1" },
+    { text: "Игра 2" },
+    { text: "Игра 3" },
+    { text: "Игра 4" },
+    { text: "Игра 5" },
+  ];
   return (
     <div>
       <button
@@ -91,7 +97,12 @@ export const AdminPage = () => {
           getPendingPlayersByPost
         </button>
       </div>
-      <div></div>
+      <div>
+        <D20Spinner />
+      </div>
+      <div>
+        <List items={items} />
+      </div>
     </div>
   );
 };

@@ -5,14 +5,24 @@ const { Post, User, Player, BlackList } = require('../db/models');
 
 const router = express.Router();
 
-router.route("/user/:googleId").get(async (req, res) => {
+router.route("/userId/:googleId").get(async (req, res) => {
   const { googleId } = req.params;
   console.log('googleId', googleId)
   try {
     const response = await User.findOne({ where: { googleId }, raw: true })
-    // const user = await response.json()
-    console.log(response.id)
     res.status(200).json(response.id)
+  } catch (error) {
+    res.status(404).json(0)
+  }
+})
+router.route("/user/:googleId").get(async (req, res) => {
+  const { googleId } = req.params;
+  try {
+    const response = await User.findOne({ where: { googleId }, raw: true })
+    delete response.googleId;
+    delete response.isAdmin;
+    delete response.email;
+    res.status(200).json(response)
   } catch (error) {
     res.status(404).json(0)
   }
@@ -24,7 +34,6 @@ router.route("/pending/accept/:post_id")
     try {
       const { post_id } = req.params;
       const { user_id } = req.body
-      console.log('user_id: ', user_id)
       await Player.update(
         { isPending: false }, { where: { post_id, user_id } }
       );
@@ -40,7 +49,6 @@ router.route("/pending/decline/:post_id")
     try {
       const { post_id } = req.params;
       const { user_id } = req.body
-      console.log('user_id: ', user_id)
       await Player.update(
         { isPending: true }, { where: { post_id, user_id } }
       );
@@ -60,12 +68,16 @@ router.route("/pending/:post_id")
       const { post_id } = req.params;
 
       let postPlayers = await Player.findAll({
-        include: [
-          {
-            model: User,
-          },
-        ],
-        where: { post_id, isPending: true },
+        include: [{
+          model: User,
+          as: "user_to_player",
+        },
+        {
+          model: Post,
+          as: "post_to_player",
+          where: { id: post_id }
+        }],
+        where: { isPending: true },
         raw: true,
       });
       postPlayers = postPlayers.map(el => {
@@ -77,7 +89,6 @@ router.route("/pending/:post_id")
           player_id_google: el["Users.googleId"],
         }
       })
-      console.log(postPlayers);
       res.status(200).json(postPlayers);
     } catch (err) {
       console.log(err)
@@ -99,7 +110,28 @@ router.route("/pending/:post_id")
     }
   })
 
+router.route("/inteviews/byUser/:user_id")
+  .get(async (req, res) => {
 
+    try {
+      const { user_id } = req.params;
+      let interviews = await Player.findAll({
+        include: [{
+          model: User,
+          as: "user_to_player",
+          where: { id: user_id }
+        },
+        {
+          model: Post,
+          as: "post_to_player",
+        }]
+      })
+      res.status(200).json(interviews)
+    } catch (error) {
+      console.log(error)
+      res.sendStatus(500)
+    }
+  })
 
 router.route("/:post_id")
   .get(async (req, res) => {

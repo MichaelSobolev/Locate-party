@@ -8,6 +8,9 @@ function useInput({
   placeholder = "",
   label = "",
   options = [],
+  textAreaMode = false,
+  selectorMode = false,
+  selectorOptions = [{ text: "SystemName", value: "systemName" }],
 }) {
   const [value, setValue] = useState(defaultValue);
 
@@ -40,6 +43,9 @@ function useInput({
       placeholder,
       label,
       options,
+      textAreaMode,
+      selectorMode,
+      selectorOptions,
     },
   };
 }

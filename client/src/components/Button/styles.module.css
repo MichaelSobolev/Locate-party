@@ -1,37 +1,58 @@
 .button {
-    font: inherit;
-    font-weight: medium;
+  font: inherit;
+  font-weight: medium;
 }
 
 .button:focus {
-    outline: none;
+  outline: none;
 }
 
 button:not(:disabled).button,
 a[href].button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .button_view_contained {
-    padding: 0 15px;
+  padding: 0 15px;
 
-    transition: background-color var(--time-microinteraction), transform var(---time-microinteraction);
+  transition: background-color var(--time-microinteraction),
+    transform var(---time-microinteraction);
 
-    color: var(--color-white);
-    border: none;
-    border-radius: 4px;
-    background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
+  background-color: var(--color-primary);
 }
 
 .button_view_contained:active {
-    transform: scale(0.99);
+  transform: scale(0.99);
 }
 
 .button_view_contained:hover,
 .button:focus-visible {
-    filter: brightness(110%);
+  filter: brightness(110%);
 }
 
 .button_size_m {
-    height: 55px;
+  height: 55px;
+}
+.button_size_s {
+  height: 50px;
+  margin: 3px;
+}
+
+.danger {
+  background-color: #6d1515;
+}
+.danger:hover {
+  background-color: #ad2121;
+}
+
+.edit {
+  background-color: #ebeb36;
+  color: black;
+}
+
+.edit:hover {
+  background-color: #f2f27c;
 }

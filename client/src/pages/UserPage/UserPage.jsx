@@ -1,18 +1,11 @@
-import React from 'react';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 
-import {Title} from '../../components/Title/Title';
+import { ProfileMenu } from "../../components/ProfileMenu/ProfileMenu";
 
-import styles from './styles.module.css';
-import { UserInfo } from './UserInfo';
-import {LastGameList} from './LastGameList';
+export const UserPage = ({ userName, userImage, userEmail }) => {
+  const { user_id } = useParams();
 
-
-export const UserPage = ({userName, userImage, userEmail}) => (
-  <div className={styles['user-page']}>
-    <section className={styles['user-page__last-games']}>
-      <Title className={styles['user-page__last-games-title']} as="h2">Последние игры</Title>
-      <LastGameList />
-    <UserInfo className={styles['user-page__user-info']} />
-    </section>
-  </div>
-);
+  return <ProfileMenu userId={user_id} />;
+};

@@ -5,13 +5,17 @@ import { ButtonPost } from "../../components/PostCard/ButtonPost/ButtonPost";
 import { PostCard } from "../../components/PostCard/PostCard";
 import { addPendingPlayer } from "../../redux/actions/players.actions";
 import { getPost } from "../../redux/actions/posts.actions";
-import { PostList } from "../AnnouncementsPage/PostList/PostList";
+import {
+  getUserDataByGoogleId,
+  getUserIdByGoogleId,
+} from "../../redux/actions/user.actions";
+// import { PostList } from "../AnnouncementsPage/PostList/PostList";
 import styles from "./styles.module.css";
 
 export const PostPage = () => {
   const navigate = useNavigate();
   const [isPostExist, setIsPostExist] = useState(false);
-  const [parsedPost, setParsedPost] = useState(null);
+  const [parsedPost, setParsedPost] = useState(false);
   const [isPostloaded, setIsPostLoaded] = useState(false);
   const [isAuthor, setIsAuthor] = useState(false);
 
@@ -19,16 +23,15 @@ export const PostPage = () => {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.currentPostStore);
   const session = useSelector((state) => state.session);
-  let user_info = useSelector((state) => state.user_info.user_id);
-  user_info = user_info ? user_info : false;
+  const userData = useSelector((state) => state.userData);
 
   function parsePost(post) {
     if (post) {
       setParsedPost({
         ...post,
         name: post["author.name"],
-        icon: post["author.image"],
-        tags: post["System.title"],
+        icon: post["author.picture_link"],
+        gameSystem: post["system_title"],
         button: false,
       });
     }
@@ -36,29 +39,30 @@ export const PostPage = () => {
   }
 
   function join() {
-    // На вход user_id | post_id
-    const post_id = id;
-    console.log(user_info)
-    dispatch(addPendingPlayer({post_id, user_id:user_info}))
-    navigate(`/announcements/interview/${post_id}/${user_info}`);
+    dispatch(
+      addPendingPlayer({
+        post_id: id,
+        user_id: userData.id,
+        master_id: post.master_id,
+      })
+    );
+    navigate(`/announcements/interview/${id}/${userData.id}`);
   }
 
   function editButtonVerification() {
-
     setIsPostExist(true);
   }
   useEffect(() => {
     dispatch(getPost(id));
-  }, [session]);
+    dispatch(getUserDataByGoogleId(session.googleId));
+  }, []);
 
   useEffect(() => {
-    parsePost(post);
-
     if (post) {
+      parsePost(post);
       setIsPostLoaded(true);
     }
-    if (user_info === post.master_id) {
-      console.log(user_info === post?.master_id);
+    if (post.master_id === userData.id) {
       setIsAuthor(true);
     }
   }, [post]);
@@ -73,7 +77,7 @@ export const PostPage = () => {
       {isPostExist && <PostCard props={parsedPost} />}
       <div className={styles.horizontal_box}>
         <div className={styles.button}>
-          {isPostloaded && user_info ? (
+          {isPostloaded && session ? (
             <ButtonPost isNavigation={false} action={join} id={parsedPost.id}>
               Присоединиться
             </ButtonPost>
@@ -83,7 +87,7 @@ export const PostPage = () => {
         </div>
         <div className={styles.button}>
           {isAuthor && (
-            <ButtonPost path="/announcements/edit/" props={parsedPost.id}>
+            <ButtonPost path="/announcements/edit/" id={id}>
               Редактировать
             </ButtonPost>
           )}

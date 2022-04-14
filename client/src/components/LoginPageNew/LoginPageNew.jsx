@@ -14,7 +14,6 @@ function LoginPage(props) {
   function loginUser(event) {
     axios.post("http://localhost:5000/user/login", user).then((response) => {
       if (response.data.message === "Auth Successful!") {
-        console.log(response.data);
         props.getUser(
           response.data.user._id,
           response.data.user.username,

@@ -1,0 +1,26 @@
+.d20 {
+  animation: D20-logo-spin infinite 1s linear;
+  align-self: center;
+  height: 200px;
+  width: 200px;
+}
+
+.d20-big {
+  animation: D20-logo-spin infinite 1s linear;
+  align-self: center;
+  height: 400px;
+  width: 400px;
+}
+
+@keyframes D20-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.dice-container {
+  display: flex;
+  flex-direction: column;
+}

@@ -29,19 +29,14 @@ module.exports = (sequelize, DataTypes) => {
   Post.init(
     {
       master_id: DataTypes.INTEGER,
-      system_id: DataTypes.INTEGER,
+      system_id: DataTypes.TEXT,
       title: DataTypes.TEXT,
       platform: DataTypes.TEXT,
-      //
       schedule: DataTypes.TEXT,
       requirements: DataTypes.TEXT,
       max_players: DataTypes.INTEGER,
-      isPaid: DataTypes.BOOLEAN,
-      pricing: DataTypes.INTEGER,
-      adress: DataTypes.TEXT,
-      gameDates: DataTypes.DATE,
+      location: DataTypes.TEXT,
       image: DataTypes.TEXT,
-      // 
       description: DataTypes.TEXT,
       isActive: DataTypes.BOOLEAN,
     },

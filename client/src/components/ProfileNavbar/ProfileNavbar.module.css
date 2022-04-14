@@ -1,0 +1,23 @@
+.navigation {
+  align-self: center;
+
+  display: flex;
+  /* background-color: red; */
+  font-weight: bold;
+}
+
+.navigation > span {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: var(--color-gray);
+}
+
+.active {
+  color: white !important;
+  padding-bottom: 10px;
+  border-bottom: 3px solid white;
+}
+
+.link {
+  margin: 100px;
+}

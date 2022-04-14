@@ -1,4 +1,4 @@
-"use strict";
+ "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Posts", {
@@ -32,16 +32,12 @@ module.exports = {
       title: {
         type: Sequelize.TEXT,
       },
-      adress: {
+      location: {
         type: Sequelize.TEXT,
       },
       platform: {
         type: Sequelize.TEXT,
       },
-      gameDates: {
-        type: Sequelize.DATE,
-      },
-
       schedule: {
         type: Sequelize.TEXT
       },
@@ -49,12 +45,6 @@ module.exports = {
         type: Sequelize.TEXT
       },
       max_players: {
-        type: Sequelize.INTEGER
-      },
-      isPaid: {
-        type: Sequelize.BOOLEAN
-      },
-      pricing: {
         type: Sequelize.INTEGER
       },
       description: {

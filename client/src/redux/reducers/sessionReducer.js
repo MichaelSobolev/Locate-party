@@ -1,11 +1,11 @@
-import { ADD_SESSION, CLEAR_SESSION, ADD_SESSION_USER_ID, MODIFY_SESSION } from "../types";
+import { ADD_SESSION, CLEAR_SESSION } from "../types";
 
-export const sessionReducer = (state = [], action) => {
+export const sessionReducer = (state = false, action) => {
   switch (action.type) {
     case ADD_SESSION:
-      return [...state, action.payload];
+      return action.payload;
     case CLEAR_SESSION:
-      return [{}]
+      return { google_id: false }
     default:
       return state;
   }

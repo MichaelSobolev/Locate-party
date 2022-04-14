@@ -1,0 +1,18 @@
+.new-post-page {
+  flex-grow: 1;
+}
+
+.new-post-page__new-post-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-post-page__new-post-form-input:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+
+.post-form__button {
+  margin-top: 50px;
+  align-self: center;
+}

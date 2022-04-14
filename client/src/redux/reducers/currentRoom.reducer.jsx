@@ -5,7 +5,7 @@ export const currentRoomReducer = (state = [{}], action) => {
   switch (type) {
     case SET_ROOM_DATA: {
       const data = payload;
-      console.log('--------', data)
+     
       return data;
     }
     case CLEAR_ROOM_DATA: {
